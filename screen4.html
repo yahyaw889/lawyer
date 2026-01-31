@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="light" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Law Firm Official Homepage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Public+Sans:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "royal-blue": "#002349",
+                        "gold-accent": "#C5A059",
+                        "soft-white": "#FDFDFD",
+                    },
+                    fontFamily: {
+                        "arabic": ["Noto Kufi Arabic", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                        "sans": ["Public Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #002349;
+            --accent: #C5A059;
+        }
+        body {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            background-color: var(--soft-white);
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 35, 73, 0.92), rgba(0, 35, 73, 0.95)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+        .nav-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .nav-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body class="text-royal-blue selection:bg-gold-accent selection:text-white">
+<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="border-r-2 border-gold-accent pr-4">
+<h1 class="text-2xl font-bold tracking-tight text-royal-blue leading-none">
+                        AL-TAMIMI &amp; CO
+                    </h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-gold-accent mt-1 font-sans">
+                        Legal Excellence • Excellence Juridique
+                    </p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<nav class="hidden lg:flex items-center gap-6 text-sm font-medium border-l border-gray-200 pl-8">
+<a class="hover:text-gold-accent transition-colors" href="#">English</a>
+<a class="hover:text-gold-accent transition-colors" href="#">Français</a>
+<a class="hover:text-gold-accent transition-colors" href="#">Pусский</a>
+<a class="text-gold-accent border-b-2 border-gold-accent pb-1" href="#">العربية</a>
+</nav>
+<a class="bg-royal-blue text-white px-8 py-3.5 text-sm font-bold border border-royal-blue hover:bg-transparent hover:text-royal-blue transition-all duration-300" href="#">
+                    استشارة فورية
+                </a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero-gradient min-h-[70vh] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gold-accent"></div>
+<div class="max-w-4xl animate-fade-in-up">
+<p class="text-gold-accent text-lg tracking-[0.3em] mb-6 font-medium">
+                    المحاماة والاستشارات القانونية
+                </p>
+<h2 class="text-5xl md:text-7xl font-bold text-black mb-8 leading-tight">
+                    جودة ، سرعة ، آمان
+                </h2>
+<div class="w-24 h-1 bg-gold-accent mx-auto mb-8"></div>
+<p class="text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed font-light">
+                    نقدم حلولاً قانونية متكاملة تتماشى مع رؤية المملكة، نجمع بين الخبرة العميقة والابتكار المهني لحماية مصالح عملائنا.
+                </p>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-6 -mt-24 relative z-10 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<a class="nav-card bg-white p-10 shadow-xl border-b-4 border-transparent flex flex-col items-center text-center h-full" href="#">
+<span class="text-gold-accent text-xs font-bold uppercase tracking-widest mb-6 font-sans">01</span>
+<h3 class="text-xl font-bold mb-4">من نحن</h3>
+<p class="text-gray-500 text-sm leading-relaxed">نخبة من المستشارين القانونيين الملتزمين بأعلى معايير المهنية والنزاهة في تقديم الخدمات.</p>
+</a>
+<a class="nav-card bg-white p-10 shadow-xl border-b-4 border-transparent flex flex-col items-center text-center h-full" href="#">
+<span class="text-gold-accent text-xs font-bold uppercase tracking-widest mb-6 font-sans">02</span>
+<h3 class="text-xl font-bold mb-4">تأسيس الشركات</h3>
+<p class="text-gray-500 text-sm leading-relaxed">دليلكم الشامل لتأسيس وتسجيل الشركات الاستثمارية والمحلية وفق الأنظمة السعودية الحديثة.</p>
+</a>
+<a class="nav-card bg-royal-blue p-10 shadow-xl border-b-4 border-gold-accent flex flex-col items-center text-center h-full group" href="#">
+<span class="text-gold-accent text-xs font-bold uppercase tracking-widest mb-6 font-sans">03</span>
+<h3 class="text-xl font-bold mb-4 text-white group-hover:text-gold-accent transition-colors">استشارة فورية</h3>
+<p class="text-gray-300 text-sm leading-relaxed">تواصل مباشر مع فريقنا القانوني للحصول على رد سريع ودقيق لاستفساراتكم العاجلة.</p>
+</a>
+<a class="nav-card bg-white p-10 shadow-xl border-b-4 border-transparent flex flex-col items-center text-center h-full" href="#">
+<span class="text-gold-accent text-xs font-bold uppercase tracking-widest mb-6 font-sans">04</span>
+<h3 class="text-xl font-bold mb-4">خدماتنا</h3>
+<p class="text-gray-500 text-sm leading-relaxed">تغطية شاملة للمجالات القانونية تشمل القضايا التجارية، العمالية، الجنائية، والملكية الفكرية.</p>
+</a>
+</div>
+</section>
+<section class="bg-gray-50 py-24 border-t border-gray-100">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="space-y-8">
+<h2 class="text-3xl font-bold leading-tight">شريككم الموثوق في رحلة النجاح القانوني داخل المملكة العربية السعودية</h2>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<p class="text-4xl font-bold text-gold-accent mb-2">+15</p>
+<p class="text-sm text-gray-600 font-medium">عاماً من الخبرة</p>
+</div>
+<div>
+<p class="text-4xl font-bold text-gold-accent mb-2">500</p>
+<p class="text-sm text-gray-600 font-medium">قضية ناجحة</p>
+</div>
+</div>
+<p class="text-gray-600 leading-loose">
+                        نعمل وفق منهجية قانونية رصينة تضمن لعملائنا أعلى مستويات الأمان القانوني. نحن ندرك تعقيدات السوق السعودي ونوفر الاستشارات اللازمة لتجاوز التحديات بكفاءة واقتدار.
+                    </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-8 border border-gray-200">
+<h4 class="font-bold text-lg mb-2">النزاهة</h4>
+<p class="text-xs text-gray-500 leading-relaxed">نلتزم بمبادئ الشفافية والصدق في كل تعاملاتنا القانونية.</p>
+</div>
+<div class="bg-white p-8 border border-gray-200">
+<h4 class="font-bold text-lg mb-2">الدقة</h4>
+<p class="text-xs text-gray-500 leading-relaxed">بحث قانوني دقيق لضمان أفضل النتائج لعملائنا.</p>
+</div>
+<div class="bg-white p-8 border border-gray-200">
+<h4 class="font-bold text-lg mb-2">السرية</h4>
+<p class="text-xs text-gray-500 leading-relaxed">حماية تامة لخصوصية المعلومات والبيانات الخاصة بالعملاء.</p>
+</div>
+<div class="bg-white p-8 border border-gray-200">
+<h4 class="font-bold text-lg mb-2">التطوير</h4>
+<p class="text-xs text-gray-500 leading-relaxed">مواكبة دائمة للتحديثات الأنظمة واللوائح السعودية.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-royal-blue text-white py-16 border-t border-white/10">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+<div class="max-w-sm">
+<h4 class="text-xl font-bold mb-4 tracking-tight">AL-TAMIMI &amp; CO</h4>
+<p class="text-gray-400 text-sm leading-relaxed">
+                    مكتب متخصص في تقديم الاستشارات القانونية والمحاماة، مرخص من وزارة العدل السعودية لتقديم الخدمات في كافة مدن المملكة.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+<div>
+<h5 class="text-gold-accent font-bold text-sm mb-6">روابط سريعة</h5>
+<ul class="space-y-3 text-xs text-gray-300">
+<li><a class="hover:text-white transition-colors" href="#">عن المكتب</a></li>
+<li><a class="hover:text-white transition-colors" href="#">الخدمات القانونية</a></li>
+<li><a class="hover:text-white transition-colors" href="#">فريق العمل</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-gold-accent font-bold text-sm mb-6">اتصل بنا</h5>
+<ul class="space-y-3 text-xs text-gray-300">
+<li>الرياض، المملكة العربية السعودية</li>
+<li>هاتف: 966-11-000-0000+</li>
+<li>البريد: info@firm.sa</li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-1">
+<h5 class="text-gold-accent font-bold text-sm mb-6">اللغات</h5>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 border border-white/20 text-[10px] rounded uppercase font-sans">Arabic</span>
+<span class="px-3 py-1 border border-white/20 text-[10px] rounded uppercase font-sans">English</span>
+<span class="px-3 py-1 border border-white/20 text-[10px] rounded uppercase font-sans">French</span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/10 flex justify-between items-center text-[10px] text-gray-500 uppercase tracking-widest font-sans">
+<p>© 2024 Legal Practice. All rights reserved.</p>
+<div class="flex gap-6">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+
+</body></html>
