@@ -2,10 +2,10 @@
 
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
-        <a href="{{ route('central.dashboard') }}" class="header-logo">
+        <a href="{{ route('admin.dashboard') }}" class="header-logo">
             <div class="logo-icon">
-                <span class="logo-text-primary">إدارة</span>
-                <span class="logo-text-secondary">HR</span>
+                <span class="logo-text-primary text-xl font-bold">التميمي</span>
+                <span class="logo-text-secondary text-sm">للمحاماة</span>
             </div>
         </a>
     </div>
@@ -24,108 +24,66 @@
             </div>
             <ul class="main-menu">
                 <!-- Start::slide__category -->
-                <li class="slide__category"><span class="category-name">القائمة الرئيسية</span></li>
+                <li class="slide__category"><span class="category-name">الرئيسية</span></li>
                 <!-- End::slide__category -->
 
                 <!-- لوحة التحكم -->
                 <li class="slide">
-                    <a href="{{ route('central.dashboard') }}"
-                        class="side-menu__item {{ request()->routeIs('central.dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="side-menu__item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                         <i class="bx bx-home side-menu__icon"></i>
                         <span class="side-menu__label">لوحة التحكم</span>
                     </a>
                 </li>
 
                 <!-- Start::slide__category -->
-                <li class="slide__category"><span class="category-name">الموارد البشرية</span></li>
+                <li class="slide__category"><span class="category-name">إدارة القضايا</span></li>
                 <!-- End::slide__category -->
 
-                <!-- إدارة الموظفين -->
-                <li class="slide has-sub {{ request()->routeIs('central.users.*') ? 'open' : '' }}">
-                    <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="bx bx-user-pin side-menu__icon"></i>
-                        <span class="side-menu__label">الموظفين</span>
-                        <i class="fe fe-chevron-left side-menu__angle"></i>
+                <!-- طلبات الاستشارة -->
+                <li class="slide">
+                    <a href="{{ route('admin.consultations.index') }}" class="side-menu__item">
+                        <i class="bx bx-conversation side-menu__icon"></i>
+                        <span class="side-menu__label">طلبات الاستشارة</span>
                     </a>
-                    <ul class="slide-menu child1">
-                        <li class="slide side-menu__label1">
-                            <a href="javascript:void(0);">الموظفين</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">قائمة الموظفين</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">إضافة موظف</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">الأقسام والمسميات</a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="slide">
+                    <a href="#" class="side-menu__item">
+                        <i class="bx bx-conversation side-menu__icon"></i>
+                        <span class="side-menu__label">طلبات الخدمات</span>
+                    </a>
                 </li>
 
-                <!-- إدارة الشيفتات -->
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="bx bx-time-five side-menu__icon"></i>
-                        <span class="side-menu__label">إدارة الشيفتات</span>
-                        <i class="fe fe-chevron-left side-menu__angle"></i>
-                    </a>
-                    <ul class="slide-menu child1">
-                        <li class="slide side-menu__label1">
-                            <a href="javascript:void(0);">الشيفتات</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">جدول الشيفتات</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">أنواع الشيفتات</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">طلبات التبديل</a>
-                        </li>
-                    </ul>
-                </li>
 
-                <!-- الحضور والانصراف -->
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
-                        <i class="bx bx-fingerprint side-menu__icon"></i>
-                        <span class="side-menu__label">الحضور والانصراف</span>
-                        <i class="fe fe-chevron-left side-menu__angle"></i>
-                    </a>
-                    <ul class="slide-menu child1">
-                        <li class="slide side-menu__label1">
-                            <a href="javascript:void(0);">الحضور</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">سجل الحضور اليومي</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">تقارير التأخير</a>
-                        </li>
-                        <li class="slide">
-                            <a href="#" class="side-menu__item">المغادرات والأذونات</a>
-                        </li>
-                    </ul>
-                </li>
+
+
+
 
                 <!-- Start::slide__category -->
-                <li class="slide__category"><span class="category-name">الإدارة والتقارير</span></li>
+                <li class="slide__category"><span class="category-name">الشؤون المالية والإدارية</span></li>
                 <!-- End::slide__category -->
+
+                <!-- المالية -->
+                <li class="slide">
+                    <a href="#" class="side-menu__item">
+                        <i class="bx bx-dollar-circle side-menu__icon"></i>
+                        <span class="side-menu__label">الفواتير والمدفوعات</span>
+                    </a>
+                </li>
 
                 <!-- التقارير -->
                 <li class="slide">
                     <a href="#" class="side-menu__item">
                         <i class="bx bx-bar-chart-alt-2 side-menu__icon"></i>
-                        <span class="side-menu__label">التقارير والإحصائيات</span>
+                        <span class="side-menu__label">التقارير</span>
                     </a>
                 </li>
 
                 <!-- الإعدادات -->
                 <li class="slide">
-                    <a href="{{ route('central.settings.index') }}" class="side-menu__item">
+                    <a href="#" class="side-menu__item">
                         <i class="bx bx-cog side-menu__icon"></i>
-                        <span class="side-menu__label">إعدادات النظام</span>
+                        <span class="side-menu__label">الإعدادات العامة</span>
                     </a>
                 </li>
 
@@ -140,27 +98,33 @@
     </div>
     <!-- End::main-sidebar -->
 
-    <script>
-        // Update support unread count
-        function updateSupportBadge() {
-            fetch('{{ route('central.settings.notifications') }}')
-                .then(response => response.json())
-                .then(data => {
-                    const badge = document.getElementById('support-unread-badge');
-                    if (badge && data.support_unread !== undefined) {
-                        badge.textContent = data.support_unread;
-                        badge.style.display = data.support_unread > 0 ? 'inline-block' : 'none';
-                    }
-                })
-                .catch(error => console.error('Error updating support badge:', error));
-        }
+    <!-- Start::sidebar-footer -->
+    <div class="sidebar-footer text-center p-3 border-top mt-auto">
+        <span class="text-muted d-block" style="font-size: 0.75rem;">
+            © 2026 Al Tamimi Law Firm
+        </span>
+    </div>
+    <!-- End::sidebar-footer -->
 
-        // Update on page load
+    <script>
+        // Ensure sidebar has flex column layout to push footer to bottom
         document.addEventListener('DOMContentLoaded', function() {
-            updateSupportBadge();
-            // Update every 30 seconds
-            setInterval(updateSupportBadge, 30000);
+            var sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                sidebar.style.display = 'flex';
+                sidebar.style.flexDirection = 'column';
+
+                var mainSidebar = document.querySelector('.main-sidebar');
+                if (mainSidebar) {
+                    mainSidebar.style.flex = '1';
+                    mainSidebar.style.overflowY = 'auto';
+                }
+            }
         });
+    </script>
+
+    <script>
+        // Remove broken support badge logic for now
     </script>
 
 </aside>

@@ -1,59 +1,232 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+#a41c1c انا عايز لون اساسي يكون دا 
+#1C1C1C
+#606060
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+just use this colors
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+عايز في اي نص تكتبه يكون بيدعم تعدد اللغات 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+BRAND FONT  EXPO
 
-## Learning Laravel
+OVERVIEW
+A leading Saudi-based law firm offering comprehensive legal solutions 
+designed to meet the highest global standards. Our expertise spans 
+corporate, commercial, and international law, ensuring tailored support for 
+diverse client needs.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+OUR APPROACH
+We combine local market knowledge with an international perspective, 
+providing innovative and precise legal services. Our team of experienced 
+legal professionals is dedicated to delivering results that drive client 
+success.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+OUR COMMITMENT
+Focused on excellence and client satisfaction, we strive to build long-term 
+partnerships by navigating complex legal challenges with integrity, 
+precision, and unwavering professionalism.
 
-### Premium Partners
+![alt text](image.png)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
++966555200816
+info@amn-law.sa
+www.amn-law.sa
+Riyadh - Saudi Arabia 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+
+--- الصفحة 1 ---
+
+    العنوان: الملف التعريفي للشركة .
+
+    اسم الشركة: AMN GLOBAL LAW FIRM .
+
+    معلومات الاتصال: info@amn-law.sa | www.amn-law.sa .
+
+--- الصفحة 2 ---
+
+    الشعار: AMN GLOBAL LAW FIRM .
+
+--- الصفحة 3: من نحن ---
+
+    في عالمنا اليوم، أصبحت شركات المحاماة تشكل نشاطاً تجارياً ذو أهمية متزايدة لجميع المؤسسات على اختلاف أنواعها .
+
+    نحن في AMN نقدم لعملائنا التوجيه اللازم لمستقبل واعد وطويل الأمد .
+
+    نحن نطرح الأسئلة اللازمة حول الأهداف المطلوبة والشفافية المرغوبة لكي نجد الإجابات المرجوة لنا وللعميل .
+
+    تلتزم الشركة بتعزيز بيئة تدعم نمو جميع الأفراد وتطورهم، بغض النظر عن العمر أو الحالة الاجتماعية أو العرق أو الدين .
+
+    هدفنا هو تطوير مكان عمل يركز على مواهب وإمكانات كل موظف لكي يتم العمل بنشاط وشفافية مطلقة .
+
+    نحن ملتزمون بتحقيق التميز في تمثيل عملائنا وتطوير وخدمة شعبنا ومجتمعاتنا .
+
+--- الصفحة 4: الرؤية والرسالة ---
+
+    رؤيتنا: أن نكون الرواد في تقديم الحلول القانونية المبتكرة في مجالات قانونية متخصصة، وأن نعرف كشريك استراتيجي موثوق للعملاء في تحقيق أهدافهم القانونية والاستثمارية، مع المساهمة الفاعلة في تطوير البيئة القانونية والاقتصادية للعميل .
+
+    رسالتنا: توفير خدمات قانونية متخصصة وعالية الجودة، من خلال فريق من المحامين والخبراء القانونيين ذوي الكفاءة العالية .
+
+    نلتزم بتقديم استشارات قانونية استباقية وتمثيل فعّال في القضايا المعقدة مع التركيز على تحقيق مصالح العملاء وتعزيز ثقتهم من خلال الحلول المبتكرة وتوظيف التقنية والنزاهة المهنية .
+
+--- الصفحة 5: الأهداف (الجزء الأول) ---
+
+    أهدافنا: تقديم خدمات قانونية متخصصة، توفير استشارات وتمثيل قانوني دقيق وفعّال في مجالات العقود التجارية، والمنازعات العقارية والاستثمارات العقارية، والشركات .
+
+    تعزيز سمعة الشركة: بناء سمعة قوية كمرجعية قانونية موثوقة في مجالي القانون التجاري والعقاري على المستوى المحلي والإقليمي .
+
+    العملاء: فهم احتياجات العملاء بشكل عميق وتقديم حلول قانونية مخصصة تعزز من نجاح أعمالهم واستثماراتهم .
+
+    التميز في الخدمات: استخدام التكنولوجيا الحديثة وأدوات التحليل القانوني لتحسين كفاءة العمل وتقديم حلول مبتكرة .
+
+--- الصفحة 6: الأهداف (الجزء الثاني) ---
+
+    الأسواق: التوسع الجغرافي وخدمة عملاء جدد في الأسواق المحلية والإقليمية والدولية، مع التركيز على المناطق ذات النمو الاقتصادي الكبير .
+
+    تطوير الكوادر البشرية: تدريب وتأهيل المحامين والموظفين لضمان تقديم خدمات متطورة ومتوافقة مع أحدث التغييرات التشريعية والقانونية .
+
+    المساهمة في تطوير البيئة القانونية: المشاركة في المبادرات التي تهدف إلى تطوير التشريعات التجارية والعقارية، ونشر الوعي القانوني بين المستثمرين والشركات .
+
+    تحقيق التميز المهني: الالتزام بأعلى معايير النزاهة والشفافية والأخلاقيات المهنية في جميع تعاملاتنا .
+
+--- الصفحة 7: قائمة الخدمات --- تشمل قائمة الخدمات الرئيسية:
+
+    صياغة وتوثيق العقود .
+
+    الاستشارات القانونية للاستثمار وممارسة الأعمال التجارية .
+
+    التوثيق .
+
+    التعاملات والعقود الدولية .
+
+    الاستثمار في المملكة العربية السعودية .
+
+    الإقامة المميزة .
+
+    التمثيل القانوني .
+
+--- الصفحة 8: تفاصيل خدمة صياغة وتوثيق العقود ---
+
+    نظراً لأهمية الوقت، سعت الشركة للحصول على خدمات منصات موثوقة ومرخصة لربط أعمالك، ومنها منصة "صادق" التي تسهل عملية توقيع العقد بكل أمان وسهولة .
+
+    يضمن الأطراف بأن من قام بالتوقيع هو صاحب الصلاحية فقط ولا يمكنه ادعاء تزوير التوقيع .
+
+    لا تحتاج إلى دعوة جميع أطراف التعاقد للحضور؛ يمكنك توقيع العقود بتسجيل الدخول من أي مكان في العالم .
+
+    المميزات: أمان، متوافق مع القانون السعودي والمعايير الدولية، سهل وسريع ولا يحتاج مواعيد مسبقة .
+
+--- الصفحة 9: الاستشارات القانونية للاستثمار --- تقدم الشركة حزمة متكاملة لدعم رواد الأعمال والمستثمرين، وتشمل المجالات التالية:
+
+    تأسيس الشركات والهياكل القانونية وتسجيلها .
+
+    تسجيل وإدارة ملف الشركة في المنصات الحكومية .
+
+    إدارة عقود الموظفين والنزاعات المتعلقة بهم .
+
+    صياغة العقود والاتفاقيات التجارية ووثيقة سرية المعلومات .
+
+    حماية الملكية الفكرية وأسرار العمل التجاري .
+
+    صياغة العقود بما يتوافق مع المعايير الدولية (الاونسترال) .
+
+    تسوية المنازعات وتعيين المحكمين .
+
+    المرافعة وتنفيذ الأحكام والامتثال التنظيمي والضريبي .
+
+--- الصفحة 10: التوثيق --- نظراً لأهمية التمثيل القانوني، حصل المكتب على "رخصة الموثق" من وزارة العدل، ويقدم الخدمات التالية:
+
+    إصدار وكالة داخلية أو خارجية .
+
+    إصدار وكالة أو فسخ وكالة لمنشأة تجارية .
+
+    إفراغ الأراضي .
+
+    رهن أو فك رهن عقاري .
+
+    توثيق إقرار مالي أو إنهائه .
+
+--- الصفحة 11: التعاملات والعقود الدولية --- تقدم الشركة الإرشاد لحفظ الحقوق وصياغة العقود وفق الاتفاقيات الدولية (مثل قانون الأونسيترال)، وتشمل الخدمات:
+
+    تحديد القانون الواجب التطبيق .
+
+    تحديد الهيئة المختصة وتعيين المحكمين .
+
+    الوساطة وتسوية النزاع .
+
+    الملاحقة القانونية وتحصيل حقوق العملاء .
+
+--- الصفحة 12: الاستثمار في السعودية --- خدمات لدعم المستثمرين المحليين والدوليين تشمل:
+
+    تقديم الاستشارات القانونية حول أعمال الشركة وصياغة العقود .
+
+    التمثيل القانوني أمام القضاء .
+
+    تسجيل الشركة في وزارة الاستثمار ووزارة التجارة .
+
+    تسجيل الشركة في المنصات الحكومية (قوى، مقيم، بلدي) وإدارتها .
+
+    إصدار التراخيص والتخليص الجمركي وتأشيرات العمل .
+
+    تسجيل العلامة التجارية وبراءة الاختراع .
+
+    توفير مكان عمل للعميل (مكتب أو أرض صناعية) بعقود مرنة .
+
+--- الصفحة 13: الإقامة المميزة (الجزء الأول) --- خدمة لدعم الحصول على الإقامة المميزة، وتشمل المراحل:
+
+    التقييم الأولي: استشارات حول الشروط وتقييم أهلية العميل .
+
+    مساعدة العميل في تجهيز الطلب: تجهيز المستندات (جوازات، سجلات مالية) ومراجعتها .
+
+    تقديم طلبات الإقامة: التقديم للجهات المختصة ومتابعة الحالة حتى الموافقة النهائية .
+
+--- الصفحة 14: الإقامة المميزة (الجزء الثاني) --- 4. الاستشارات القانونية: حول حقوق والتزامات الحاملين للإقامة المميزة . 5. تجديد الإقامة المميزة: دعم قانوني عند انتهاء المدة وتحديث المستندات .
+
+مزايا الإقامة المميزة:
+
+    الإقامة في المملكة دون حاجة لكفيل .
+
+    إمكانية التملك العقاري .
+
+    استقدام العائلة .
+
+    العمل في القطاع الخاص دون تحويل كفالة .
+
+    دخول وخروج المملكة دون تأشيرة .
+
+--- الصفحة 15: خدمة اليوم الواحد --- خدمات سريعة تشمل:
+
+    رفع دعاوي قضائية فورية .
+
+    إنشاء شركة محلية .
+
+    تعديل عقد تأسيس الشركة .
+
+    العقود العمالية .
+
+    توثيق الوكالة .
+
+    المصالحة والتسوية .
+
+--- الصفحة 16: لماذا تختار خدماتنا؟ ---
+
+    فريق متخصص: محامون سعوديون ذوو خبرة في القانون الاستثماري .
+
+    معرفة عميقة بالأنظمة: فهم دقيق للقوانين السعودية .
+
+    حلول مخصصة: تلبية احتياجات كل عميل .
+
+    نهج استباقي: توقع التحديات قبل وقوعها .
+
+    التزام بالنزاهة: أعلى معايير الأخلاقيات والشفافية .

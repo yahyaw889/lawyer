@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,18 @@ use Illuminate\Support\Facades\Route;
 
 // Redirect root to login
 Route::controller(FrontEndController::class)->group(function() {
-    Route::get('/', 'index')->name('index');
+    Route::get('/', 'languageSelection')->name('index');
+    Route::get('/home', 'home')->name('home');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/services', 'services')->name('services');
+    Route::get('/consultation', 'consultation')->name('consultation');
+    Route::get('/request', 'request')->name('request');
 });
+Route::controller(ConsultationController::class)->group(function(){
+    Route::post('/consultation/submit', 'submit')->name('consultation.submit');
+    Route::any('/tap/callback', 'handleCallback')->name('tap.callback');
+});
+
 
 // Authentication Routes
 Route::controller(LoginController::class)->group(function() {
@@ -33,9 +44,12 @@ Route::controller(LoginController::class)->group(function() {
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     
     // Dashboard
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('admin.pages.home');
     })->name('dashboard');
+
+    // Consultations
+    Route::get('/consultations', [\App\Http\Controllers\Admin\ConsultationRequestController::class, 'index'])->name('consultations.index');
 
     // System Utilities
     Route::post('clear-cache', fn() => ['success' => true])->name('clear-cache');

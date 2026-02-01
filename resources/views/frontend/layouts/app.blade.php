@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="scroll-smooth">
+<html lang="{{ app()->getLocale() }}" dir="{{ config('languages.supported.' . app()->getLocale() . '.dir', 'ltr') }}"
+    class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -63,15 +64,6 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
-
-        /* Page Transitions */
-        .page-section {
-            @apply hidden opacity-0 transition-opacity duration-300 ease-in-out;
-        }
-
-        .page-section.active {
-            @apply block opacity-100;
-        }
     </style>
     @stack('styles')
 </head>
@@ -82,30 +74,6 @@
         @yield('content')
     </div>
 
-    <!-- Simple Client-Side Router -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navigate = () => {
-                const hash = window.location.hash.substring(1) || 'home';
-                document.querySelectorAll('.page-section').forEach(el => {
-                    el.classList.remove('active');
-                });
-
-                const target = document.getElementById(hash);
-                if (target) {
-                    target.classList.add('active');
-                    window.scrollTo(0, 0);
-                } else {
-                    // Fallback to home if route not found
-                    const home = document.getElementById('home');
-                    if (home) home.classList.add('active');
-                }
-            };
-
-            window.addEventListener('hashchange', navigate);
-            navigate(); // Initial load
-        });
-    </script>
 </body>
 
 </html>

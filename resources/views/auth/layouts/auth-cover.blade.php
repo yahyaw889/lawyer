@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- TITLE -->
-    <title>@yield('title', 'إيواء')</title>
+    <!-- TITLE -->
+    <title>@yield('title', 'منصة المحاماة')</title>
 
     <!-- FAVICON -->
     <link rel="icon" href="{{ asset('img/favicon.webp') }}" type="image/x-icon">
@@ -55,9 +56,9 @@
                     <div class="p-1">
                         <div class="mb-3">
                             <a href="{{ url('/') }}">
-                                <img src="{{ asset('img/logo.png') }}" style="height: 90px;" alt="EIWAA"
+                                <img src="{{ asset('img/logo.png') }}" style="height: 90px;" alt="Logo"
                                     class="authentication-brand desktop-logo">
-                                <img src="{{ asset('img/logo.png') }}" style="height: 90px;" alt="EIWAA"
+                                <img src="{{ asset('img/logo.png') }}" style="height: 90px;" alt="Logo"
                                     class="authentication-brand desktop-dark">
                             </a>
                         </div>
@@ -82,9 +83,9 @@
                                             <img src="{{ asset('img/login2.png') }}" class="authentication-image"
                                                 alt="">
                                         </div>
-                                        <h6 class="fw-semibold text-fixed-white">نظام إدارة متكامل</h6>
-                                        <p class="fw-normal fs-14 op-7">إدارة احترافية للعقارات والشقق المفروشة مع
-                                            أدوات متقدمة لتسهيل عملك اليومي وتحسين الكفاءة التشغيلية</p>
+                                        <h6 class="fw-semibold text-fixed-white">إدارة قانونية شاملة</h6>
+                                        <p class="fw-normal fs-14 op-7">منظومة رقمية متكاملة لإدارة ملفات القضايا،
+                                            الموكلين، والجلسات بكفاءة عالية وتنظيم دقيق</p>
                                     </div>
                                 </div>
                             </div>
@@ -96,9 +97,9 @@
                                             <img src="{{ asset('img/login3.png') }}" class="authentication-image"
                                                 alt="">
                                         </div>
-                                        <h6 class="fw-semibold text-fixed-white">إدارة الحجوزات والعقود</h6>
-                                        <p class="fw-normal fs-14 op-7">نظام حجوزات ذكي مع تقويم تفاعلي وإدارة كاملة
-                                            للعقود والمستأجرين بكل سهولة ويسر</p>
+                                        <h6 class="fw-semibold text-fixed-white">متابعة العقود والمدد</h6>
+                                        <p class="fw-normal fs-14 op-7">نظام تنبيهات ذكي للمواعيد القانونية، تجديد
+                                            العقود، ومواعيد الجلسات لضمان عدم فوات أي إجراء</p>
                                     </div>
                                 </div>
                             </div>
@@ -110,9 +111,9 @@
                                             <img src="{{ asset('img/login2.png') }}" class="authentication-image"
                                                 alt="">
                                         </div>
-                                        <h6 class="fw-semibold text-fixed-white">تقارير شاملة ومفصلة</h6>
-                                        <p class="fw-normal fs-14 op-7">تقارير مالية وإحصائية تفصيلية تساعدك على اتخاذ
-                                            القرارات الصحيحة وتحسين الأداء</p>
+                                        <h6 class="fw-semibold text-fixed-white">تقارير ودراسات</h6>
+                                        <p class="fw-normal fs-14 op-7">إحصائيات دقيقة وتقارير أداء دورية تساعد في اتخاذ
+                                            القرارات وتحسين جودة العمل القانوني</p>
                                     </div>
                                 </div>
                             </div>

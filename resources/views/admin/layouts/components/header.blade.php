@@ -18,7 +18,7 @@
             <!-- Start::header-element -->
             <div class="header-element">
                 <div class="horizontal-logo">
-                    <a href="{{ url('index') }}" class="header-logo">
+                    <a href="{{ route('admin.dashboard') }}" class="header-logo">
                         <img src="{{ asset('img/logo.jpeg') }}" alt="logo" class="desktop-logo">
                         <img src="{{ asset('build/assets/images/brand-logos/desktop-dark.png') }}" alt="logo"
                             class="desktop-dark">
@@ -116,20 +116,15 @@
                     </ul>
                     <div class="p-3 empty-header-item1 border-top">
                         <div class="d-grid gap-2">
-                            <button onclick="markAllAsRead()" class="btn btn-sm btn-light border">
-                                <i class="ti ti-check-all me-1"></i> تحديد الكل كمقروء
-                            </button>
-                            <a href="{{ route('central.support.index') }}" class="btn btn-sm btn-light border">
-                                <i class="ti ti-headset me-1"></i> الدعم الفني
+
+                            <a href="#" class="btn btn-sm btn-light border">
+                                <i class="ti ti-briefcase me-1"></i> قضية جديدة
                             </a>
-                            <a href="{{ route('central.contact-us.index') }}" class="btn btn-sm btn-light border">
-                                <i class="ti ti-mail me-1"></i> رسائل التواصل
+                            <a href="#" class="btn btn-sm btn-light border">
+                                <i class="ti ti-user-plus me-1"></i> إضافة موكل
                             </a>
-                            <a href="{{ route('central.trials.index') }}" class="btn btn-sm btn-light border">
-                                <i class="ti ti-user-plus me-1"></i> طلبات النسخة التجريبية
-                            </a>
-                            <a href="{{ route('central.offers.index') }}" class="btn btn-sm btn-light border">
-                                <i class="ti ti-gift me-1"></i> طلبات العروض
+                            <a href="#" class="btn btn-sm btn-light border">
+                                <i class="ti ti-file-invoice me-1"></i> فاتورة جديدة
                             </a>
                         </div>
                     </div>
@@ -146,218 +141,6 @@
             </div>
             <!-- End::header-element -->
 
-            <script>
-                // تحميل الإشعارات عند فتح الصفحة
-                document.addEventListener('DOMContentLoaded', function() {
-                    loadNotifications();
-                    // تحديث الإشعارات كل 30 ثانية
-                    setInterval(loadNotifications, 30000);
-                });
-
-                function loadNotifications() {
-                    fetch('{{ route('central.settings.notifications') }}')
-                        .then(response => response.json())
-                        .then(data => {
-                            updateNotificationBadge(data.total_unread);
-                            updateNotificationList(data);
-                        })
-                        .catch(error => console.error('Error loading notifications:', error));
-                }
-
-                function updateNotificationBadge(count) {
-                    const badge = document.getElementById('notification-icon-badge');
-                    const notificationData = document.getElementById('notifiation-data');
-
-                    if (badge) {
-                        badge.textContent = count;
-                        badge.style.display = count > 0 ? 'inline-block' : 'none';
-                    }
-
-                    if (notificationData) {
-                        notificationData.textContent = count + ' غير مقروءة';
-                    }
-
-
-                    const emptyItem = document.querySelector('.empty-item1');
-                    const headerItem = document.querySelector('.empty-header-item1');
-
-                    if (count === 0) {
-                        if (emptyItem) emptyItem.classList.remove('d-none');
-                        if (headerItem) headerItem.classList.add('d-none');
-                    } else {
-                        if (emptyItem) emptyItem.classList.add('d-none');
-                        if (headerItem) headerItem.classList.remove('d-none');
-                    }
-                }
-
-                function updateNotificationList(data) {
-                    const notificationList = document.getElementById('header-notification-scroll');
-                    if (!notificationList) return;
-
-                    notificationList.innerHTML = '';
-
-                    // إضافة رسائل الدعم الفني
-                    if (data.recent_support_chats) {
-                        data.recent_support_chats.forEach(chat => {
-                            const li = createSupportNotification(chat);
-                            notificationList.appendChild(li);
-                        });
-                    }
-
-                    // إضافة رسائل التواصل
-                    data.recent_contacts.forEach(contact => {
-                        const li = createContactNotification(contact);
-                        notificationList.appendChild(li);
-                    });
-
-                    // إضافة طلبات النسخة التجريبية
-                    data.recent_trials.forEach(trial => {
-                        const li = createTrialNotification(trial);
-                        notificationList.appendChild(li);
-                    });
-
-
-                    data.recent_offers.forEach(offer => {
-                        const li = createOfferNotification(offer);
-                        notificationList.appendChild(li);
-                    });
-                }
-
-                function createSupportNotification(chat) {
-                    const li = document.createElement('li');
-                    li.className = 'dropdown-item';
-                    li.style.cursor = 'pointer';
-                    li.onclick = function() {
-                        window.location.href = `/central/support/${chat.id}`;
-                    };
-
-                    const tenantName = chat.tenant ? chat.tenant.name : `مستأجر #${chat.tenant_id}`;
-                    const unreadCount = chat.unread_messages_count || 0;
-
-                    li.innerHTML = `
-                        <div class="d-flex align-items-start">
-                            <div class="pe-2">
-                                <span class="avatar avatar-md bg-info-transparent avatar-rounded">
-                                    <i class="ti ti-headset fs-18"></i>
-                                </span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 fw-semibold text-info">
-                                    رسالة دعم فني جديدة
-                                </p>
-                                <span class="text-muted fw-normal fs-12 header-notification-text">
-                                    من: ${tenantName} - ${chat.subject}
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                    return li;
-                }
-
-                function createContactNotification(contact) {
-                    const li = document.createElement('li');
-                    li.className = 'dropdown-item';
-                    li.style.cursor = 'pointer';
-                    li.onclick = function() {
-                        window.location.href = '{{ route('central.contact-us.index') }}';
-                    };
-                    li.innerHTML = `
-                        <div class="d-flex align-items-start">
-                            <div class="pe-2">
-                                <span class="avatar avatar-md bg-primary-transparent avatar-rounded">
-                                    <i class="ti ti-mail fs-18"></i>
-                                </span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 fw-semibold text-primary">
-                                    رسالة تواصل جديدة
-                                </p>
-                                <span class="text-muted fw-normal fs-12 header-notification-text">
-                                    من: ${contact.name} - ${contact.email}
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                    return li;
-                }
-
-                function createTrialNotification(trial) {
-                    const li = document.createElement('li');
-                    li.className = 'dropdown-item';
-                    li.style.cursor = 'pointer';
-                    li.onclick = function() {
-                        window.location.href = '{{ route('central.trials.index') }}';
-                    };
-                    li.innerHTML = `
-                        <div class="d-flex align-items-start">
-                            <div class="pe-2">
-                                <span class="avatar avatar-md bg-success-transparent avatar-rounded">
-                                    <i class="ti ti-user-plus fs-18"></i>
-                                </span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 fw-semibold text-success">
-                                    طلب نسخة تجريبية جديد
-                                </p>
-                                <span class="text-muted fw-normal fs-12 header-notification-text">
-                                    من: ${trial.company_name} - ${trial.manager_name}
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                    return li;
-                }
-
-                function createOfferNotification(offer) {
-                    const li = document.createElement('li');
-                    li.className = 'dropdown-item';
-                    li.style.cursor = 'pointer';
-                    li.onclick = function() {
-                        window.location.href = '{{ route('central.offers.index') }}';
-                    };
-                    li.innerHTML = `
-                        <div class="d-flex align-items-start">
-                            <div class="pe-2">
-                                <span class="avatar avatar-md bg-warning-transparent avatar-rounded">
-                                    <i class="ti ti-gift fs-18"></i>
-                                </span>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 fw-semibold text-warning">
-                                    طلب عرض جديد
-                                </p>
-                                <span class="text-muted fw-normal fs-12 header-notification-text">
-                                    من: ${offer.name} - ${offer.business_type || 'غير محدد'}
-                                </span>
-                            </div>
-                        </div>
-                    `;
-                    return li;
-                }
-
-                function markAllAsRead() {
-                    fetch('{{ route('central.settings.notifications.mark-all-read') }}', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                loadNotifications();
-                                // إغلاق الـ dropdown
-                                const dropdown = document.getElementById('messageDropdown');
-                                if (dropdown) {
-                                    const bsDropdown = bootstrap.Dropdown.getInstance(dropdown);
-                                    if (bsDropdown) bsDropdown.hide();
-                                }
-                            }
-                        })
-                        .catch(error => console.error('Error marking as read:', error));
-                }
-            </script>
 
 
             <!-- Start::header-element -->
@@ -389,14 +172,12 @@
                 <!-- End::header-link|dropdown-toggle -->
                 <ul class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end"
                     aria-labelledby="mainHeaderProfile">
-                    <li><a class="dropdown-item d-flex" href="{{ route('central.profile.index') }}"><i
+                    <li><a class="dropdown-item d-flex" href="#"><i
                                 class="ti ti-user-circle fs-18 me-2 op-7"></i>الملف الشخصي</a></li>
-                    <li><a class="dropdown-item d-flex" href="{{ route('central.settings.index') }}"><i
+                    <li><a class="dropdown-item d-flex" href="#"><i
                                 class="ti ti-adjustments-horizontal fs-18 me-2 op-7"></i>الإعدادات</a></li>
-                    <li><a class="dropdown-item d-flex" href="{{ route('central.support.index') }}"><i
-                                class="ti ti-headset fs-18 me-2 op-7"></i>الدعم</a></li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}" class="d-no ne" id="logout-form">
+                        <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
                             @csrf
                         </form>
                         <a class="dropdown-item d-flex" href="javascript:void(0);"
@@ -428,7 +209,6 @@
     <script>
         function clearCache() {
             if (confirm('هل تريد مسح جميع الذاكرة المؤقتة؟ سيتم مسح localStorage وcache الخادم.')) {
-                // مسح localStorage أولاً
                 try {
                     localStorage.clear();
                     console.log('✅ تم مسح localStorage بنجاح');
@@ -437,7 +217,7 @@
                 }
 
                 // مسح cache الخادم
-                fetch('{{ route('central.clear-cache') }}', {
+                fetch('{{ route('admin.clear-cache') }}', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -447,11 +227,10 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            // مسح localStorage مرة أخرى للتأكد
                             localStorage.clear();
                             alert(
-                                '✅ تم مسح الذاكرة المؤقتة بنجاح!\n\n• تم مسح localStorage\n• تم مسح cache الخادم\n\nسيتم تحديث الصفحة الآن...');
-                            // تأخير بسيط قبل إعادة التحميل للتأكد من مسح localStorage
+                                '✅ تم مسح الذاكرة المؤقتة بنجاح!\n\n• تم مسح localStorage\n• تم مسح cache الخادم\n\nسيتم تحديث الصفحة الآن...'
+                            );
                             setTimeout(() => {
                                 location.reload(true); // force reload
                             }, 100);
@@ -461,7 +240,6 @@
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        // حتى لو فشل مسح cache الخادم، localStorage تم مسحه
                         alert('⚠️ تم مسح localStorage ولكن حدث خطأ في مسح cache الخادم.\n\nسيتم تحديث الصفحة...');
                         setTimeout(() => {
                             location.reload(true);
