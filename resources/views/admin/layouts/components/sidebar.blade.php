@@ -4,8 +4,9 @@
     <div class="main-sidebar-header">
         <a href="{{ route('admin.dashboard') }}" class="header-logo">
             <div class="logo-icon">
-                <span class="logo-text-primary text-xl font-bold">التميمي</span>
-                <span class="logo-text-secondary text-sm">للمحاماة</span>
+                <span class="logo-text-primary text-xl font-bold"
+                    style="font-family: 'Montserrat', sans-serif;">ΛMN</span>
+                <span class="logo-text-secondary text-[0.65rem]">GLOBAL LAW FIRM</span>
             </div>
         </a>
     </div>
@@ -48,7 +49,7 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a href="#" class="side-menu__item">
+                    <a href="{{ route('admin.requests.index') }}" class="side-menu__item">
                         <i class="bx bx-conversation side-menu__icon"></i>
                         <span class="side-menu__label">طلبات الخدمات</span>
                     </a>
@@ -101,7 +102,7 @@
     <!-- Start::sidebar-footer -->
     <div class="sidebar-footer text-center p-3 border-top mt-auto">
         <span class="text-muted d-block" style="font-size: 0.75rem;">
-            © 2026 Al Tamimi Law Firm
+            © {{ date('Y') }} AMN Global Law Firm
         </span>
     </div>
     <!-- End::sidebar-footer -->

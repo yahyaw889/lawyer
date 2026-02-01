@@ -15,9 +15,15 @@
         content="dashboard bootstrap, laravel template, admin panel in laravel, php admin panel, admin panel for laravel, admin template bootstrap 5, laravel admin panel, admin dashboard template, hrm dashboard, vite laravel, admin dashboard, ecommerce admin dashboard, dashboard laravel, analytics dashboard, template dashboard, admin panel template, bootstrap admin panel template">
 
     <!-- TITLE -->
-    <title> {{ config('app.name') }} -الادارة </title>
+    <!-- TITLE -->
+    <title> AMN Global Law Firm - لوحة التحكم </title>
 
     <style>
+        :root {
+            --primary-color: #a41c1c;
+            --primary-rgb: 164, 28, 28;
+        }
+
         .logo-icon {
             display: flex;
             flex-direction: column;
@@ -28,7 +34,7 @@
         .logo-text-primary {
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #002349 0%, #003d7a 100%);
+            background: linear-gradient(135deg, #a41c1c 0%, #4a0c0c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -42,10 +48,15 @@
             letter-spacing: 2px;
             line-height: 1;
         }
+
+        /* Dashboard Primary Color Overrides */
+        .app-header {
+            background: #fff !important;
+        }
     </style>
 
     <!-- FAVICON -->
-    <link rel="icon" href="{{ asset('img/favicon.webp') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('build/assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">

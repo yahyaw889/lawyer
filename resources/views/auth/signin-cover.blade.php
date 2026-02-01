@@ -52,8 +52,29 @@
                 </div>
 
             </div>
+            <style>
+                .btn-amn {
+                    background-color: #a41c1c !important;
+                    border-color: #a41c1c !important;
+                    color: white !important;
+                    transition: all 0.3s ease;
+                }
+
+                .btn-amn:hover {
+                    background-color: #8a1616 !important;
+                    border-color: #8a1616 !important;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(164, 28, 28, 0.2);
+                }
+
+                .form-control:focus {
+                    border-color: #a41c1c !important;
+                    box-shadow: 0 0 0 0.25rem rgba(164, 28, 28, 0.15) !important;
+                }
+            </style>
+
             <div class="col-xl-12 d-grid mt-2">
-                <button type="submit" class="btn btn-lg btn-success" id="loginButton">
+                <button type="submit" class="btn btn-lg btn-amn" id="loginButton">
                     <span id="buttonText">
                         <i class="ri-login-box-line me-2"></i>تسجيل الدخول
                     </span>

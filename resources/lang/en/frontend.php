@@ -179,6 +179,7 @@ return [
             'residency' => 'Premium Residency',
             'litigation' => 'Legal Representation',
             'one_day' => 'One Day Service',
+            'golden_visa' => 'Golden Visa',
         ],
     ],
     'why_us' => [
@@ -206,5 +207,8 @@ return [
         'privacy' => 'Privacy Policy',
         'terms' => 'Terms & Conditions',
         'location' => 'Location',
+    ],
+    'messages' => [
+        'request_sent_successfully' => 'Your request has been sent successfully! Thank you for contacting us.',
     ],
 ];

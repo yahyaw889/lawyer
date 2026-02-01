@@ -19,7 +19,7 @@
             <div class="header-element">
                 <div class="horizontal-logo">
                     <a href="{{ route('admin.dashboard') }}" class="header-logo">
-                        <img src="{{ asset('img/logo.jpeg') }}" alt="logo" class="desktop-logo">
+                        <img src="{{ asset('img/logo2.png') }}" alt="logo" class="desktop-logo">
                         <img src="{{ asset('build/assets/images/brand-logos/desktop-dark.png') }}" alt="logo"
                             class="desktop-dark">
                         <img src="{{ asset('build/assets/images/brand-logos/toggle-dark.png') }}" alt="logo"
@@ -161,7 +161,7 @@
                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                     <div class="d-flex align-items-center">
                         <div class="me-sm-2 me-0">
-                            <img src="{{ asset('img/logo.jpeg') }}" alt="img" width="32" height="32"
+                            <img src="{{ asset('img/logo2.png') }}" alt="img" width="32" height="32"
                                 class="rounded-circle">
                         </div>
                         <div class="d-sm-block d-none">

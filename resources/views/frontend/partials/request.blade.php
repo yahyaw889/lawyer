@@ -83,11 +83,12 @@
                     <p class="text-gray-500 text-sm">{{ __('frontend.one_day_service.desc') }}</p>
                 </div>
 
-                <form action="#" method="POST" class="space-y-5">
+                <form action="{{ route('request.submit') }}" method="POST" class="space-y-5" id="requestForm">
+                    @csrf
                     <!-- Personal Info -->
                     <div class="grid grid-cols-2 gap-5">
                         <div class="relative group">
-                            <input type="text" id="name" name="name" placeholder=" "
+                            <input type="text" id="name" name="name" placeholder=" " required
                                 class="peer w-full px-4 py-2.5 border-b border-gray-200 bg-gray-50/50 focus:bg-white focus:border-[#a41c1c] focus:outline-none transition-all duration-300 placeholder-transparent text-sm rounded-t-lg">
                             <label for="name"
                                 class="absolute right-3 left-auto rtl:right-3 rtl:left-auto top-2.5 text-gray-400 text-xs transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-2 peer-focus:text-[10px] peer-focus:text-[#a41c1c]">
@@ -95,7 +96,7 @@
                             </label>
                         </div>
                         <div class="relative group">
-                            <input type="email" id="email" name="email" placeholder=" "
+                            <input type="email" id="email" name="email" placeholder=" " required
                                 class="peer w-full px-4 py-2.5 border-b border-gray-200 bg-gray-50/50 focus:bg-white focus:border-[#a41c1c] focus:outline-none transition-all duration-300 placeholder-transparent text-sm rounded-t-lg">
                             <label for="email"
                                 class="absolute right-3 left-auto rtl:right-3 rtl:left-auto top-2.5 text-gray-400 text-xs transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-2 peer-focus:text-[10px] peer-focus:text-[#a41c1c]">
@@ -106,7 +107,7 @@
 
                     <div class="grid grid-cols-2 gap-5">
                         <div class="relative group">
-                            <input type="tel" id="phone" name="phone" placeholder=" " dir="ltr"
+                            <input type="tel" id="phone" name="phone" placeholder=" " dir="ltr" required
                                 class="peer w-full px-4 py-2.5 border-b border-gray-200 bg-gray-50/50 focus:bg-white focus:border-[#a41c1c] focus:outline-none transition-all duration-300 placeholder-transparent text-left text-sm rounded-t-lg">
                             <label for="phone"
                                 class="absolute right-3 left-auto rtl:right-3 rtl:left-auto top-2.5 text-gray-400 text-xs transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-2 peer-focus:text-[10px] peer-focus:text-[#a41c1c]">
@@ -120,7 +121,8 @@
                             <div class="grid grid-cols-2 gap-4">
                                 <!-- Option 1 -->
                                 <label class="cursor-pointer relative">
-                                    <input type="radio" name="service_type" value="litigation" class="peer sr-only">
+                                    <input type="radio" name="service_type" value="litigation" class="peer sr-only"
+                                        required>
                                     <div
                                         class="p-3 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white hover:border-[#a41c1c]/30 peer-checked:bg-white peer-checked:border-[#a41c1c] peer-checked:text-[#a41c1c] transition-all duration-300 flex items-center gap-3 group">
                                         <span
@@ -187,10 +189,20 @@
                         </label>
                     </div>
 
-                    <button type="submit"
-                        class="w-full bg-[#a41c1c] text-white font-bold py-3.5 rounded-xl hover:bg-[#8a1616] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 mt-6 group flex items-center justify-center gap-2 text-sm">
-                        <span>{{ __('frontend.buttons.request.title') }}</span>
-                        <span
+                    <button type="submit" id="submitBtn"
+                        class="w-full bg-[#a41c1c] text-white font-bold py-3.5 rounded-xl hover:bg-[#8a1616] transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 mt-6 group flex items-center justify-center gap-2 text-sm disabled:opacity-70 disabled:cursor-not-allowed">
+                        <span id="btnText">{{ __('frontend.buttons.request.title') }}</span>
+                        <span id="btnSpinner" class="hidden">
+                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10"
+                                    stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span id="btnIcon"
                             class="material-symbols-outlined text-lg group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">send</span>
                     </button>
                 </form>
@@ -198,3 +210,66 @@
         </div>
     </div>
 </div>
+
+<!-- Include iziToast CSS/JS if not already globally included, assume it is or use CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
+<script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+
+<script>
+    document.getElementById('requestForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const form = this;
+        const btn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const btnIcon = document.getElementById('btnIcon');
+
+        // Loading State
+        btn.disabled = true;
+        btnText.classList.add('hidden');
+        btnIcon.classList.add('hidden');
+        btnSpinner.classList.remove('hidden');
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    iziToast.success({
+                        title: '{{ __('frontend.hero.firm_name') }}',
+                        message: data.message,
+                        position: 'topRight', // RTL friendly
+                        rtl: true
+                    });
+                    form.reset();
+                } else {
+                    throw new Error(data.message || 'Something went wrong');
+                }
+            })
+            .catch(error => {
+                iziToast.error({
+                    title: 'Error',
+                    message: error.message || 'Failed to send request. Please try again.',
+                    position: 'topRight',
+                    rtl: true
+                });
+                console.error('Error:', error);
+            })
+            .finally(() => {
+                // Reset State
+                btn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnIcon.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+            });
+    });
+</script>

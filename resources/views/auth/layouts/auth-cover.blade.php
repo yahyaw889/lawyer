@@ -71,7 +71,8 @@
         </div>
 
         <div class="col-xxl-5 col-xl-5 col-lg-5 d-xl-block d-none px-0">
-            <div class="authentication-cover">
+            <div class="authentication-cover"
+                style="background: linear-gradient(to bottom right, rgba(164, 28, 28, 0.95), rgba(71, 12, 12, 0.9), rgba(0, 0, 0, 0.85)), url('{{ asset('img/hero-law.jpg') }}') center/cover no-repeat !important;">
                 <div class="aunthentication-cover-content rounded">
                     <div class="swiper keyboard-control">
                         <div class="swiper-wrapper">
