@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Jobs\TelegramNotification;
 use App\Models\ServiceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class FrontEndController extends Controller
 {
@@ -72,7 +74,11 @@ class FrontEndController extends Controller
 
         // Send Telegram Notification
         try {
-            TelegramNotification::dispatch($serviceRequest);
+            // Option 1: Queue (Commented out)
+            // TelegramNotification::dispatch($serviceRequest);
+            
+            // Option 2: Synchronous (Active)
+            $this->sendTelegramNotification($serviceRequest);
         } catch (\Exception $e) {
             // Continue even if notification fails
         }
@@ -87,5 +93,40 @@ class FrontEndController extends Controller
         }
 
         return back()->with('success', $message);
+    }
+
+    /**
+     * Send Telegram Notification Synchronously
+     */
+    private function sendTelegramNotification($order)
+    {
+        $token = env('TELEGRAM_BOT_TOKEN');
+        $chatId = env('TELEGRAM_CHAT_ID');
+
+        if (!$token || !$chatId) {
+            return;
+        }
+
+        $message = "🔔 *New Service Request*\n\n";
+        $message .= "👤 *Name:* " . $order->name . "\n";
+        $message .= "📞 *Phone:* " . $order->phone . "\n";
+        $message .= "📧 *Email:* " . $order->email . "\n";
+        $message .= "⚖️ *Service:* " . __('frontend.services_list.items.' . $order->service_type) . "\n";
+        
+        if ($order->message) {
+            $message .= "📝 *Message:* " . $order->message . "\n";
+        }
+
+        $message .= "\n📅 *Date:* " . $order->created_at->format('Y-m-d H:i');
+
+        try {
+            Http::withoutVerifying()->post("https://api.telegram.org/bot{$token}/sendMessage", [
+                'chat_id' => $chatId,
+                'text' => $message,
+                'parse_mode' => 'Markdown',
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Telegram notification failed: ' . $e->getMessage());
+        }
     }
 }
