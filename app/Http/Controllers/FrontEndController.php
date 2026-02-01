@@ -70,6 +70,8 @@ class FrontEndController extends Controller
             'message' => 'nullable|string',
         ]);
 
+        $validated['status'] = 'جديد';
+
         $serviceRequest = ServiceRequest::create($validated);
 
         // Send Telegram Notification

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('service_type');
             $table->text('message')->nullable();
-            $table->string('status')->default('pending');
+            $table->string('status')->default('جديد');
             $table->timestamps();
         });
     }

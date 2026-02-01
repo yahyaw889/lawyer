@@ -45,9 +45,7 @@ Route::controller(LoginController::class)->group(function() {
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     
     // Dashboard
-    Route::get('/', function () {
-        return view('admin.pages.home');
-    })->name('dashboard');
+    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
     // Consultations
     Route::get('/consultations', [\App\Http\Controllers\Admin\ConsultationRequestController::class, 'index'])->name('consultations.index');
