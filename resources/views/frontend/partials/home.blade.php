@@ -319,28 +319,32 @@
             </div>
         </section>
 
-        <section id="about" class="relative min-h-[70vh] flex items-center bg-white overflow-hidden py-20 reveal">
+        <section id="about"
+            class="relative min-h-[70vh] flex flex-col md:flex-row items-center bg-white overflow-hidden py-10 md:py-20 reveal">
             <!-- Left Image Section with Diagonal Clip -->
-            <div class="absolute top-0 left-0 w-full md:w-[55%] h-full z-0">
+            <div
+                class="relative w-full md:absolute md:top-0 md:left-0 md:w-[55%] h-64 md:h-full z-0 order-1 md:order-none overflow-hidden">
                 <div class="absolute inset-0 bg-cover bg-center"
                     style="background-image: url('{{ asset('img/riyadh_skyline.png') }}');">
                 </div>
                 <div class="absolute inset-0 bg-royal-blue/10 mix-blend-multiply"></div>
                 <!-- Logo Overlay -->
                 <div
-                    class="absolute bottom-10 left-10 z-20 bg-white/90 p-4 rounded-xl shadow-lg backdrop-blur-sm border border-gray-100">
-                    <img src="{{ asset('img/logo.png') }}" class="h-12 w-auto" alt="AMN Global Law Firm">
+                    class="absolute bottom-6 md:bottom-10 left-6 md:left-10 z-20 bg-white/90 p-3 md:p-4 rounded-xl shadow-lg backdrop-blur-sm border border-gray-100">
+                    <img src="{{ asset('img/logo.png') }}" class="h-8 md:h-12 w-auto" alt="AMN Global Law Firm">
                 </div>
                 <!-- Diagonal Overlay -->
                 <div
                     class="absolute top-0 right-0 w-32 h-full bg-white transform skew-x-[-6deg] origin-top translate-x-16 hidden md:block">
                 </div>
+                <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent md:hidden">
+                </div>
             </div>
 
             <!-- Right Text Section -->
-            <div class="container mx-auto px-6 relative z-10 pointers-events-none">
+            <div class="container mx-auto px-6 relative z-10 pointers-events-none order-2 md:order-none -mt-10 md:mt-0">
                 <div
-                    class="w-full md:w-1/2 ml-auto pl-0 md:pl-12 pt-10 md:pt-0 bg-white/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-8 rounded-xl md:rounded-none shadow-xl md:shadow-none">
+                    class="w-full md:w-1/2 ml-auto pl-0 md:pl-12 pt-0 bg-white md:bg-transparent p-8 md:p-12 rounded-t-3xl md:rounded-none shadow-xl md:shadow-none relative mx-4 md:mx-0">
                     <div class="pointer-events-auto">
                         <div class="flex items-center justify-end gap-3 mb-6">
                             <span class="h-px w-10 bg-[#a41c1c]"></span>
@@ -352,7 +356,7 @@
                             {{ __('frontend.vision_mission.vision') }}
                         </h2>
 
-                        <div class="space-y-4 text-gray-700 text-right leading-relaxed font-medium text-lg font-cairo text-justify"
+                        <div class="space-y-4 text-gray-700 text-right leading-loose font-medium text-lg font-cairo"
                             dir="rtl">
                             <p>
                                 {{ __('frontend.about.overview') }}

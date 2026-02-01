@@ -63,6 +63,7 @@ return [
             'topic' => 'Topic',
             'desc' => 'Brief Description',
             'upload' => 'Attach Documents (Optional)',
+            'service_type' => 'Service Type',
         ],
         'summary' => [
             'title' => 'Order Summary',
