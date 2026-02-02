@@ -17,7 +17,7 @@
                         class="flex items-center gap-2 px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold text-[#911c24] hover:bg-[#911c24] hover:text-white transition-all duration-300 shadow-sm hover:shadow-md group">
                         <span
                             class="material-symbols-outlined text-lg group-hover:rotate-12 transition-transform duration-300">language</span>
-                        <span>Global</span>
+                        <span class="hidden md:inline">Global</span>
                     </a>
                 </div>
             </nav>
@@ -342,9 +342,9 @@
             </div>
 
             <!-- Right Text Section -->
-            <div class="container mx-auto px-6 relative z-10 pointers-events-none order-2 md:order-none -mt-10 md:mt-0">
+            <div class="container mx-auto px-6 relative z-10 pointers-events-none order-2 md:order-none mt-6 md:mt-0">
                 <div
-                    class="w-full md:w-1/2 ml-auto pl-0 md:pl-12 pt-0 bg-white md:bg-transparent p-8 md:p-12 rounded-t-3xl md:rounded-none shadow-xl md:shadow-none relative mx-4 md:mx-0">
+                    class="w-full md:w-1/2 ml-auto pl-0 md:pl-12 pt-0 bg-white md:bg-transparent p-6 md:p-12 rounded-3xl md:rounded-none shadow-lg md:shadow-none relative mx-auto md:mx-0">
                     <div class="pointer-events-auto">
                         <div class="flex items-center justify-end gap-3 mb-6">
                             <span class="h-px w-10 bg-[#a41c1c]"></span>
@@ -441,6 +441,177 @@
         </section>
 
 
+        <!-- Contact Us Section -->
+        <section id="contact"
+            class="relative min-h-[80vh] flex flex-col md:flex-row items-center bg-white overflow-hidden py-10 md:py-20 reveal">
+            <!-- Left Image Section with Diagonal Clip -->
+            <div
+                class="relative w-full md:absolute md:top-0 md:left-0 md:w-[55%] h-64 md:h-full z-0 order-1 md:order-none overflow-hidden">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+                    style="background-image: url('{{ asset('img/contact_bg.png') }}');">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1C1C1C] via-[#a41c1c]/20 to-transparent opacity-90">
+                </div>
+
+                <!-- Contact Info Overlay -->
+                <div class="absolute bottom-0 left-0 w-full p-6 md:p-10 text-white z-20" dir="rtl">
+                    <div class="max-w-md ml-auto md:ml-0 md:mr-auto text-right">
+                        <h3 class="text-2xl md:text-3xl font-bold font-cairo mb-8 text-white drop-shadow-md">معلومات
+                            الاتصال</h3>
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4 group/item">
+                                <div
+                                    class="p-3 bg-white/10 rounded-lg backdrop-blur-sm group-hover/item:bg-[#a41c1c] transition-all duration-300 shadow-lg order-last md:order-first">
+                                    <span class="material-symbols-outlined text-white">location_on</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-200 mb-1 font-cairo">العنوان</h4>
+                                    <p class="font-cairo text-lg font-medium">الرياض - المملكة العربية السعودية</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 group/item">
+                                <div
+                                    class="p-3 bg-white/10 rounded-lg backdrop-blur-sm group-hover/item:bg-[#a41c1c] transition-all duration-300 shadow-lg order-last md:order-first">
+                                    <span class="material-symbols-outlined text-white">mail</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-200 mb-1 font-cairo">البريد الإلكتروني</h4>
+                                    <a href="mailto:info@amn-law.sa"
+                                        class="font-cairo text-lg font-medium hover:text-[#a41c1c] hover:bg-white/90 px-2 rounded transition-colors -mr-2">info@amn-law.sa</a>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 group/item">
+                                <div
+                                    class="p-3 bg-white/10 rounded-lg backdrop-blur-sm group-hover/item:bg-[#a41c1c] transition-all duration-300 shadow-lg order-last md:order-first">
+                                    <span class="material-symbols-outlined text-white">call</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-200 mb-1 font-cairo">الهاتف</h4>
+                                    <a href="tel:+966555200816" dir="ltr"
+                                        class="font-cairo text-lg font-medium hover:text-[#a41c1c] hover:bg-white/90 px-2 rounded transition-colors -mr-2 text-right block">+966
+                                        55 520 0816</a>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4 group/item">
+                                <div
+                                    class="p-3 bg-white/10 rounded-lg backdrop-blur-sm group-hover/item:bg-[#a41c1c] transition-all duration-300 shadow-lg order-last md:order-first">
+                                    <span class="material-symbols-outlined text-white">language</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-200 mb-1 font-cairo">الموقع الإلكتروني</h4>
+                                    <a href="https://www.amn-law.sa" target="_blank"
+                                        class="font-cairo text-lg font-medium hover:text-[#a41c1c] hover:bg-white/90 px-2 rounded transition-colors -mr-2">www.amn-law.sa</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Diagonal Overlay -->
+                <!-- Adjusted for Image on Left: Overlay on Right -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-full bg-white transform skew-x-[-6deg] origin-top translate-x-32 hidden md:block z-10">
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent md:hidden">
+                </div>
+            </div>
+
+            <!-- Right Form Section -->
+            <div class="container mx-auto px-6 relative z-10 pointer-events-none order-2 md:order-none mt-8 md:mt-0">
+                <div
+                    class="w-full md:w-1/2 ml-auto pl-0 md:pl-12 pt-0 bg-white md:bg-transparent p-6 md:p-12 rounded-3xl md:rounded-none shadow-lg md:shadow-none relative mx-auto md:mx-0">
+                    <div class="pointer-events-auto">
+                        <!-- Header -->
+                        <div class="flex items-center justify-start gap-3 mb-6">
+                            <span class="text-[#a41c1c] font-bold tracking-widest uppercase text-sm">تواصل معنا</span>
+                            <span class="h-px w-10 bg-[#a41c1c]"></span>
+                        </div>
+
+                        <h2 class="text-2xl md:text-4xl font-black font-cairo text-gray-900 mb-4 leading-tight">
+                            نحن هنا للمساعدة
+                        </h2>
+
+                        <p class="text-gray-600 text-base mb-8 leading-relaxed">
+                            تواصل معنا عبر النموذج وسنتواصل معك في أقرب وقت ممكن
+                        </p>
+
+                        <!-- Contact Form -->
+                        <form id="contactForm" class="space-y-5">
+                            @csrf
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <!-- Name -->
+                                <div>
+                                    <label for="contact_name"
+                                        class="block text-sm font-bold text-gray-700 mb-2 font-cairo">
+                                        الاسم <span class="text-[#a41c1c]">*</span>
+                                    </label>
+                                    <input type="text" id="contact_name" name="name" required
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#a41c1c]/20 focus:border-[#a41c1c] transition-all outline-none font-cairo"
+                                        placeholder="الاسم الكامل">
+                                </div>
+
+                                <!-- Email -->
+                                <div>
+                                    <label for="contact_email"
+                                        class="block text-sm font-bold text-gray-700 mb-2 font-cairo">
+                                        البريد الإلكتروني <span class="text-[#a41c1c]">*</span>
+                                    </label>
+                                    <input type="email" id="contact_email" name="email" required
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#a41c1c]/20 focus:border-[#a41c1c] transition-all outline-none font-cairo"
+                                        placeholder="البريد الإلكتروني">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <!-- Phone -->
+                                <div>
+                                    <label for="contact_phone"
+                                        class="block text-sm font-bold text-gray-700 mb-2 font-cairo">
+                                        رقم الهاتف
+                                    </label>
+                                    <input type="tel" id="contact_phone" name="phone"
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#a41c1c]/20 focus:border-[#a41c1c] transition-all outline-none font-cairo"
+                                        placeholder="+966...">
+                                </div>
+
+                                <!-- Subject -->
+                                <div>
+                                    <label for="contact_subject"
+                                        class="block text-sm font-bold text-gray-700 mb-2 font-cairo">
+                                        الموضوع
+                                    </label>
+                                    <input type="text" id="contact_subject" name="subject"
+                                        class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#a41c1c]/20 focus:border-[#a41c1c] transition-all outline-none font-cairo"
+                                        placeholder="عنوان الرسالة">
+                                </div>
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label for="contact_message"
+                                    class="block text-sm font-bold text-gray-700 mb-2 font-cairo">
+                                    الرسالة <span class="text-[#a41c1c]">*</span>
+                                </label>
+                                <textarea id="contact_message" name="message" rows="4" required
+                                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#a41c1c]/20 focus:border-[#a41c1c] transition-all outline-none resize-none font-cairo"
+                                    placeholder="اكتب استفسارك هنا..."></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit"
+                                class="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-[#a41c1c] to-[#8a1818] text-white font-bold rounded-xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2 font-cairo group">
+                                <span>إرسال الرسالة</span>
+                                <span
+                                    class="material-symbols-outlined group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1">send</span>
+                            </button>
+
+                            <!-- Success/Error Messages -->
+                            <div id="contactFormMessage" class="hidden p-4 rounded-xl text-sm font-cairo"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- Footer -->
@@ -507,4 +678,71 @@
         </footer>
 
     </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnContent = submitBtn.innerHTML;
+            const messageDiv = document.getElementById('contactFormMessage');
+
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML =
+                '<span class="material-symbols-outlined animate-spin">refresh</span> جاري الإرسال...';
+
+            // Collect form data
+            const formData = new FormData(form);
+
+            fetch("{{ route('contact.store') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    messageDiv.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'bg-green-50',
+                        'text-green-700');
+
+                    if (data.success) {
+                        messageDiv.classList.add('bg-green-50', 'text-green-700');
+                        messageDiv.innerHTML =
+                            `<div class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> ${data.message}</div>`;
+                        form.reset();
+                    } else {
+                        throw new Error(data.message || 'حدث خطأ ما أثناء الإرسال');
+                    }
+                })
+                .catch(error => {
+                    messageDiv.classList.remove('hidden', 'bg-green-50', 'text-green-700');
+                    messageDiv.classList.add('bg-red-50', 'text-red-700');
+
+                    // Handle validation errors
+                    if (error.status === 422) {
+                        // logic for validation errors could be added here if needed, 
+                        // users mostly care about the general error or explicit messages
+                        messageDiv.innerHTML =
+                            `<div class="flex items-center gap-2"><span class="material-symbols-outlined">error</span> يرجى التأكد من صحة البيانات المدخلة</div>`;
+                    } else {
+                        messageDiv.innerHTML =
+                            `<div class="flex items-center gap-2"><span class="material-symbols-outlined">error</span> ${error.message}</div>`;
+                    }
+                })
+                .finally(() => {
+                    messageDiv.classList.remove('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnContent;
+
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        messageDiv.classList.add('hidden');
+                    }, 5000);
+                });
+        });
+    </script>
 @endsection
