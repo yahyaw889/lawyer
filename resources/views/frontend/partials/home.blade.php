@@ -489,15 +489,31 @@
             // Collect form data
             const formData = new FormData(form);
 
+            // Get CSRF token from meta tag or generate it
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
+                '{{ csrf_token() }}';
+
             fetch("{{ route('contact.store') }}", {
                     method: 'POST',
                     headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Accept': 'application/json'
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
                     body: formData
                 })
-                .then(response => response.json())
+                .then(response => {
+                    // Check if response is ok before parsing
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw {
+                                status: response.status,
+                                data: err
+                            };
+                        });
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     messageDiv.classList.remove('hidden', 'text-red-600', 'text-green-600', 'border-red-200',
                         'border-green-200');
@@ -515,13 +531,20 @@
                     messageDiv.classList.remove('hidden', 'text-green-600', 'border-green-200');
                     messageDiv.classList.add('text-red-600', 'border-red-200');
 
-                    if (error.status === 422) {
-                        messageDiv.innerHTML =
-                            `<div class="flex items-center gap-2"><span class="material-symbols-outlined">error</span> يرجى التأكد من صحة البيانات المدخلة</div>`;
-                    } else {
-                        messageDiv.innerHTML =
-                            `<div class="flex items-center gap-2"><span class="material-symbols-outlined">error</span> ${error.message}</div>`;
+                    let errorMessage = 'حدث خطأ ما أثناء الإرسال';
+
+                    if (error.status === 419) {
+                        errorMessage = 'انتهت صلاحية الجلسة. يرجى تحديث الصفحة والمحاولة مرة أخرى';
+                    } else if (error.status === 422) {
+                        errorMessage = 'يرجى التأكد من صحة البيانات المدخلة';
+                    } else if (error.data?.message) {
+                        errorMessage = error.data.message;
+                    } else if (error.message) {
+                        errorMessage = error.message;
                     }
+
+                    messageDiv.innerHTML =
+                        `<div class="flex items-center gap-2"><span class="material-symbols-outlined">error</span> ${errorMessage}</div>`;
                 })
                 .finally(() => {
                     messageDiv.classList.remove('hidden');
