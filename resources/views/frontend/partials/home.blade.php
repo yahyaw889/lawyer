@@ -167,19 +167,8 @@
 
             <div class="container mx-auto px-6 relative z-10">
                 <div class="flex flex-col md:flex-row items-center gap-16">
-                    <div class="w-full md:w-1/2 relative">
-                        <div class="relative overflow-hidden shadow-xl border-4 border-gray-50">
-                            <img src="{{ asset('img/riyadh_skyline.png') }}" alt="Riyadh Skyline"
-                                class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                            <div class="absolute inset-0 bg-[#a41c1c]/10 mix-blend-multiply"></div>
-                        </div>
-                        <!-- Logo Badge -->
-                        <div
-                            class="absolute -bottom-6 -right-6 bg-white p-6 shadow-lg border border-gray-100 hidden md:block">
-                            <img src="{{ asset('img/logo.png') }}" class="h-16 w-auto" alt="AMN Logo">
-                        </div>
-                    </div>
 
+                    <!-- Text Section (Now First) -->
                     <div class="w-full md:w-1/2">
                         <div class="flex items-center gap-2 mb-6">
                             <span class="h-px w-8 bg-[#a41c1c]"></span>
@@ -204,6 +193,21 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- Image Section (Now Second) -->
+                    <div class="w-full md:w-1/2 relative">
+                        <div class="relative overflow-hidden shadow-xl border-4 border-gray-50">
+                            <img src="{{ asset('img/riyadh_skyline.png') }}" alt="Riyadh Skyline"
+                                class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            <div class="absolute inset-0 bg-[#a41c1c]/10 mix-blend-multiply"></div>
+                        </div>
+                        <!-- Logo Badge -->
+                        <div
+                            class="absolute -bottom-6 -right-6 bg-white p-6 shadow-lg border border-gray-100 hidden md:block">
+                            <img src="{{ asset('img/logo.png') }}" class="h-16 w-auto" alt="AMN Logo">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
