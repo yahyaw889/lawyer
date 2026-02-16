@@ -101,7 +101,7 @@
 
             <!-- Footer / CTA -->
             <div class="text-center animate-fade-in-up">
-                <a href="{{ route('request') }}"
+                <a href="{{ route('request', ['service' => 'business_services']) }}"
                     class="group relative inline-flex items-center gap-3 px-8 py-4 bg-gold-accent text-white rounded-full overflow-hidden shadow-2xl hover:shadow-gold-accent/50 transition-all duration-300 hover:scale-105 active:scale-95">
                     <div
                         class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">

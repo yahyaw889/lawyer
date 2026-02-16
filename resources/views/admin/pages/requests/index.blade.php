@@ -55,7 +55,7 @@
                                         </td>
                                         <td>
                                             <span class="badge bg-primary-transparent">
-                                                {{ __('frontend.services_list.items.' . $request->service_type) }}
+                                                {{ $request->service_type }}
                                             </span>
                                         </td>
                                         <td>
@@ -71,7 +71,7 @@
                                                 data-bs-toggle="modal" data-bs-target="#requestModal"
                                                 data-name="{{ $request->name }}" data-email="{{ $request->email }}"
                                                 data-phone="{{ $request->phone }}"
-                                                data-service="{{ __('frontend.services_list.items.' . $request->service_type) }}"
+                                                data-service="{{ $request->service_type }}"
                                                 data-message="{{ $request->message ?: 'No message provided.' }}"
                                                 data-status="{{ $request->status }}"
                                                 data-date="{{ $request->created_at->format('Y-m-d H:i') }}">

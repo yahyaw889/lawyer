@@ -171,18 +171,21 @@ return [
     'services_list' => [
         'title' => 'Our Main Services',
         'items' => [
-            'contracts' => 'Drafting & Notarizing Contracts',
-            'consultation' => 'Investment & Business Consultation',
-            'notary' => 'Notarization Services',
-            'international' => 'International Transactions & Contracts',
+            'business_services' => 'Business & Corporate Services',
+            'consultation_request' => 'Consultation Request',
+            'document_attestation' => 'Document Attestation',
+            'legal_representation' => 'Legal Representation',
+            'contracts' => 'Contract Drafting',
+            'consultation' => 'Legal Consultation',
             'saudi_invest' => 'Investment in Saudi Arabia',
-            'residency' => 'Premium Residency',
-            'litigation' => 'Legal Representation',
-            'one_day' => 'One Day Service',
-            'golden_visa' => 'Golden Visa',
+            'litigation' => 'Litigation Services',
+            'about_us' => 'About Us',
+            'faq' => 'FAQ',
+            'why_us' => 'Why Choose Us',
+            'contact_us' => 'Contact Us',
         ],
     ],
-    'why_us' => [
+    'services' => [
         'title' => 'Why Choose Us?',
         'items' => [
             'team' => 'Specialized Team: Experienced Saudi lawyers in investment law.',

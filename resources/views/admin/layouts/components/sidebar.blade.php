@@ -66,23 +66,33 @@
 
                 <!-- المالية -->
                 <li class="slide">
-                    <a href="#" class="side-menu__item">
+                    <a href="{{ route('admin.payments.index') }}"
+                        class="side-menu__item {{ request()->routeIs('admin.payments.*') ? 'active' : '' }}">
                         <i class="bx bx-dollar-circle side-menu__icon"></i>
-                        <span class="side-menu__label">الفواتير والمدفوعات</span>
+                        <span class="side-menu__label">المدفوعات</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a href="{{ route('admin.invoices.index') }}"
+                        class="side-menu__item {{ request()->routeIs('admin.invoices.*') ? 'active' : '' }}">
+                        <i class="bx bx-receipt side-menu__icon"></i>
+                        <span class="side-menu__label">الفواتير</span>
                     </a>
                 </li>
 
                 <!-- التقارير -->
                 <li class="slide">
-                    <a href="#" class="side-menu__item">
+                    <a href="{{ route('admin.reports.index') }}"
+                        class="side-menu__item {{ request()->routeIs('admin.reports.*') ? 'active' : '' }}">
                         <i class="bx bx-bar-chart-alt-2 side-menu__icon"></i>
-                        <span class="side-menu__label">التقارير</span>
+                        <span class="side-menu__label">التقارير المالية</span>
                     </a>
                 </li>
 
                 <!-- الإعدادات -->
                 <li class="slide">
-                    <a href="#" class="side-menu__item">
+                    <a href="{{ route('admin.settings.index') }}"
+                        class="side-menu__item {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                         <i class="bx bx-cog side-menu__icon"></i>
                         <span class="side-menu__label">الإعدادات العامة</span>
                     </a>

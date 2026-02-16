@@ -114,69 +114,23 @@
                                 Phone
                             </label>
                         </div>
-                        <div class="col-span-2">
-                            <label class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider">
-                                {{ __('frontend.consultation.form.service_type') }}
-                            </label>
-                            <div class="grid grid-cols-2 gap-4">
-                                <!-- Option 1 -->
-                                <label class="cursor-pointer relative">
-                                    <input type="radio" name="service_type" value="litigation" class="peer sr-only"
-                                        required>
-                                    <div
-                                        class="p-3 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white hover:border-[#a41c1c]/30 peer-checked:bg-white peer-checked:border-[#a41c1c] peer-checked:text-[#a41c1c] transition-all duration-300 flex items-center gap-3 group">
-                                        <span
-                                            class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-400 peer-checked:bg-[#a41c1c]/10 peer-checked:text-[#a41c1c] group-hover:text-[#a41c1c]">
-                                            <span class="material-symbols-outlined text-lg">gavel</span>
-                                        </span>
-                                        <span
-                                            class="text-xs font-bold text-gray-600 peer-checked:text-[#a41c1c]">{{ __('frontend.services_list.items.litigation') }}</span>
-                                    </div>
-                                </label>
-
-                                <!-- Option 2 -->
-                                <label class="cursor-pointer relative">
-                                    <input type="radio" name="service_type" value="contracts" class="peer sr-only">
-                                    <div
-                                        class="p-3 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white hover:border-[#a41c1c]/30 peer-checked:bg-white peer-checked:border-[#a41c1c] peer-checked:text-[#a41c1c] transition-all duration-300 flex items-center gap-3 group">
-                                        <span
-                                            class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-400 peer-checked:bg-[#a41c1c]/10 peer-checked:text-[#a41c1c] group-hover:text-[#a41c1c]">
-                                            <span class="material-symbols-outlined text-lg">history_edu</span>
-                                        </span>
-                                        <span
-                                            class="text-xs font-bold text-gray-600 peer-checked:text-[#a41c1c]">{{ __('frontend.services_list.items.contracts') }}</span>
-                                    </div>
-                                </label>
-
-                                <!-- Option 3 -->
-                                <label class="cursor-pointer relative">
-                                    <input type="radio" name="service_type" value="consultation" class="peer sr-only">
-                                    <div
-                                        class="p-3 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white hover:border-[#a41c1c]/30 peer-checked:bg-white peer-checked:border-[#a41c1c] peer-checked:text-[#a41c1c] transition-all duration-300 flex items-center gap-3 group">
-                                        <span
-                                            class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-400 peer-checked:bg-[#a41c1c]/10 peer-checked:text-[#a41c1c] group-hover:text-[#a41c1c]">
-                                            <span class="material-symbols-outlined text-lg">support_agent</span>
-                                        </span>
-                                        <span
-                                            class="text-xs font-bold text-gray-600 peer-checked:text-[#a41c1c]">{{ __('frontend.services_list.items.consultation') }}</span>
-                                    </div>
-                                </label>
-
-                                <!-- Option 4 -->
-                                <label class="cursor-pointer relative">
-                                    <input type="radio" name="service_type" value="golden_visa"
-                                        class="peer sr-only">
-                                    <div
-                                        class="p-3 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white hover:border-[#a41c1c]/30 peer-checked:bg-white peer-checked:border-[#a41c1c] peer-checked:text-[#a41c1c] transition-all duration-300 flex items-center gap-3 group">
-                                        <span
-                                            class="w-8 h-8 rounded-full bg-white border border-gray-100 flex items-center justify-center text-gray-400 peer-checked:bg-[#a41c1c]/10 peer-checked:text-[#a41c1c] group-hover:text-[#a41c1c]">
-                                            <span class="material-symbols-outlined text-lg">stars</span>
-                                        </span>
-                                        <span
-                                            class="text-xs font-bold text-gray-600 peer-checked:text-[#a41c1c]">{{ __('frontend.golden_visa.title') }}</span>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="relative group">
+                            @if (isset($selectedService) && $selectedService)
+                                {{-- Pre-selected service: show disabled input + hidden field --}}
+                                <input type="text" disabled value="{{ $selectedService->label() }}"
+                                    class="w-full px-4 py-2.5 border-b border-gray-200 bg-gray-100 text-gray-700 text-sm rounded-t-lg font-bold cursor-not-allowed">
+                                <input type="hidden" name="service_type" value="{{ $selectedService->value }}">
+                            @else
+                                {{-- No pre-selection: show dropdown --}}
+                                <select name="service_type" id="service_type" required
+                                    class="peer w-full px-4 py-2.5 border-b border-gray-200 bg-gray-50/50 focus:bg-white focus:border-[#a41c1c] focus:outline-none transition-all duration-300 text-sm rounded-t-lg appearance-none">
+                                    <option value="" disabled selected>
+                                        {{ __('frontend.consultation.form.service_type') }}</option>
+                                    @foreach (\App\Enums\ServiceType::options() as $value => $label)
+                                        <option value="{{ $value }}">{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            @endif
                         </div>
                     </div>
 
@@ -195,8 +149,8 @@
                         <span id="btnSpinner" class="hidden">
                             <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10"
-                                    stroke="currentColor" stroke-width="4"></circle>
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
                                 <path class="opacity-75" fill="currentColor"
                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                 </path>

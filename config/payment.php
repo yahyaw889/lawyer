@@ -13,6 +13,8 @@ return [
     'tap' => [
         'base_url' => env('TAP_BASE_URL', 'https://api.tap.company/'),
         'secret_key' => env('TAP_SECRET_KEY'),
+        'public_key' => env('TAP_PUBLIC_KEY'),
+        'merchant_id' => env('TAP_MERCHANT_ID', ''),
         'redirect_url' => env('TAP_REDIRECT_URL'),
         'response_url' => env('TAP_RESPONSE_URL'),
     ],

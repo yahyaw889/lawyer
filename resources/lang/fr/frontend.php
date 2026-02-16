@@ -48,6 +48,23 @@ return [
             'button' => 'Procéder au Paiement Sécurisé',
         ],
     ],
+    'services_list' => [
+        'title' => 'Nos Services Principaux',
+        'items' => [
+            'business_services' => 'Services aux Entreprises',
+            'consultation_request' => 'Demande de Consultation',
+            'document_attestation' => 'Attestation de Documents',
+            'legal_representation' => 'Représentation Légale',
+            'contracts' => 'Rédaction de Contrats',
+            'consultation' => 'Consultation Juridique',
+            'saudi_invest' => 'Investissement en Arabie Saoudite',
+            'litigation' => 'Services de Contentieux',
+            'about_us' => 'À Propos',
+            'faq' => 'FAQ',
+            'why_us' => 'Pourquoi Nous Choisir',
+            'contact_us' => 'Contactez-nous',
+        ],
+    ],
     'services' => [
         'title' => 'Formation d\'Entreprise & Investissement',
         'desc' => 'Services complets pour les investisseurs locaux et internationaux.',

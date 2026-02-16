@@ -26,7 +26,8 @@ class TapPaymentService extends BasePaymentService implements PaymentGatewayInte
 
     public function sendPayment($request)
     {
-        $data = $this->formatData($request['amount'], $request['first_name'], $request['last_name'], $request['phone_number'], $request['email']);
+        $token = $request['token'] ?? null;
+        $data = $this->formatData($request['amount'], $request['first_name'], $request['last_name'], $request['phone_number'], $request['email'], $token);
         $response = $this->buildRequest('POST', 'v2/charges', $data);
         return $response;
     }
@@ -53,17 +54,17 @@ class TapPaymentService extends BasePaymentService implements PaymentGatewayInte
         return $response;
     }
 
-    protected function formatData($amount, $first_name, $last_name, $phone_number, $email)
+    protected function formatData($amount, $first_name, $last_name, $phone_number, $email, $token = null)
     {
         return [
             "amount" => $amount,
-            "currency" => "EGP",
+            "currency" => "SAR",
             "threeDSecure" => true,
             "save_card" => false,
-            "description" => "Payment for invoice",
-            "statement_descriptor" => "Invoice Payment",
+            "description" => "Payment for Legal Consultation",
+            "statement_descriptor" => "Legal Consultation",
             "metadata" => [
-                "udf1" => "Metadata 1"
+                "udf1" => "Consultation Payment"
             ],
             "reference" => [
                 "transaction" => "txn_" . time(),
@@ -83,7 +84,7 @@ class TapPaymentService extends BasePaymentService implements PaymentGatewayInte
                 ]
             ],
             "source" => [
-                "id" => "src_all"
+                "id" => $token ?? "src_all"
             ],
             "post" => [
                  "url" => config('payment.tap.response_url') 

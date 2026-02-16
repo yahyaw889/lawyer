@@ -62,19 +62,35 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                         @php
                             $services = [
-                                ['icon' => 'gavel', 'key' => 'contracts'],
-                                ['icon' => 'query_stats', 'key' => 'consultation'],
-                                ['icon' => 'verified', 'key' => 'notary'],
-                                ['icon' => 'public', 'key' => 'international'],
-                                ['icon' => 'currency_exchange', 'key' => 'saudi_invest'],
-                                ['icon' => 'badge', 'key' => 'residency'],
-                                ['icon' => 'balance', 'key' => 'litigation'],
-                                ['icon' => 'bolt', 'key' => 'one_day'],
+                                [
+                                    'icon' => 'domain',
+                                    'key' => 'business_services',
+                                    'url' => route('business-services.index'),
+                                ],
+                                [
+                                    'icon' => 'history_edu',
+                                    'key' => 'consultation_request',
+                                    'url' => route('consultation-request'),
+                                ],
+                                [
+                                    'icon' => 'verified',
+                                    'key' => 'document_attestation',
+                                    'url' => route('document-attestation'),
+                                ],
+                                [
+                                    'icon' => 'balance',
+                                    'key' => 'legal_representation',
+                                    'url' => route('legal-representation'),
+                                ],
+                                ['icon' => 'groups', 'key' => 'about_us', 'url' => '#about'],
+                                ['icon' => 'quiz', 'key' => 'faq', 'url' => route('faq')],
+                                ['icon' => 'thumb_up', 'key' => 'why_us', 'url' => '#why-us'],
+                                ['icon' => 'contact_mail', 'key' => 'contact_us', 'url' => '#contact'],
                             ];
                         @endphp
 
                         @foreach ($services as $service)
-                            <a href="{{ route('request') }}"
+                            <a href="{{ $service['url'] }}"
                                 class="group relative bg-white border border-gray-200 p-5 hover:border-[#a41c1c] transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex flex-col items-center text-center h-full justify-center rounded-sm">
                                 <div class="mb-3 text-[#a41c1c] group-hover:scale-110 transition-transform duration-300">
                                     <span class="material-symbols-outlined text-3xl">{{ $service['icon'] }}</span>
@@ -213,7 +229,7 @@
         </section>
 
         <!-- Why Partner / Features -->
-        <section class="py-24 bg-[#1C1C1C] text-white relative overflow-hidden">
+        <section id="why-us" class="py-24 bg-[#1C1C1C] text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
             </div>
 

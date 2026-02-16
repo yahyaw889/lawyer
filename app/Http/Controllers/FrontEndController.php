@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ServiceType;
 use App\Jobs\TelegramNotification;
 use App\Models\ServiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rules\Enum;
 
 class FrontEndController extends Controller
 {
@@ -53,9 +55,13 @@ class FrontEndController extends Controller
     /**
      * Display the Request page.
      */
-    public function request()
+    public function request(Request $request)
     {
-        return view('frontend.pages.request');
+        $selectedService = null;
+        if ($request->has('service')) {
+            $selectedService = ServiceType::tryFrom($request->query('service'));
+        }
+        return view('frontend.pages.request', compact('selectedService'));
     }
     /**
      * Store a new service request.
@@ -66,20 +72,19 @@ class FrontEndController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:20',
-            'service_type' => 'required|string',
+            'service_type' => ['required', 'string', new Enum(ServiceType::class)],
             'message' => 'nullable|string',
         ]);
 
+        // Convert enum value to Arabic label for storage
+        $serviceEnum = ServiceType::from($validated['service_type']);
+        $validated['service_type'] = $serviceEnum->labelAr();
         $validated['status'] = 'جديد';
 
         $serviceRequest = ServiceRequest::create($validated);
 
         // Send Telegram Notification
         try {
-            // Option 1: Queue (Commented out)
-            // TelegramNotification::dispatch($serviceRequest);
-            
-            // Option 2: Synchronous (Active)
             $this->sendTelegramNotification($serviceRequest);
         } catch (\Exception $e) {
             // Continue even if notification fails
@@ -98,6 +103,58 @@ class FrontEndController extends Controller
     }
 
     /**
+     * Display the FAQ page.
+     */
+    public function faq()
+    {
+        return view('frontend.pages.faq');
+    }
+
+    /**
+     * Display the Legal Representation page.
+     */
+    public function legalRepresentation()
+    {
+        return view('frontend.pages.legal-representation');
+    }
+
+    public function documentAttestation()
+    {
+        return view('frontend.pages.document-attestation');
+    }
+
+    public function consultationRequest()
+    {
+        return view('frontend.pages.consultation-request');
+    }
+
+    public function businessServicesIndex()
+    {
+        return view('frontend.pages.business-services.index');
+    }
+
+    public function businessServiceShow($slug)
+    {
+        // Define valid slugs -> keys mapping to validate and finding key
+        $services = [
+            'government-platforms-management' => 'platforms_management',
+            'commercial-license' => 'commercial_license',
+            'premium-residency' => 'premium_residency',
+            'intellectual-property' => 'intellectual_property',
+            'company-formation' => 'company_formation',
+            'business-liquidation' => 'business_liquidation',
+        ];
+
+        if (!array_key_exists($slug, $services)) {
+            abort(404);
+        }
+
+        $serviceKey = $services[$slug];
+        
+        return view('frontend.pages.business-services.show', compact('serviceKey', 'slug'));
+    }
+
+    /**
      * Send Telegram Notification Synchronously
      */
     private function sendTelegramNotification($order)
@@ -109,17 +166,17 @@ class FrontEndController extends Controller
             return;
         }
 
-        $message = "🔔 *New Service Request*\n\n";
-        $message .= "👤 *Name:* " . $order->name . "\n";
-        $message .= "📞 *Phone:* " . $order->phone . "\n";
-        $message .= "📧 *Email:* " . $order->email . "\n";
-        $message .= "⚖️ *Service:* " . __('frontend.services_list.items.' . $order->service_type) . "\n";
+        $message = "🔔 *طلب خدمة جديد*\n\n";
+        $message .= "👤 *الاسم:* " . $order->name . "\n";
+        $message .= "📞 *الهاتف:* " . $order->phone . "\n";
+        $message .= "📧 *البريد:* " . $order->email . "\n";
+        $message .= "⚖️ *الخدمة:* " . $order->service_type . "\n";
         
         if ($order->message) {
-            $message .= "📝 *Message:* " . $order->message . "\n";
+            $message .= "📝 *الرسالة:* " . $order->message . "\n";
         }
 
-        $message .= "\n📅 *Date:* " . $order->created_at->format('Y-m-d H:i');
+        $message .= "\n📅 *التاريخ:* " . $order->created_at->format('Y-m-d H:i');
 
         try {
             Http::withoutVerifying()->post("https://api.telegram.org/bot{$token}/sendMessage", [

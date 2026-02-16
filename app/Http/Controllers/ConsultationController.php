@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ConsultationRequest;
 use App\Models\PaymentTransaction;
+use App\Models\SystemSetting;
 use App\Services\TapPaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -18,9 +19,20 @@ class ConsultationController extends Controller
         $this->paymentService = $paymentService;
     }
 
+    /**
+     * Show the checkout page with the consultation form and payment summary.
+     */
+    public function showCheckout()
+    {
+        $price = SystemSetting::getValue('consultation_price', 575);
+        return view('frontend.pages.payment.checkout', compact('price'));
+    }
+
+    /**
+     * Submit the consultation request and initiate Tap payment.
+     */
     public function submit(Request $request)
     {
-        // 1. Validate Request
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -29,9 +41,11 @@ class ConsultationController extends Controller
             'topic' => 'nullable|string',
         ]);
 
+        $price = SystemSetting::getValue('consultation_price', 575);
+
         DB::beginTransaction();
         try {
-            // 2. Create Consultation Request (Pending)
+            // 1. Create Consultation Request (Pending)
             $consultation = ConsultationRequest::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -41,59 +55,76 @@ class ConsultationController extends Controller
                 'payment_status' => 'PENDING'
             ]);
 
-            // 3. Prepare Data for Tap
+            // 2. Prepare Data for Tap
             $parts = explode(' ', $request->name, 2);
             $firstName = $parts[0];
             $lastName = isset($parts[1]) ? $parts[1] : 'Client';
 
             $paymentData = [
-                'amount' => 575,
+                'amount' => (float) $price,
+                'currency' => 'SAR',
                 'first_name' => $firstName,
                 'last_name' => $lastName,
                 'email' => $request->email,
                 'phone_number' => $request->phone,
+                'token' => $request->input('token'), // From Tap Card SDK tokenization
                 'metadata' => [
                     'consultation_id' => $consultation->id
                 ]
             ];
 
-            // 4. Call Tap Service
+            // 3. Call Tap Service
             $response = $this->paymentService->sendPayment($paymentData);
 
             if (isset($response['transaction']['url'])) {
-                // 5. Create Payment Transaction Record
+                // 4. Create Payment Transaction Record
                 PaymentTransaction::create([
                     'consultation_request_id' => $consultation->id,
-                    'tap_id' => $response['id'] ?? 'N/A', // Tap usually returns ID here
+                    'tap_id' => $response['id'] ?? 'N/A',
                     'status' => 'INITIATED',
-                    'amount' => 575,
+                    'amount' => (float) $price,
                     'customer_name' => $request->name,
                     'customer_email' => $request->email,
                     'customer_phone' => $request->phone,
+                    'consultation_topic' => $request->topic,
                     'transaction_response' => $response
                 ]);
 
                 DB::commit();
-                return redirect()->to($response['transaction']['url']);
+
+                // Return JSON with redirect URL for AJAX
+                return response()->json([
+                    'success' => true,
+                    'redirect_url' => $response['transaction']['url']
+                ]);
             }
 
             DB::rollBack();
             Log::error('Tap Payment Error: ' . json_encode($response));
-            return back()->with('error', 'Unable to initiate payment.');
+            return response()->json([
+                'success' => false,
+                'message' => 'تعذر بدء عملية الدفع. يرجى المحاولة مرة أخرى.'
+            ], 422);
 
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Consultation Payment Exception: ' . $e->getMessage());
-            return back()->with('error', 'An error occurred. Please try again later.');
+            return response()->json([
+                'success' => false,
+                'message' => 'حدث خطأ أثناء المعالجة. يرجى المحاولة لاحقاً.'
+            ], 500);
         }
     }
 
+    /**
+     * Handle the Tap callback after payment.
+     */
     public function handleCallback(Request $request)
     {
         try {
             $paymentInfo = $this->paymentService->callBack($request);
             $tapId = $request->input('tap_id');
-            
+
             // Find transaction by Tap ID
             $transaction = PaymentTransaction::where('tap_id', $tapId)->first();
 
@@ -108,6 +139,14 @@ class ConsultationController extends Controller
                 // Update Consultation Request
                 if ($status == 'CAPTURED') {
                     $transaction->consultationRequest()->update(['payment_status' => 'PAID']);
+
+                    // Send Telegram notification
+                    try {
+                        $this->sendTelegramNotification($transaction);
+                    } catch (\Exception $e) {
+                        Log::error('Telegram notification failed: ' . $e->getMessage());
+                    }
+
                     return view('frontend.pages.payment.success', ['payment' => $paymentInfo]);
                 }
             }
@@ -117,6 +156,41 @@ class ConsultationController extends Controller
         } catch (\Exception $e) {
             Log::error('Tap Callback Exception: ' . $e->getMessage());
             return view('frontend.pages.payment.failed');
+        }
+    }
+
+    /**
+     * Send Telegram notification for successful payment.
+     */
+    private function sendTelegramNotification($transaction)
+    {
+        $token = env('TELEGRAM_BOT_TOKEN');
+        $chatId = env('TELEGRAM_CHAT_ID');
+
+        if (!$token || !$chatId) {
+            return;
+        }
+
+        $message = "🔔 *طلب استشارة جديد - تم الدفع*\n\n";
+        $message .= "👤 *الاسم:* " . $transaction->customer_name . "\n";
+        $message .= "📞 *الهاتف:* " . $transaction->customer_phone . "\n";
+        $message .= "📧 *البريد:* " . $transaction->customer_email . "\n";
+        $message .= "💰 *المبلغ:* " . $transaction->amount . " SAR\n";
+
+        if ($transaction->consultation_topic) {
+            $message .= "📝 *الموضوع:* " . $transaction->consultation_topic . "\n";
+        }
+
+        $message .= "\n📅 *التاريخ:* " . $transaction->created_at->format('Y-m-d H:i');
+
+        try {
+            \Illuminate\Support\Facades\Http::withoutVerifying()->post("https://api.telegram.org/bot{$token}/sendMessage", [
+                'chat_id' => $chatId,
+                'text' => $message,
+                'parse_mode' => 'Markdown',
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Telegram notification failed: ' . $e->getMessage());
         }
     }
 }
