@@ -18,18 +18,18 @@ class PaymentServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(PaymentGatewayInterface::class, function ($app) {
-            $gatewayType = request('gateway_type' , 'fatoorah');
-            return match($gatewayType)
-            {
-                'tap' => $app->make(TapPaymentService::class),
-                // 'fatoorah' => $app->make(FatoorahPaymentService::class),
-                // 'paymob' => $app->make(PaymobPaymentService::class),
-                // 'cash' => $app->make(FatoorahPaymentService::class),
-                // 'paypal' => $app->make(PaypalPaymentService::class),
-                default => throw new \Exception('Invalid gateway type'),
-            };
-        });
+        // $this->app->singleton(PaymentGatewayInterface::class, function ($app) {
+        //     $gatewayType = request('gateway_type' , 'fatoorah');
+        //     return match($gatewayType)
+        //     {
+        //         'tap' => $app->make(TapPaymentService::class),
+        //         // 'fatoorah' => $app->make(FatoorahPaymentService::class),
+        //         // 'paymob' => $app->make(PaymobPaymentService::class),
+        //         // 'cash' => $app->make(FatoorahPaymentService::class),
+        //         // 'paypal' => $app->make(PaypalPaymentService::class),
+        //         default => throw new \Exception('Invalid gateway type'),
+        //     };
+        // });
     }
 
     /**

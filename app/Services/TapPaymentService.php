@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Interfaces\PaymentGatewayInterface;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
-class TapPaymentService extends BasePaymentService implements PaymentGatewayInterface
+class TapPaymentService extends BasePaymentService
 {
     /**
      * Create a new class instance.
