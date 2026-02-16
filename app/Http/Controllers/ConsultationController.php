@@ -60,6 +60,7 @@ class ConsultationController extends Controller
             $firstName = $parts[0];
             $lastName = isset($parts[1]) ? $parts[1] : 'Client';
 
+            // No token needed for Redirect flow (defaults to src_all in Service)
             $paymentData = [
                 'amount' => (float) $price,
                 'currency' => 'SAR',
@@ -67,7 +68,6 @@ class ConsultationController extends Controller
                 'last_name' => $lastName,
                 'email' => $request->email,
                 'phone_number' => $request->phone,
-                'token' => $request->input('token'), // From Tap Card SDK tokenization
                 'metadata' => [
                     'consultation_id' => $consultation->id
                 ]
@@ -171,17 +171,23 @@ class ConsultationController extends Controller
             return;
         }
 
-        $message = "🔔 *طلب استشارة جديد - تم الدفع*\n\n";
-        $message .= "👤 *الاسم:* " . $transaction->customer_name . "\n";
-        $message .= "📞 *الهاتف:* " . $transaction->customer_phone . "\n";
-        $message .= "📧 *البريد:* " . $transaction->customer_email . "\n";
-        $message .= "💰 *المبلغ:* " . $transaction->amount . " SAR\n";
-
+        $message = "🚨 *طلب استشارة فورية جديد* 🚨\n\n";
+        $message .= "✅ *تم الدفع بنجاح*\n";
+        $message .= "──────────────\n";
+        $message .= "👤 *بيانات العميل:*\n";
+        $message .= "• *الاسم:* " . $transaction->customer_name . "\n";
+        $message .= "• *الهاتف:* " . $transaction->customer_phone . "\n";
+        $message .= "• *البريد:* " . $transaction->customer_email . "\n\n";
+        
+        $message .= "💰 *بيانات الدفع:*\n";
+        $message .= "• *المبلغ:* " . $transaction->amount . " SAR\n";
+        $message .= "• *رقم المعاملة:* `" . $transaction->tap_id . "`\n";
+        
         if ($transaction->consultation_topic) {
-            $message .= "📝 *الموضوع:* " . $transaction->consultation_topic . "\n";
+            $message .= "\n📝 *الموضوع:* \n" . $transaction->consultation_topic . "\n";
         }
 
-        $message .= "\n📅 *التاريخ:* " . $transaction->created_at->format('Y-m-d H:i');
+        $message .= "\n📅 *التاريخ:* " . $transaction->created_at->format('Y-m-d H:i A');
 
         try {
             \Illuminate\Support\Facades\Http::withoutVerifying()->post("https://api.telegram.org/bot{$token}/sendMessage", [

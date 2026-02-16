@@ -53,10 +53,70 @@
                             </small>
                         </div>
 
+                        <hr class="my-4 border-light">
+
+                        <h5 class="mb-3 text-dark fw-bold">
+                            <i class="bx bx-credit-card me-2 text-primary"></i>
+                            إعدادات بوابة الدفع (Tap Payments)
+                        </h5>
+
+                        <!-- Tap Public Key -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Public Key</label>
+                            <input type="text" name="tap_public_key"
+                                class="form-control @error('tap_public_key') is-invalid @enderror"
+                                value="{{ old('tap_public_key', \App\Models\SystemSetting::getValue('tap_public_key')) }}"
+                                placeholder="pk_test_...">
+                            @error('tap_public_key')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Tap Secret Key -->
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Secret Key</label>
+                            <div class="input-group">
+                                <input type="password" name="tap_secret_key" id="tap_secret_key"
+                                    class="form-control @error('tap_secret_key') is-invalid @enderror"
+                                    value="{{ old('tap_secret_key', \App\Models\SystemSetting::getValue('tap_secret_key')) }}"
+                                    placeholder="sk_test_...">
+                                <button class="btn btn-outline-secondary" type="button"
+                                    onclick="togglePassword('tap_secret_key')">
+                                    <i class="bx bx-show"></i>
+                                </button>
+                            </div>
+                            @error('tap_secret_key')
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Tap Merchant ID -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Merchant ID</label>
+                            <input type="text" name="tap_merchant_id"
+                                class="form-control @error('tap_merchant_id') is-invalid @enderror"
+                                value="{{ old('tap_merchant_id', \App\Models\SystemSetting::getValue('tap_merchant_id')) }}"
+                                placeholder="Merchant ID">
+                            @error('tap_merchant_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-1">
                             <i class="bx bx-save"></i>
                             حفظ التغييرات
                         </button>
+
+                        <script>
+                            function togglePassword(id) {
+                                const input = document.getElementById(id);
+                                if (input.type === "password") {
+                                    input.type = "text";
+                                } else {
+                                    input.type = "password";
+                                }
+                            }
+                        </script>
                     </form>
                 </div>
             </div>

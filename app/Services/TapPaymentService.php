@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\SystemSetting;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +17,9 @@ class TapPaymentService extends BasePaymentService
     public function __construct()
     {
         $this->base_url = config("payment.tap.base_url");
-        $this->secret_key = config("payment.tap.secret_key");
+        // Prioritize SystemSetting, fallback to config/env
+        $this->secret_key = \App\Models\SystemSetting::getValue('tap_secret_key') ?: config("payment.tap.secret_key");
+        
         $this->header = [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
@@ -56,7 +59,9 @@ class TapPaymentService extends BasePaymentService
 
     protected function formatData($amount, $first_name, $last_name, $phone_number, $email, $token = null)
     {
-        return [
+        $merchantId = SystemSetting::getValue('tap_merchant_id');
+        
+        $data = [
             "amount" => $amount,
             "currency" => "SAR",
             "threeDSecure" => true,
@@ -87,11 +92,17 @@ class TapPaymentService extends BasePaymentService
                 "id" => $token ?? "src_all"
             ],
             "post" => [
-                 "url" => config('payment.tap.response_url') 
+                 "url" => route('tap.callback') 
             ],
             "redirect" => [
-                "url" => config('payment.tap.redirect_url') 
+                "url" => route('tap.callback') 
             ]
         ];
+
+        if ($merchantId) {
+            $data['merchant'] = ['id' => $merchantId];
+        }
+
+        return $data;
     }
 }
