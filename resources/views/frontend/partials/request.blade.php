@@ -43,7 +43,8 @@
                         <span class="material-symbols-outlined text-lg">call</span>
                     </span>
                     <div>
-                        <span class="block text-[10px] uppercase opacity-60">Call Us</span>
+                        <span
+                            class="block text-[10px] uppercase opacity-60">{{ __('frontend.request_page.contact_info.call') }}</span>
                         <span class="font-bold">+966 50 000 0000</span>
                     </div>
                 </li>
@@ -53,7 +54,8 @@
                         <span class="material-symbols-outlined text-lg">mail</span>
                     </span>
                     <div>
-                        <span class="block text-[10px] uppercase opacity-60">Email Us</span>
+                        <span
+                            class="block text-[10px] uppercase opacity-60">{{ __('frontend.request_page.contact_info.email') }}</span>
                         <span class="font-bold">info@amn-law.sa</span>
                     </div>
                 </li>
@@ -79,7 +81,7 @@
             <div class="w-full max-w-lg mx-auto">
                 <div class="mb-8">
                     <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-2 font-cairo">
-                        {{ __('frontend.buttons.request.title') }}</h2>
+                        {{ __('frontend.request_page.form.title') }}</h2>
                     <p class="text-gray-500 text-sm">{{ __('frontend.one_day_service.desc') }}</p>
                 </div>
 
@@ -111,7 +113,7 @@
                                 class="peer w-full px-4 py-2.5 border-b border-gray-200 bg-gray-50/50 focus:bg-white focus:border-[#a41c1c] focus:outline-none transition-all duration-300 placeholder-transparent text-left text-sm rounded-t-lg">
                             <label for="phone"
                                 class="absolute right-3 left-auto rtl:right-3 rtl:left-auto top-2.5 text-gray-400 text-xs transition-all duration-300 peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-2 peer-focus:text-[10px] peer-focus:text-[#a41c1c]">
-                                Phone
+                                {{ __('frontend.request_page.form.phone_label') }}
                             </label>
                         </div>
                         <div class="relative group">

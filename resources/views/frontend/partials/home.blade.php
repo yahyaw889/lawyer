@@ -24,7 +24,7 @@
                     <a href="{{ route('index') }}"
                         class="flex items-center gap-2 px-5 py-1.5 rounded-sm border border-[#a41c1c] text-xs font-semibold text-[#a41c1c] hover:bg-[#a41c1c] hover:text-white transition-all duration-300 shadow-sm uppercase tracking-wider">
                         <span class="material-symbols-outlined text-base">language</span>
-                        <span class="hidden md:inline">Global</span>
+                        <span class="hidden md:inline">{{ __('frontend.nav.global') }}</span>
                     </a>
                 </div>
             </nav>
@@ -41,7 +41,7 @@
                         <div class="h-0.5 w-full bg-[#1C1C1C] mt-1 mb-1"></div>
                         <div
                             class="text-xs md:text-sm font-bold text-[#1C1C1C] uppercase tracking-[0.4em] flex justify-between w-full font-cairo">
-                            GLOBAL LAW FIRM
+                            {{ __('frontend.hero.brand_subtitle') }}
                         </div>
                     </div>
 
@@ -298,11 +298,11 @@
                     <div class="w-full lg:w-1/3">
                         <div class="flex items-center gap-2 mb-8">
                             <span class="h-px w-8 bg-[#a41c1c]"></span>
-                            <span class="text-[#a41c1c] font-bold tracking-widest uppercase text-sm font-cairo">تواصل
-                                معنا</span>
+                            <span
+                                class="text-[#a41c1c] font-bold tracking-widest uppercase text-sm font-cairo">{{ __('frontend.contact.info_title') }}</span>
                         </div>
                         <h3 class="text-4xl font-bold font-cairo text-[#1C1C1C] mb-10 leading-tight">
-                            معلومات الاتصال
+                            {{ __('frontend.contact.info_title') }}
                         </h3>
 
                         <div class="space-y-8">
@@ -311,8 +311,9 @@
                                     <span class="material-symbols-outlined">location_on</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">العنوان</h4>
-                                    <p class="text-[#606060] font-cairo">الرياض - المملكة العربية السعودية</p>
+                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">
+                                        {{ __('frontend.contact.address') }}</h4>
+                                    <p class="text-[#606060] font-cairo">{{ __('frontend.footer.address') }}</p>
                                 </div>
                             </div>
 
@@ -321,7 +322,8 @@
                                     <span class="material-symbols-outlined">mail</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">البريد الإلكتروني</h4>
+                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">
+                                        {{ __('frontend.contact.email') }}</h4>
                                     <a href="mailto:info@amn-law.sa"
                                         class="text-[#606060] font-cairo hover:text-[#a41c1c] transition-colors">info@amn-law.sa</a>
                                 </div>
@@ -332,7 +334,8 @@
                                     <span class="material-symbols-outlined">call</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">الهاتف</h4>
+                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">
+                                        {{ __('frontend.contact.phone') }}</h4>
                                     <a href="tel:+966555200816" dir="ltr"
                                         class="text-[#606060] font-cairo hover:text-[#a41c1c] transition-colors text-right block">+966
                                         55 520 0816</a>
@@ -344,7 +347,8 @@
                                     <span class="material-symbols-outlined">language</span>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">الموقع الإلكتروني</h4>
+                                    <h4 class="font-bold text-[#1C1C1C] font-cairo mb-1">
+                                        {{ __('frontend.contact.website') }}</h4>
                                     <a href="https://www.amn-law.sa" target="_blank"
                                         class="text-[#606060] font-cairo hover:text-[#a41c1c] transition-colors">www.amn-law.sa</a>
                                 </div>
@@ -355,10 +359,10 @@
                     <!-- Contact Form -->
                     <div class="w-full lg:w-2/3 bg-[#FAFAFA] p-8 md:p-12 border border-gray-100">
                         <h2 class="text-2xl font-bold font-cairo text-[#1C1C1C] mb-2">
-                            نحن هنا للمساعدة
+                            {{ __('frontend.contact.form.title') }}
                         </h2>
                         <p class="text-[#606060] mb-8 font-cairo text-sm">
-                            تواصل معنا عبر النموذج وسنتواصل معك في أقرب وقت ممكن
+                            {{ __('frontend.contact.form.desc') }}
                         </p>
 
                         <form id="contactForm" class="space-y-6">
@@ -366,48 +370,48 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label
-                                        class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">الاسم</label>
+                                        class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">{{ __('frontend.contact.form.labels.name') }}</label>
                                     <input type="text" name="name" required
                                         class="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#a41c1c] focus:ring-0 transition-colors outline-none font-cairo text-sm"
-                                        placeholder="الاسم الكامل">
+                                        placeholder="{{ __('frontend.contact.form.placeholders.name') }}">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">البريد
-                                        الإلكتروني</label>
+                                    <label
+                                        class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">{{ __('frontend.contact.form.labels.email') }}</label>
                                     <input type="email" name="email" required
                                         class="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#a41c1c] focus:ring-0 transition-colors outline-none font-cairo text-sm"
-                                        placeholder="example@email.com">
+                                        placeholder="{{ __('frontend.contact.form.placeholders.email') }}">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">رقم
-                                        الهاتف</label>
+                                    <label
+                                        class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">{{ __('frontend.contact.form.labels.phone') }}</label>
                                     <input type="tel" name="phone"
                                         class="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#a41c1c] focus:ring-0 transition-colors outline-none font-cairo text-sm"
-                                        placeholder="+966...">
+                                        placeholder="{{ __('frontend.contact.form.placeholders.phone') }}">
                                 </div>
                                 <div>
                                     <label
-                                        class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">الموضوع</label>
+                                        class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">{{ __('frontend.contact.form.labels.subject') }}</label>
                                     <input type="text" name="subject"
                                         class="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#a41c1c] focus:ring-0 transition-colors outline-none font-cairo text-sm"
-                                        placeholder="استفسار ...">
+                                        placeholder="{{ __('frontend.contact.form.placeholders.subject') }}">
                                 </div>
                             </div>
 
                             <div>
                                 <label
-                                    class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">الرسالة</label>
+                                    class="block text-xs font-bold text-[#1C1C1C] mb-2 font-cairo uppercase">{{ __('frontend.contact.form.labels.message') }}</label>
                                 <textarea name="message" rows="5" required
                                     class="w-full px-4 py-3 bg-white border border-gray-300 focus:border-[#a41c1c] focus:ring-0 transition-colors outline-none font-cairo text-sm resize-none"
-                                    placeholder="اكتب رسالتك هنا..."></textarea>
+                                    placeholder="{{ __('frontend.contact.form.placeholders.message') }}"></textarea>
                             </div>
 
                             <button type="submit"
                                 class="px-10 py-4 bg-[#a41c1c] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#8a1818] transition-colors font-cairo flex items-center gap-2">
-                                <span>إرسال الرسالة</span>
+                                <span>{{ __('frontend.contact.form.send_btn') }}</span>
                                 <span class="material-symbols-outlined text-lg">send</span>
                             </button>
 
@@ -455,11 +459,11 @@
                     <!-- Contact -->
                     <div class="text-center md:text-start">
                         <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-xs font-cairo">
-                            {{ __('frontend.buttons.request.title') }}</h4>
+                            {{ __('frontend.footer.contact_us') }}</h4>
                         <ul class="space-y-5 text-sm text-gray-400 font-cairo flex flex-col items-center md:items-start">
                             <li class="flex items-center gap-3">
                                 <span class="material-symbols-outlined text-[#a41c1c]">location_on</span>
-                                <span>Riyadh - Saudi Arabia</span>
+                                <span>{{ __('frontend.footer.address') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <span class="material-symbols-outlined text-[#a41c1c]">mail</span>
@@ -480,7 +484,7 @@
                 </div>
 
                 <div class="border-t border-[#1C1C1C] pt-8 text-center text-xs text-gray-600 font-cairo">
-                    &copy; {{ date('Y') }} {{ __('frontend.hero.firm_name') }}. All Rights Reserved.
+                    &copy; {{ date('Y') }} {{ __('frontend.hero.firm_name') }}. {{ __('frontend.footer.reserved') }}.
                 </div>
             </div>
         </footer>
@@ -499,7 +503,7 @@
             // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML =
-                '<span class="material-symbols-outlined animate-spin">refresh</span> جاري الإرسال...';
+                '<span class="material-symbols-outlined animate-spin">refresh</span> {{ __('frontend.contact.form.loading') }}';
             submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
             // Collect form data
@@ -540,19 +544,19 @@
                             `<div class="flex items-center gap-2"><span class="material-symbols-outlined">check_circle</span> ${data.message}</div>`;
                         form.reset();
                     } else {
-                        throw new Error(data.message || 'حدث خطأ ما أثناء الإرسال');
+                        throw new Error(data.message || '{{ __('frontend.messages.generic_error') }}');
                     }
                 })
                 .catch(error => {
                     messageDiv.classList.remove('hidden', 'text-green-600', 'border-green-200');
                     messageDiv.classList.add('text-red-600', 'border-red-200');
 
-                    let errorMessage = 'حدث خطأ ما أثناء الإرسال';
+                    let errorMessage = '{{ __('frontend.messages.generic_error') }}';
 
                     if (error.status === 419) {
-                        errorMessage = 'انتهت صلاحية الجلسة. يرجى تحديث الصفحة والمحاولة مرة أخرى';
+                        errorMessage = '{{ __('frontend.messages.session_expired') }}';
                     } else if (error.status === 422) {
-                        errorMessage = 'يرجى التأكد من صحة البيانات المدخلة';
+                        errorMessage = '{{ __('frontend.messages.validation_error') }}';
                     } else if (error.data?.message) {
                         errorMessage = error.data.message;
                     } else if (error.message) {

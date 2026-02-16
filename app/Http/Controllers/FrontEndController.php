@@ -9,9 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Support\Str;
 
 class FrontEndController extends Controller
 {
+    protected $seoService;
+
+    public function __construct(\App\Services\SeoService $seoService)
+    {
+        $this->seoService = $seoService;
+    }
+
     /**
      * Display the language selection page.
      */
@@ -25,6 +33,40 @@ class FrontEndController extends Controller
      */
     public function home()
     {
+        $this->seoService
+            ->setTitle(__('frontend.hero.slogan'))
+            ->setDescription(__('frontend.hero.subtitle'))
+            ->addSchema([
+                '@type' => 'LegalService',
+                'name' => 'AMN Global Law Firm',
+                'image' => asset('img/logo.png'),
+                'description' => __('frontend.hero.subtitle'),
+                'telephone' => '+966555200816',
+                'email' => 'info@amn-law.sa',
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'streetAddress' => 'Riyadh',
+                    'addressLocality' => 'Riyadh',
+                    'addressRegion' => 'Riyadh',
+                    'postalCode' => '12345',
+                    'addressCountry' => 'SA'
+                ],
+                'priceRange' => '$$$',
+                'openingHoursSpecification' => [
+                    [
+                        '@type' => 'OpeningHoursSpecification',
+                        'dayOfWeek' => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+                        'opens' => '09:00',
+                        'closes' => '17:00'
+                    ]
+                ],
+                'geo' => [
+                    '@type' => 'GeoCoordinates',
+                    'latitude' => '24.7136',
+                    'longitude' => '46.6753'
+                ]
+            ]);
+
         return view('frontend.index');
     }
 
@@ -33,6 +75,10 @@ class FrontEndController extends Controller
      */
     public function about()
     {
+        $this->seoService
+            ->setTitle(__('frontend.nav.about'))
+            ->setDescription(__('frontend.vision_mission.vision'));
+
         return view('frontend.pages.about');
     }
 
@@ -41,6 +87,10 @@ class FrontEndController extends Controller
      */
     public function services()
     {
+        $this->seoService
+            ->setTitle(__('frontend.nav.services'))
+            ->setDescription('Explore our comprehensive legal services including business formation, litigation, and investment law.');
+
         return view('frontend.pages.services');
     }
 
@@ -49,6 +99,10 @@ class FrontEndController extends Controller
      */
     public function consultation()
     {
+        $this->seoService
+            ->setTitle(__('frontend.nav.consultation'))
+            ->setDescription('Book a legal consultation with our expert lawyers in Riyadh.');
+
         return view('frontend.pages.consultation');
     }
 
@@ -107,6 +161,31 @@ class FrontEndController extends Controller
      */
     public function faq()
     {
+        $this->seoService
+            ->setTitle(__('faq.title'))
+            ->setDescription(__('faq.subtitle'))
+            ->addSchema([
+                '@type' => 'FAQPage',
+                'mainEntity' => [
+                    [
+                        '@type' => 'Question',
+                        'name' => __('faq.apostille.title'),
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text' => strip_tags(__('faq.apostille.content'))
+                        ]
+                    ],
+                    [
+                        '@type' => 'Question',
+                        'name' => __('faq.premium_residency.title'),
+                        'acceptedAnswer' => [
+                            '@type' => 'Answer',
+                            'text' => strip_tags(__('faq.premium_residency.content'))
+                        ]
+                    ]
+                ]
+            ]);
+
         return view('frontend.pages.faq');
     }
 
@@ -115,21 +194,37 @@ class FrontEndController extends Controller
      */
     public function legalRepresentation()
     {
+        $this->seoService
+            ->setTitle(__('frontend.services_list.items.legal_representation'))
+            ->setDescription('Expert legal representation in Saudi courts for commercial and civil cases.');
+
         return view('frontend.pages.legal-representation');
     }
 
     public function documentAttestation()
     {
+        $this->seoService
+            ->setTitle(__('frontend.services_list.items.document_attestation'))
+            ->setDescription('Fast and reliable document attestation and apostille services in Riyadh.');
+
         return view('frontend.pages.document-attestation');
     }
 
     public function consultationRequest()
     {
+        $this->seoService
+            ->setTitle(__('frontend.services_list.items.consultation_request'))
+            ->setDescription('Request a legal consultation with AMN Global Law Firm.');
+
         return view('frontend.pages.consultation-request');
     }
 
     public function businessServicesIndex()
     {
+        $this->seoService
+            ->setTitle(__('business_services.index.title'))
+            ->setDescription('Comprehensive business legal services: Company Formation, Licensing, IP Protection, and more.');
+
         return view('frontend.pages.business-services.index');
     }
 
@@ -151,6 +246,10 @@ class FrontEndController extends Controller
 
         $serviceKey = $services[$slug];
         
+        $this->seoService
+            ->setTitle(__('business_services.services.' . $serviceKey . '.title'))
+            ->setDescription(Str::limit(__('business_services.services.' . $serviceKey . '.description'), 160));
+
         return view('frontend.pages.business-services.show', compact('serviceKey', 'slug'));
     }
 

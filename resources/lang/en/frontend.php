@@ -9,10 +9,12 @@ return [
         'request' => 'Request Service',
         'login' => 'Portal Login',
         'back_home' => 'Back to Home',
+        'global' => 'Global',
     ],
     'hero' => [
         'slogan' => 'Quality, Speed, Safety',
         'firm_name' => 'AMN GLOBAL LAW FIRM',
+        'brand_subtitle' => 'GLOBAL LAW FIRM',
         'subtitle' => 'Your Trusted Legal Partner',
         'badge' => 'Premium Legal Services',
         'title_prefix' => 'Combining',
@@ -76,7 +78,7 @@ return [
     ],
     'services' => [
         'title' => 'Company Formation & Investment',
-        'desc' => 'Comprehensive services for local and international investors.',
+        'desc' => 'Integrated services for local and international investors.',
         'features' => [
             'contracts' => 'Drafting Contracts',
             'foreign_inv' => 'Foreign Investment',
@@ -185,7 +187,7 @@ return [
             'contact_us' => 'Contact Us',
         ],
     ],
-    'services' => [
+    'why_us' => [
         'title' => 'Why Choose Us?',
         'items' => [
             'team' => 'Specialized Team: Experienced Saudi lawyers in investment law.',
@@ -210,8 +212,155 @@ return [
         'privacy' => 'Privacy Policy',
         'terms' => 'Terms & Conditions',
         'location' => 'Location',
+        'reserved' => 'All Rights Reserved',
     ],
     'messages' => [
         'request_sent_successfully' => 'Your request has been sent successfully! Thank you for contacting us.',
+        'generic_error' => 'Something went wrong. Please try again later.',
+        'session_expired' => 'Session expired. Please refresh the page and try again.',
+        'validation_error' => 'Please check the entered data.',
+    ],
+    'contact' => [
+        'info_title' => 'Contact Information',
+        'address' => 'Address',
+        'email' => 'Email',
+        'phone' => 'Phone',
+        'website' => 'Website',
+        'form' => [
+            'title' => 'We Are Here To Help',
+            'desc' => 'Contact us via the form and we will get back to you as soon as possible',
+            'labels' => [
+                'name' => 'Name',
+                'email' => 'Email',
+                'phone' => 'Phone Number',
+                'subject' => 'Subject',
+                'message' => 'Message',
+            ],
+            'placeholders' => [
+                'name' => 'Full Name',
+                'email' => 'example@email.com',
+                'phone' => '+966...',
+                'subject' => 'Inquiry ...',
+                'message' => 'Write your message here...',
+            ],
+            'send_btn' => 'Send Message',
+            'loading' => 'Sending...',
+        ],
+    ],
+    'service_page' => [
+        'header' => [
+            'firm_name' => 'Law Firm & Legal Consultations',
+            'slogan' => 'Legal Excellence & Integrity',
+        ],
+        'nav' => [
+            'home' => 'Home',
+            'services' => 'Services',
+            'login' => 'Portal Login',
+        ],
+        'hero' => [
+            'breadcrumb' => 'Company Formation & Investment Agencies',
+            'title' => 'Foreign Investment & Company Formation',
+            'category' => 'Business & Corporate Services',
+            'duration' => 'Expected Time: 5-10 Business Days',
+        ],
+        'description' => [
+            'title' => 'Service Description',
+            'content' => 'This service allows local and international investors to start procedures for establishing various legal entities within the Kingdom of Saudi Arabia.',
+        ],
+        'details' => [
+            'title' => 'Service Explanation',
+            'subtitle' => 'This service includes detailed legal procedures including:',
+            'items' => [
+                'contract' => 'Drafting Article of Association.',
+                'tax' => 'Reviewing Tax Regulations.',
+                'files' => 'Preparing Foreign Investment Files.',
+            ],
+        ],
+        'cta' => [
+            'button' => 'Request Service Now',
+            'notice' => 'By clicking Request Service, you will be redirected to the data page.',
+        ],
+    ],
+    'consultation_page' => [
+        'header' => [
+            'title' => 'Al-Saud & Partners',
+            'subtitle' => 'Legal Consultations & Litigation',
+            'btn' => 'English',
+        ],
+        'nav' => [
+            'home' => 'Home',
+            'practice' => 'Our Practice',
+            'instant' => 'Instant Consultation',
+        ],
+        'hero' => [
+            'title' => 'Instant Legal Consultation',
+            'subtitle' => 'Secure a professional consultation with our senior legal experts.',
+        ],
+        'form' => [
+            'request_details' => 'Request Details',
+            'labels' => [
+                'name' => 'Full Name',
+                'email' => 'Email Address',
+                'area' => 'Legal Area',
+                'subject' => 'Consultation Subject',
+            ],
+            'placeholders' => [
+                'name' => 'e.g. Ahmed Al-Fahad',
+                'email' => 'name@company.com',
+                'subject' => 'Briefly describe your legal inquiry...',
+            ],
+            'options' => [
+                'corporate' => 'Corporate & Commercial Law',
+                'real_estate' => 'Real Estate & Property',
+            ],
+            'submit_btn' => 'Proceed to Payment',
+        ],
+        'summary' => [
+            'title' => 'Summary & Secure Payment',
+            'powered_by' => 'Powered by Tap Payments',
+            'fee_label' => 'Standard Consultation Fee',
+            'total_label' => 'Total Amount',
+            'currency' => 'SAR',
+        ],
+    ],
+    'consultation_checkout' => [
+        'form_title' => 'Request Consultation',
+        'form_subtitle' => 'Fill in your details below',
+        'fields' => [
+            'name' => 'Full Name',
+            'name_placeholder' => 'Enter your full name',
+            'email' => 'Email Address',
+            'phone' => 'Phone Number',
+            'type' => 'Consultation Type',
+            'topic' => 'Topic',
+            'topic_placeholder' => 'Briefly describe your legal inquiry...',
+        ],
+        'types' => [
+            'call' => 'Phone Call',
+            'video' => 'Video Call',
+            'office' => 'Office Visit',
+        ],
+        'pay_button' => 'Pay Securely',
+        'secure_payment' => 'Secure SSL Payment',
+        'service_name' => 'Legal Service',
+        'payment_title' => 'Payment Total',
+        'currency' => 'SAR',
+        'prompt_title' => 'Legal Consultation',
+        'prompt_subtitle' => 'Reliable & Fast',
+        'prompt_desc' => 'We are here to provide the legal support you need. Fill out the form and we will direct you to the secure payment gateway so we can start working on your case immediately.',
+        'errors' => [
+            'unexpected' => 'An unexpected error occurred',
+            'connection' => 'Connection failed, please try again.',
+        ],
+    ],
+    'request_page' => [
+        'contact_info' => [
+            'call' => 'Call Us',
+            'email' => 'Email Us',
+        ],
+        'form' => [
+            'title' => 'Service Request',
+            'phone_label' => 'Phone',
+        ]
     ],
 ];

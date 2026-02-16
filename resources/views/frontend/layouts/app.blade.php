@@ -6,7 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>AMN Global Law Firm | {{ __('frontend.hero.slogan') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    @inject('seo', 'App\Services\SeoService')
+    {!! $seo->generateTags() !!}
+    {!! $seo->generateSchema() !!}
+
     <link rel="icon" type="image/png" href="{{ asset('img/logo2.png') }}" />
 
     <!-- Tailwind CSS -->
