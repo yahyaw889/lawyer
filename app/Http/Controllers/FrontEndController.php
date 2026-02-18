@@ -113,7 +113,12 @@ class FrontEndController extends Controller
     {
         $selectedService = null;
         if ($request->has('service')) {
-            $selectedService = ServiceType::tryFrom($request->query('service'));
+            $serviceSlug = $request->query('service');
+            if ($serviceSlug === 'attestation') {
+                $selectedService = ServiceType::DOCUMENT_ATTESTATION;
+            } else {
+                $selectedService = ServiceType::tryFrom($serviceSlug);
+            }
         }
         return view('frontend.pages.request', compact('selectedService'));
     }

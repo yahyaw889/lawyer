@@ -30,10 +30,11 @@
         <!-- Info Grid -->
         <div class="relative z-10 space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
             <div>
-                <h3 class="text-xl font-bold mb-2">{{ __('frontend.buttons.request.title') }}</h3>
-                <p class="text-white/70 text-sm leading-relaxed max-w-sm">
-                    {{ __('frontend.about.commitment') }}
-                </p>
+                <h3 class="text-xl font-bold mb-4">{{ __('frontend.about.title') }}</h3>
+                <div class="space-y-4 text-white/80 text-sm leading-relaxed max-w-sm text-justify">
+                    <p>{{ __('frontend.about.overview') }}</p>
+                    <p>{{ __('frontend.about.commitment') }}</p>
+                </div>
             </div>
 
             <ul class="space-y-3 text-sm text-white/80">
@@ -117,7 +118,27 @@
                             </label>
                         </div>
                         <div class="relative group">
-                            @if (isset($selectedService) && $selectedService)
+                            @if (isset($selectedService) && $selectedService === \App\Enums\ServiceType::DOCUMENT_ATTESTATION)
+                                {{-- Document Attestation: Show specific sub-services --}}
+                                <select name="service_type" id="service_type" required
+                                    class="peer w-full px-4 py-2.5 border-b border-gray-200 bg-gray-50/50 focus:bg-white focus:border-[#a41c1c] focus:outline-none transition-all duration-300 text-sm rounded-t-lg appearance-none">
+                                    <option value="" disabled selected>
+                                        {{ __('frontend.consultation.form.service_type') }}</option>
+                                    @php
+                                        $attestationServices = [
+                                            \App\Enums\ServiceType::ATTESTATION_INTL_CONTRACT,
+                                            \App\Enums\ServiceType::ATTESTATION_SIGNATURES,
+                                            \App\Enums\ServiceType::ATTESTATION_POA_ISSUANCE,
+                                            \App\Enums\ServiceType::ATTESTATION_DEBT_ACK,
+                                            \App\Enums\ServiceType::ATTESTATION_MOFA,
+                                            \App\Enums\ServiceType::ATTESTATION_MOJ,
+                                        ];
+                                    @endphp
+                                    @foreach ($attestationServices as $service)
+                                        <option value="{{ $service->value }}">{{ $service->label() }}</option>
+                                    @endforeach
+                                </select>
+                            @elseif (isset($selectedService) && $selectedService)
                                 {{-- Pre-selected service: show disabled input + hidden field --}}
                                 <input type="text" disabled value="{{ $selectedService->label() }}"
                                     class="w-full px-4 py-2.5 border-b border-gray-200 bg-gray-100 text-gray-700 text-sm rounded-t-lg font-bold cursor-not-allowed">
@@ -151,8 +172,8 @@
                         <span id="btnSpinner" class="hidden">
                             <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                    stroke-width="4"></circle>
+                                <circle class="opacity-25" cx="12" cy="12" r="10"
+                                    stroke="currentColor" stroke-width="4"></circle>
                                 <path class="opacity-75" fill="currentColor"
                                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                 </path>

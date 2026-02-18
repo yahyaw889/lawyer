@@ -72,15 +72,163 @@
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
     </style>
+
+    <style>
+        /* ===== Professional Page Transition ===== */
+
+        /* Content fade */
+        .transition-main {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html.is-animating .transition-main {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Overlay panels */
+        .page-transition-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            pointer-events: none;
+        }
+
+        .page-transition-overlay .panel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleX(0);
+            transform-origin: left center;
+        }
+
+        .page-transition-overlay .panel-1 {
+            background: #1C1C1C;
+        }
+
+        .page-transition-overlay .panel-2 {
+            background: #a41c1c;
+        }
+
+        .page-transition-overlay .panel-3 {
+            background: #FDFDFD;
+        }
+
+        /* Entering animation: panels sweep in then sweep out */
+        html.is-changing .page-transition-overlay .panel {
+            animation: panelWipe 0.9s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        html.is-changing .page-transition-overlay .panel-1 {
+            animation-delay: 0s;
+        }
+
+        html.is-changing .page-transition-overlay .panel-2 {
+            animation-delay: 0.08s;
+        }
+
+        html.is-changing .page-transition-overlay .panel-3 {
+            animation-delay: 0.16s;
+        }
+
+        @keyframes panelWipe {
+            0% {
+                transform: scaleX(0);
+                transform-origin: left center;
+            }
+
+            40% {
+                transform: scaleX(1);
+                transform-origin: left center;
+            }
+
+            60% {
+                transform: scaleX(1);
+                transform-origin: right center;
+            }
+
+            100% {
+                transform: scaleX(0);
+                transform-origin: right center;
+            }
+        }
+
+        /* Logo spinner in center during transition */
+        .page-transition-overlay .transition-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            z-index: 10;
+            width: 60px;
+            height: 60px;
+        }
+
+        html.is-changing .page-transition-overlay .transition-logo {
+            animation: logoReveal 0.9s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        @keyframes logoReveal {
+            0% {
+                transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+
+            30% {
+                transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+                opacity: 1;
+            }
+
+            60% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+
+            85% {
+                transform: translate(-50%, -50%) scale(0.8) rotate(90deg);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(0) rotate(180deg);
+                opacity: 0;
+            }
+        }
+    </style>
+
     @stack('styles')
 </head>
 
 <body class="antialiased">
 
-    <div id="app-container">
-        @yield('content')
+    <!-- Transition Overlay -->
+    <div class="page-transition-overlay" aria-hidden="true">
+        <div class="panel panel-1"></div>
+        <div class="panel panel-2"></div>
+        <div class="panel panel-3"></div>
+        <img src="{{ asset('img/logo2.png') }}" alt="" class="transition-logo">
     </div>
 
+    <div id="app-container">
+        <main id="swup" class="transition-main">
+            @yield('content')
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script>
+        const swup = new Swup({
+            containers: ["#swup"],
+            cache: false,
+            animationSelector: '[class*="transition-"]',
+        });
+    </script>
 </body>
 
 </html>

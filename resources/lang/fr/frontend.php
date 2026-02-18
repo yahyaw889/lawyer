@@ -24,6 +24,7 @@ return [
         'description' => 'Votre partenaire de confiance dans le Royaume. Nous fournissons des solutions juridiques intégrées alignées avec la Vision, en nous concentrant sur la Qualité, la Rapidité et la Sécurité pour protéger les intérêts de nos clients et développer leurs activités.',
         'exp_years' => 'Années d\'Expérience',
         'success_cases' => 'Dossiers Réussis',
+        'consultation_desc' => 'Obtenez une consultation juridique instantanée avec des avocats spécialisés d\'élite via notre plateforme électronique certifiée',
     ],
     'buttons' => [
         'about' => [
@@ -42,6 +43,7 @@ return [
             'title' => 'Solliciter un Service',
             'desc' => 'Formulaire de Procédure Légale',
         ],
+        'more_details' => 'Plus de détails',
     ],
     'consultation' => [
         'title' => 'Demande de Consultation Instantanée',
@@ -95,6 +97,49 @@ return [
             'markets' => 'Expansion Mondiale : Services transfrontaliers',
             'reputation' => 'Référence Juridique : Confiance & Professionnalisme',
         ]
+    ],
+    'services_page' => [
+        'title' => 'Nos Services Juridiques',
+        'subtitle' => 'Nous offrons une gamme complète de services juridiques conçus pour répondre aux besoins des particuliers et des entreprises',
+        'cards' => [
+            'business' => [
+                'title' => 'Services aux Entreprises',
+                'desc' => 'Création d\'entreprise, rédaction de contrats commerciaux et conformité à la gouvernance d\'entreprise.',
+            ],
+            'consultation' => [
+                'title' => 'Consultation Juridique Instantanée',
+                'desc' => 'Obtenez un avis juridique fiable de consultants spécialisés via notre plateforme en ligne.',
+            ],
+            'attestation' => [
+                'title' => 'Authentification de Documents',
+                'desc' => 'Services notariaux et authentification de documents officiels pour particuliers et entreprises.',
+            ],
+            'representation' => [
+                'title' => 'Représentation Juridique',
+                'desc' => 'Contentieux et représentation des clients devant tous les tribunaux et instances judiciaires.',
+            ],
+        ],
+    ],
+    'consultation_request' => [
+        'title' => 'Demander une Consultation Instantanée',
+        'subtitle' => 'Conseil juridique professionnel en quelques minutes',
+        'description' => 'Obtenez une consultation juridique immédiate de notre équipe spécialisée. Nous fournissons des solutions juridiques précises pour votre cas en toute confidentialité.',
+        'request_button' => 'Commencer la Demande',
+        'duration_label' => 'Durée',
+        'duration' => '30 - 60 Minutes',
+        'services_title' => 'Ce que vous obtiendrez :',
+        'services' => [
+            'Communication directe avec un consultant spécialisé',
+            'Analyse complète du cas et avis juridique',
+            'Examen des documents connexes',
+            'Feuille de route juridique exploitable',
+        ],
+        'requirements_title' => 'Exigences',
+        'requirements' => [
+            'Brève description du problème',
+            'Documents pertinents (le cas échéant)',
+            'Pièce d\'identité valide',
+        ],
     ],
     'stats' => [
         'years' => 'Années d\'Expérience',
@@ -186,6 +231,14 @@ return [
             'faq' => 'FAQ',
             'why_us' => 'Pourquoi Nous Choisir',
             'contact_us' => 'Contactez-nous',
+             // Attestation Sub-services
+            'attestation_intl_contract' => 'Rédaction et révision de contrats internationaux',
+            'attestation_signatures' => 'Attestation de signatures de contrats',
+            'attestation_poa_issuance' => 'Délivrance de procuration',
+            'attestation_debt_ack' => 'Délivrance de reconnaissance de dette',
+            'attestation_mofa' => 'Attestation MoFA',
+            'attestation_moj' => 'Attestation MoJ',
+
         ],
     ],
     'why_us' => [

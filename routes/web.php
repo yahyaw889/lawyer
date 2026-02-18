@@ -20,7 +20,7 @@ Route::controller(FrontEndController::class)->group(function() {
     Route::get('/', 'languageSelection')->name('index');
     Route::get('/home', 'home')->name('home');
     Route::get('/about', 'about')->name('about');
-    Route::get('/services', 'services')->name('services');
+    Route::get('/services', 'services')->name('services.index');
     Route::get('/consultation', 'consultation')->name('consultation');
     Route::get('/request', 'request')->name('request');
     Route::post('/request/submit', 'storeRequest')->name('request.submit');

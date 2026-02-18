@@ -16,6 +16,7 @@ return [
         'NONE' => 'لا يوجد',
     ],
     'duration_title' => 'مدة تنفيذ الخدمة',
+    'duration_label' => 'المدة المتوقعة',
     'duration' => 'من يوم إلى 3 أيام عمل',
     'request_button' => 'طلب الخدمة الآن',
 ];

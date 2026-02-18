@@ -101,23 +101,15 @@
     </div>
 
     <script>
-        function toggleAccordion(contentId, button) {
-            const content = document.getElementById(contentId);
+        window.toggleAccordion = function(contentId, button) {
+            const element = document.getElementById(contentId);
             const icon = button.querySelector('span:last-child');
 
-            // Close other accordions (optional, for one-at-a-time behavior)
-            // document.querySelectorAll('[id$="-content"]').forEach(el => {
-            //     if (el.id !== contentId && !el.classList.contains('hidden')) {
-            //         el.classList.add('hidden');
-            //         // Reset icon for others (need a way to select the button)
-            //     }
-            // });
-
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
                 icon.classList.add('rotate-180');
             } else {
-                content.classList.add('hidden');
+                element.classList.add('hidden');
                 icon.classList.remove('rotate-180');
             }
         }

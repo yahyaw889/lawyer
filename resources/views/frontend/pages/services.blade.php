@@ -1,184 +1,159 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="relative h-screen w-full overflow-hidden bg-slate-900 font-cairo flex items-center justify-center selection:bg-gold-accent selection:text-white"
-        dir="rtl">
-
-        <!-- Cinematic Background -->
-        <div class="absolute inset-0 z-0">
-            <div
-                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center animate-kenburns opacity-30">
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-b from-royal-blue/90 via-slate-900/80 to-slate-900/95"></div>
-            <!-- Animated Particles/Overlay -->
-            <div
-                class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay">
-            </div>
+    <div class="relative h-screen flex flex-col items-center justify-center bg-white overflow-hidden">
+        <!-- Background Logo Watermark -->
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
+            <img src="{{ asset('img/logo.png') }}" alt="" class="h-[800px] w-auto grayscale">
         </div>
 
-        <!-- Main Content -->
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 lg:px-8 h-full flex flex-col justify-center">
+        <div class="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
 
-            <!-- Header Section -->
-            <div class="text-center mb-8 lg:mb-12 animate-fade-in-down">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 shadow-lg shadow-gold-accent/5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-gold-accent animate-pulse"></span>
-                    <span class="text-gold-accent/90 text-xs font-bold tracking-[0.2em] uppercase">Premium Services</span>
+            {{-- Header --}}
+            <div class="text-center mb-12 animate-fade-in-down">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <span class="h-px w-12 bg-[#a41c1c]"></span>
+                    <span
+                        class="text-[#a41c1c] font-bold tracking-widest uppercase text-sm font-cairo">{{ __('frontend.nav.services') }}</span>
+                    <span class="h-px w-12 bg-[#a41c1c]"></span>
                 </div>
-                <h1 class="text-4xl lg:text-5xl font-bold text-white mb-2 drop-shadow-2xl tracking-wide">
-                    تأسيس الشركات ووكالات الاستثمار
+                <h1 class="text-4xl md:text-5xl font-bold font-cairo text-[#1C1C1C] mb-4">
+                    {{ __('frontend.services_page.title') }}
                 </h1>
-                <p class="text-blue-100/80 text-sm lg:text-base max-w-2xl mx-auto font-light leading-relaxed">
-                    نرافقك في كل خطوة لتأسيس كيانك التجاري بثقة، من التخطيط القانوني إلى الانطلاق الفعلي.
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto font-cairo">
+                    {{ __('frontend.services_page.subtitle') }}
                 </p>
             </div>
 
-            <!-- Features Grid (Glassmorphism) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 w-full">
+            {{-- Cards Grid --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl mx-auto">
 
-                <!-- Card 1 -->
-                <div
-                    class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold-accent/10">
+                {{-- 1. Business Services --}}
+                <a href="{{ route('business-services.index') }}"
+                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
                     <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
 
-                    <div class="relative z-10 text-center">
-                        <div
-                            class="w-14 h-14 mx-auto bg-gradient-to-br from-blue-500 to-royal-blue rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-500 text-white">
-                            <span class="material-symbols-outlined text-3xl">description</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-gold-accent transition-colors">عقود
-                            التأسيس</h3>
-                        <p class="text-gray-300 text-xs leading-relaxed font-light">
-                            صياغة محكمة لعقود التأسيس تضمن حقوق الشركاء وتتوافق مع أحدث الأنظمة التجارية.
+                    <div
+                        class="mb-6 w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-[#a41c1c] group-hover:bg-[#a41c1c] group-hover:text-white transition-colors duration-500 group-hover:scale-110 shadow-sm">
+                        <span class="material-symbols-outlined text-4xl">domain</span>
+                    </div>
+
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h3
+                            class="text-xl font-bold text-[#1C1C1C] mb-3 font-cairo group-hover:text-[#a41c1c] transition-colors">
+                            {{ __('frontend.services_page.cards.business.title') }}
+                        </h3>
+                        <p class="text-sm text-gray-500 font-cairo leading-relaxed mb-6">
+                            {{ __('frontend.services_page.cards.business.desc') }}
                         </p>
                     </div>
-                </div>
 
-                <!-- Card 2 -->
-                <div
-                    class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold-accent/10">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-gold-accent/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <div class="relative z-10 text-center">
-                        <div
-                            class="w-14 h-14 mx-auto bg-gradient-to-br from-gold-accent to-yellow-600 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-500 text-white">
-                            <span class="material-symbols-outlined text-3xl">public</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-gold-accent transition-colors">
-                            الاستثمار الأجنبي</h3>
-                        <p class="text-gray-300 text-xs leading-relaxed font-light">
-                            تسهيل إصدار تراخيص الاستثمار وحل كافة العقبات الإجرائية للمستثمرين الدوليين.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div
-                    class="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold-accent/10">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <div class="relative z-10 text-center">
-                        <div
-                            class="w-14 h-14 mx-auto bg-gradient-to-br from-blue-500 to-royal-blue rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-500 text-white">
-                            <span class="material-symbols-outlined text-3xl">gavel</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-gold-accent transition-colors">
-                            الامتثال القانوني</h3>
-                        <p class="text-gray-300 text-xs leading-relaxed font-light">
-                            تسجيل كامل في الجهات الحكومية والضريبية لضمان عمل مؤسستك دون أي مخاطر قانونية.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Footer / CTA -->
-            <div class="text-center animate-fade-in-up">
-                <a href="{{ route('request', ['service' => 'business_services']) }}"
-                    class="group relative inline-flex items-center gap-3 px-8 py-4 bg-gold-accent text-white rounded-full overflow-hidden shadow-2xl hover:shadow-gold-accent/50 transition-all duration-300 hover:scale-105 active:scale-95">
-                    <div
-                        class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    </div>
-                    <span class="relative font-bold text-sm tracking-wide">ابدأ طلب الخدمة الآن</span>
                     <span
-                        class="relative material-symbols-outlined text-lg rtl:rotate-180 group-hover:translate-x-1 transition-transform rtl:group-hover:-translate-x-1">arrow_right_alt</span>
+                        class="flex items-center gap-2 text-xs font-bold text-[#a41c1c] uppercase tracking-wider opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        {{ __('frontend.buttons.more_details') ?? 'More Details' }}
+                        <span class="material-symbols-outlined text-base rtl:rotate-180">arrow_forward</span>
+                    </span>
                 </a>
-                <p class="mt-4 text-[10px] text-gray-500 uppercase tracking-widest opacity-60">Professional • Trusted •
-                    Secure</p>
+
+                {{-- 2. Consultation --}}
+                <a href="{{ route('consultation-request') }}"
+                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                    </div>
+
+                    <div
+                        class="mb-6 w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-[#a41c1c] group-hover:bg-[#a41c1c] group-hover:text-white transition-colors duration-500 group-hover:scale-110 shadow-sm">
+                        <span class="material-symbols-outlined text-4xl">support_agent</span>
+                    </div>
+
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h3
+                            class="text-xl font-bold text-[#1C1C1C] mb-3 font-cairo group-hover:text-[#a41c1c] transition-colors">
+                            {{ __('frontend.services_page.cards.consultation.title') }}
+                        </h3>
+                        <p class="text-sm text-gray-500 font-cairo leading-relaxed mb-6">
+                            {{ __('frontend.services_page.cards.consultation.desc') }}
+                        </p>
+                    </div>
+
+                    <span
+                        class="flex items-center gap-2 text-xs font-bold text-[#a41c1c] uppercase tracking-wider opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        {{ __('frontend.buttons.more_details') ?? 'More Details' }}
+                        <span class="material-symbols-outlined text-base rtl:rotate-180">arrow_forward</span>
+                    </span>
+                </a>
+
+                {{-- 3. Document Attestation --}}
+                <a href="{{ route('document-attestation') }}"
+                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                    </div>
+
+                    <div
+                        class="mb-6 w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-[#a41c1c] group-hover:bg-[#a41c1c] group-hover:text-white transition-colors duration-500 group-hover:scale-110 shadow-sm">
+                        <span class="material-symbols-outlined text-4xl">verified</span>
+                    </div>
+
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h3
+                            class="text-xl font-bold text-[#1C1C1C] mb-3 font-cairo group-hover:text-[#a41c1c] transition-colors">
+                            {{ __('frontend.services_page.cards.attestation.title') }}
+                        </h3>
+                        <p class="text-sm text-gray-500 font-cairo leading-relaxed mb-6">
+                            {{ __('frontend.services_page.cards.attestation.desc') }}
+                        </p>
+                    </div>
+
+                    <span
+                        class="flex items-center gap-2 text-xs font-bold text-[#a41c1c] uppercase tracking-wider opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        {{ __('frontend.buttons.more_details') ?? 'More Details' }}
+                        <span class="material-symbols-outlined text-base rtl:rotate-180">arrow_forward</span>
+                    </span>
+                </a>
+
+                {{-- 4. Legal Representation --}}
+                <a href="{{ route('legal-representation') }}"
+                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    <div
+                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
+                    </div>
+
+                    <div
+                        class="mb-6 w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center text-[#a41c1c] group-hover:bg-[#a41c1c] group-hover:text-white transition-colors duration-500 group-hover:scale-110 shadow-sm">
+                        <span class="material-symbols-outlined text-4xl">gavel</span>
+                    </div>
+
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h3
+                            class="text-xl font-bold text-[#1C1C1C] mb-3 font-cairo group-hover:text-[#a41c1c] transition-colors">
+                            {{ __('frontend.services_page.cards.representation.title') }}
+                        </h3>
+                        <p class="text-sm text-gray-500 font-cairo leading-relaxed mb-6">
+                            {{ __('frontend.services_page.cards.representation.desc') }}
+                        </p>
+                    </div>
+
+                    <span
+                        class="flex items-center gap-2 text-xs font-bold text-[#a41c1c] uppercase tracking-wider opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                        {{ __('frontend.buttons.more_details') ?? 'More Details' }}
+                        <span class="material-symbols-outlined text-base rtl:rotate-180">arrow_forward</span>
+                    </span>
+                </a>
+
             </div>
 
+            <div class="mt-12 text-center animate-fade-in-up">
+                <a href="{{ route('index') }}"
+                    class="inline-flex items-center gap-2 text-gray-400 hover:text-[#a41c1c] transition-colors font-cairo font-bold text-sm">
+                    <span class="material-symbols-outlined rtl:rotate-180 text-base">arrow_back</span>
+                    {{ __('frontend.nav.back_home') }}
+                </a>
+            </div>
         </div>
     </div>
-
-    <style>
-        .font-cairo {
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .bg-royal-blue {
-            background-color: #002349;
-        }
-
-        .text-gold-accent {
-            color: #C5A059;
-        }
-
-        .bg-gold-accent {
-            background-color: #C5A059;
-        }
-
-        @keyframes kenburns {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.1);
-            }
-        }
-
-        .animate-kenburns {
-            animation: kenburns 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes fade-in-down {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in-down {
-            animation: fade-in-down 0.8s ease-out forwards;
-        }
-
-        @keyframes fade-in-up {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in-up {
-            animation: fade-in-up 0.8s ease-out forwards 0.3s;
-            opacity: 0;
-        }
-    </style>
 @endsection

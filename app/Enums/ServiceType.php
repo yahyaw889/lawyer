@@ -13,6 +13,14 @@ enum ServiceType: string
     case DOCUMENT_ATTESTATION = 'document_attestation';
     case CONSULTATION_REQUEST = 'consultation_request';
 
+    // Attestation Sub-services
+    case ATTESTATION_INTL_CONTRACT = 'attestation_intl_contract';
+    case ATTESTATION_SIGNATURES = 'attestation_signatures';
+    case ATTESTATION_POA_ISSUANCE = 'attestation_poa_issuance';
+    case ATTESTATION_DEBT_ACK = 'attestation_debt_ack';
+    case ATTESTATION_MOFA = 'attestation_mofa';
+    case ATTESTATION_MOJ = 'attestation_moj';
+
     /**
      * Get the Arabic label for this service type.
      */
@@ -27,6 +35,13 @@ enum ServiceType: string
             self::LEGAL_REPRESENTATION => 'تمثيل القانوني امام المحاكم',
             self::DOCUMENT_ATTESTATION => 'تمثيل و تصديق الوثائق',
             self::CONSULTATION_REQUEST => 'طلب استشارة',
+            // Attestation Sub-services
+            self::ATTESTATION_INTL_CONTRACT => 'دراسة وصياغة عقد دولي',
+            self::ATTESTATION_SIGNATURES => 'تصديق امضائات أطراف العقد وتوثيقها',
+            self::ATTESTATION_POA_ISSUANCE => 'اصدار الوكالات',
+            self::ATTESTATION_DEBT_ACK => 'اصدار إقرار بالدين',
+            self::ATTESTATION_MOFA => 'تصديق الوكالات لدى وزارة الخارجية',
+            self::ATTESTATION_MOJ => 'تصديق الوكالات لدى وزارة العدل',
         };
     }
 

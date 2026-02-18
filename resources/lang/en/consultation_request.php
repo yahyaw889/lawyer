@@ -16,6 +16,7 @@ return [
         'NONE' => 'None',
     ],
     'duration_title' => 'Service Duration',
+    'duration_label' => 'Duration',
     'duration' => 'From 1 to 3 business days',
     'request_button' => 'Request Service Now',
 ];

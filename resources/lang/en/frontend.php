@@ -23,6 +23,7 @@ return [
         'description' => 'Your trusted partner in the Kingdom. We provide integrated legal solutions aligned with the Vision, focusing on Quality, Speed, and Safety to protect our clients\' interests and grow their businesses.',
         'exp_years' => 'Years of Experience',
         'success_cases' => 'Successful Cases',
+        'consultation_desc' => 'Get instant legal consultation from elite specialized lawyers through our certified electronic platform',
     ],
     'buttons' => [
         'about' => [
@@ -41,6 +42,7 @@ return [
             'title' => 'Request Service',
             'desc' => 'Legal Procedure Form',
         ],
+        'more_details' => 'More Details',
     ],
     'consultation' => [
         'title' => 'Instant Consultation Request',
@@ -94,6 +96,49 @@ return [
             'markets' => 'Global Expansion: Cross-border services',
             'reputation' => 'Legal Reference: Trust & Professionalism',
         ]
+    ],
+    'services_page' => [
+        'title' => 'Our Legal Services',
+        'subtitle' => 'We offer a comprehensive range of legal services designed specifically to meet the needs of individuals and corporations',
+        'cards' => [
+            'business' => [
+                'title' => 'Business & Corporate Services',
+                'desc' => 'Company formation, commercial contract drafting, and corporate governance compliance.',
+            ],
+            'consultation' => [
+                'title' => 'Instant Legal Consultation',
+                'desc' => 'Get reliable legal opinion from specialized consultants via our online platform.',
+            ],
+            'attestation' => [
+                'title' => 'Document Attestation',
+                'desc' => 'Notarial services and authentication of official documents for individuals and companies.',
+            ],
+            'representation' => [
+                'title' => 'Legal Representation',
+                'desc' => 'Litigation and client representation before all courts and judicial bodies.',
+            ],
+        ],
+    ],
+    'consultation_request' => [
+        'title' => 'Request Instant Consultation',
+        'subtitle' => 'Professional legal advice within minutes',
+        'description' => 'Get immediate legal consultation from our specialized team. We provide accurate legal solutions for your case with full confidentiality.',
+        'request_button' => 'Start Consultation Request',
+        'duration_label' => 'Duration',
+        'duration' => '30 - 60 Minutes',
+        'services_title' => 'What you will get:',
+        'services' => [
+            'Direct communication with a specialized consultant',
+            'Full case analysis and legal opinion',
+            'Review of related documents',
+            'Actionable legal roadmap',
+        ],
+        'requirements_title' => 'Requirements',
+        'requirements' => [
+            'Brief description of the issue',
+            'Relevant documents (if any)',
+            'Valid ID',
+        ],
     ],
     'stats' => [
         'years' => 'Years of Experience',
@@ -185,6 +230,14 @@ return [
             'faq' => 'FAQ',
             'why_us' => 'Why Choose Us',
             'contact_us' => 'Contact Us',
+             // Attestation Sub-services
+            'attestation_intl_contract' => 'International Contract Drafting & Review',
+            'attestation_signatures' => 'Contract Signatures Attestation',
+            'attestation_poa_issuance' => 'Power of Attorney Issuance',
+            'attestation_debt_ack' => 'Debt Acknowledgment Issuance',
+            'attestation_mofa' => 'MoFA Attestation',
+            'attestation_moj' => 'MoJ Attestation',
+
         ],
     ],
     'why_us' => [

@@ -1,23 +1,22 @@
 <?php
 
 return [
-    'title' => 'Document Attestation and Authentication',
-    'subtitle' => 'Certified attestation services to protect your rights',
-    'description' => 'AMN offers contract drafting, review, and attestation services through a platform certified by the Digital Government Authority in Saudi Arabia. We also provide power of attorney attestation and document authentication services with the Ministry of Foreign Affairs and Notary Publics in Saudi Arabia.',
+    'title' => 'Document & Contract Attestation',
+    'description' => 'AMN provides contract review, drafting, and attestation services through a Digital Government Authority approved platform in Saudi Arabia. We also offer power of attorney attestation and document authentication services with the Ministry of Foreign Affairs and Notary Publics in the Kingdom.',
     'services_title' => 'Service Areas',
     'services' => [
-        'INTL_CONTRACTS' => 'Drafting and reviewing international contracts',
-        'SIGNATURE_ATTESTATION' => 'Attesting and authenticating parties signatures',
-        'POA_ISSUANCE' => 'Issuing Power of Attorney (POA)',
-        'DEBT_ACK' => 'Issuing Debt Acknowledgement',
-        'MOFA_ATTESTATION' => 'POA attestation at the Ministry of Foreign Affairs',
-        'MOJ_ATTESTATION' => 'POA attestation at the Ministry of Justice',
+        'Review and drafting of international contracts',
+        'Attestation and authentication of party signatures',
+        'Issuance of Powers of Attorney',
+        'Issuance of Debt Acknowledgements',
+        'PoA Attestation at Ministry of Foreign Affairs',
+        'PoA Attestation at Ministry of Justice',
     ],
     'requirements_title' => 'Service Requirements',
     'requirements' => [
-        'DOCS_FORMAT' => 'Send documents in WORD and PDF formats',
+        'Submit documents in Word and PDF formats',
     ],
-    'duration_title' => 'Service Duration',
+    'duration_label' => 'Service Duration',
     'duration' => 'From 1 to 5 business days',
     'request_button' => 'Request Service Now',
 ];
