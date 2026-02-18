@@ -1,37 +1,37 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="relative h-screen flex flex-col items-center justify-center bg-white overflow-hidden">
+    <div class="relative min-h-screen flex flex-col items-center justify-center bg-white py-12 sm:py-0">
         <!-- Background Logo Watermark -->
         <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-            <img src="{{ asset('img/logo.png') }}" alt="" class="h-[800px] w-auto grayscale">
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none fixed">
+            <img src="{{ asset('img/logo.png') }}" alt="" class="h-[500px] md:h-[800px] w-auto grayscale">
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center">
+        <div class="container mx-auto px-4 md:px-6 relative z-10 h-full flex flex-col justify-center">
 
             {{-- Header --}}
-            <div class="text-center mb-12 animate-fade-in-down">
+            <div class="text-center mb-8 md:mb-12 animate-fade-in-down">
                 <div class="flex items-center justify-center gap-2 mb-4">
-                    <span class="h-px w-12 bg-[#a41c1c]"></span>
+                    <span class="h-px w-8 md:w-12 bg-[#a41c1c]"></span>
                     <span
-                        class="text-[#a41c1c] font-bold tracking-widest uppercase text-sm font-cairo">{{ __('frontend.nav.services') }}</span>
-                    <span class="h-px w-12 bg-[#a41c1c]"></span>
+                        class="text-[#a41c1c] font-bold tracking-widest uppercase text-xs md:text-sm font-cairo">{{ __('frontend.nav.services') }}</span>
+                    <span class="h-px w-8 md:w-12 bg-[#a41c1c]"></span>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold font-cairo text-[#1C1C1C] mb-4">
+                <h1 class="text-3xl md:text-5xl font-bold font-cairo text-[#1C1C1C] mb-4">
                     {{ __('frontend.services_page.title') }}
                 </h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto font-cairo">
+                <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto font-cairo px-4">
                     {{ __('frontend.services_page.subtitle') }}
                 </p>
             </div>
 
             {{-- Cards Grid --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full max-w-7xl mx-auto">
 
                 {{-- 1. Business Services --}}
                 <a href="{{ route('business-services.index') }}"
-                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    class="group relative bg-white border border-gray-100 p-6 md:p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
@@ -60,7 +60,7 @@
 
                 {{-- 2. Consultation --}}
                 <a href="{{ route('consultation-request') }}"
-                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    class="group relative bg-white border border-gray-100 p-6 md:p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
@@ -89,7 +89,7 @@
 
                 {{-- 3. Document Attestation --}}
                 <a href="{{ route('document-attestation') }}"
-                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    class="group relative bg-white border border-gray-100 p-6 md:p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
@@ -118,7 +118,7 @@
 
                 {{-- 4. Legal Representation --}}
                 <a href="{{ route('legal-representation') }}"
-                    class="group relative bg-white border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
+                    class="group relative bg-white border border-gray-100 p-6 md:p-8 rounded-sm shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col items-center text-center overflow-hidden h-full justify-between">
                     <div
                         class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a41c1c] to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500">
                     </div>
