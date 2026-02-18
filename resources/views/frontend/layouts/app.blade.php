@@ -223,6 +223,20 @@
 
     <script src="https://unpkg.com/swup@4"></script>
     <script>
+        // Global Accordion Toggle Function
+        window.toggleAccordion = function(contentId, button) {
+            const element = document.getElementById(contentId);
+            const icon = button.querySelector('span:last-child');
+
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                element.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
         const swup = new Swup({
             containers: ["#swup"],
             cache: false,
