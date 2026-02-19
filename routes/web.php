@@ -35,6 +35,7 @@ Route::get('/business-services/{slug}', 'businessServiceShow')->name('business-s
 Route::controller(ConsultationController::class)->group(function(){
     Route::get('/consultation/checkout', 'showCheckout')->name('consultation.checkout');
     Route::post('/consultation/submit', 'submit')->name('consultation.submit');
+    Route::get('/consultation/success-later', 'successLater')->name('consultation.success.later');
     Route::any('/tap/callback', 'handleCallback')->name('tap.callback');
 });
 

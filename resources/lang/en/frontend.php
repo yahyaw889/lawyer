@@ -405,6 +405,11 @@ return [
             'unexpected' => 'An unexpected error occurred',
             'connection' => 'Connection failed, please try again.',
         ],
+        'payment_method' => [
+            'title' => 'Payment Method',
+            'pay_now' => 'Pay Online (Mada / Visa / Mastercard)',
+            'pay_later' => 'Pay Later (Bank Transfer)',
+        ],
     ],
     'request_page' => [
         'contact_info' => [

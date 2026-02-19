@@ -39,23 +39,41 @@ class ConsultationController extends Controller
             'phone' => 'required|string',
             'type' => 'required|string',
             'topic' => 'nullable|string',
+            'payment_method' => 'required|in:pay_now,pay_later',
         ]);
 
         $price = SystemSetting::getValue('consultation_price', 575);
 
         DB::beginTransaction();
         try {
-            // 1. Create Consultation Request (Pending)
+            // 1. Create Consultation Request
             $consultation = ConsultationRequest::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'type' => $request->type,
                 'topic' => $request->topic,
-                'payment_status' => 'PENDING'
+                'payment_status' => $request->payment_method === 'pay_later' ? 'PAY_LATER' : 'PENDING'
             ]);
 
-            // 2. Prepare Data for Tap
+            // Handle Pay Later
+            if ($request->payment_method === 'pay_later') {
+                DB::commit();
+
+                // Send Telegram Notification for Pay Later
+                try {
+                    $this->sendTelegramNotification(null, $consultation);
+                } catch (\Exception $e) {
+                    Log::error('Telegram notification failed: ' . $e->getMessage());
+                }
+
+                return response()->json([
+                    'success' => true,
+                    'redirect_url' => route('consultation.success.later') // You might need to create this route or reuse success page
+                ]);
+            }
+
+            // 2. Prepare Data for Tap (Pay Now)
             $parts = explode(' ', $request->name, 2);
             $firstName = $parts[0];
             $lastName = isset($parts[1]) ? $parts[1] : 'Client';
@@ -142,7 +160,7 @@ class ConsultationController extends Controller
 
                     // Send Telegram notification
                     try {
-                        $this->sendTelegramNotification($transaction);
+                        $this->sendTelegramNotification($transaction, $transaction->consultationRequest);
                     } catch (\Exception $e) {
                         Log::error('Telegram notification failed: ' . $e->getMessage());
                     }
@@ -160,9 +178,17 @@ class ConsultationController extends Controller
     }
 
     /**
+     * Show the success page for Pay Later requests.
+     */
+    public function successLater()
+    {
+        return view('frontend.pages.payment.success-later');
+    }
+
+    /**
      * Send Telegram notification for successful payment.
      */
-    private function sendTelegramNotification($transaction)
+    private function sendTelegramNotification($transaction = null, $consultation = null)
     {
         $token = env('TELEGRAM_BOT_TOKEN');
         $chatId = env('TELEGRAM_CHAT_ID');
@@ -171,23 +197,40 @@ class ConsultationController extends Controller
             return;
         }
 
+        // Determine data source
+        $name = $transaction ? $transaction->customer_name : $consultation->name;
+        $phone = $transaction ? $transaction->customer_phone : $consultation->phone;
+        $email = $transaction ? $transaction->customer_email : $consultation->email;
+        $topic = $transaction ? $transaction->consultation_topic : $consultation->topic;
+        $amount = $transaction ? $transaction->amount : SystemSetting::getValue('consultation_price', 575);
+        $date = ($transaction ? $transaction->created_at : $consultation->created_at)->format('Y-m-d H:i A');
+        $isPayLater = $consultation && $consultation->payment_status === 'PAY_LATER';
+
         $message = "🚨 *طلب استشارة فورية جديد* 🚨\n\n";
-        $message .= "✅ *تم الدفع بنجاح*\n";
-        $message .= "──────────────\n";
-        $message .= "👤 *بيانات العميل:*\n";
-        $message .= "• *الاسم:* " . $transaction->customer_name . "\n";
-        $message .= "• *الهاتف:* " . $transaction->customer_phone . "\n";
-        $message .= "• *البريد:* " . $transaction->customer_email . "\n\n";
-        
-        $message .= "💰 *بيانات الدفع:*\n";
-        $message .= "• *المبلغ:* " . $transaction->amount . " SAR\n";
-        $message .= "• *رقم المعاملة:* `" . $transaction->tap_id . "`\n";
-        
-        if ($transaction->consultation_topic) {
-            $message .= "\n📝 *الموضوع:* \n" . $transaction->consultation_topic . "\n";
+
+        if ($isPayLater) {
+            $message .= "⏳ *دفع لاحقاً (تحويل بنكي / مؤجل)*\n";
+        } else {
+            $message .= "✅ *تم الدفع بنجاح*\n";
         }
 
-        $message .= "\n📅 *التاريخ:* " . $transaction->created_at->format('Y-m-d H:i A');
+        $message .= "──────────────\n";
+        $message .= "👤 *بيانات العميل:*\n";
+        $message .= "• *الاسم:* " . $name . "\n";
+        $message .= "• *الهاتف:* " . $phone . "\n";
+        $message .= "• *البريد:* " . $email . "\n\n";
+
+        if (!$isPayLater) {
+            $message .= "💰 *بيانات الدفع:*\n";
+            $message .= "• *المبلغ:* " . $amount . " SAR\n";
+            $message .= "• *رقم المعاملة:* `" . $transaction->tap_id . "`\n";
+        }
+
+        if ($topic) {
+            $message .= "\n📝 *الموضوع:* \n" . $topic . "\n";
+        }
+
+        $message .= "\n📅 *التاريخ:* " . $date;
 
         try {
             \Illuminate\Support\Facades\Http::withoutVerifying()->post("https://api.telegram.org/bot{$token}/sendMessage", [

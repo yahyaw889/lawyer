@@ -113,6 +113,50 @@
                                 placeholder="{{ __('consultation_checkout.fields.topic_placeholder') }}"></textarea>
                         </div>
 
+                        <!-- Payment Method -->
+                        <div class="space-y-3">
+                            <label
+                                class="block text-xs font-bold text-gray-500 uppercase tracking-wider">{{ __('frontend.consultation_checkout.payment_method.title') }}</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {{-- Pay Now --}}
+                                <label class="cursor-pointer relative group">
+                                    <input type="radio" name="payment_method" value="pay_now" class="peer sr-only"
+                                        checked>
+                                    <div
+                                        class="p-4 rounded-xl border-2 border-gray-100 bg-white hover:border-gray-200 peer-checked:border-[#a41c1c] peer-checked:bg-[#a41c1c]/5 transition-all flex items-center gap-3 h-full">
+                                        <div
+                                            class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 peer-checked:bg-[#a41c1c] peer-checked:text-white flex items-center justify-center text-gray-400 transition-colors">
+                                            <span class="material-symbols-outlined text-xl">credit_card</span>
+                                        </div>
+                                        <span
+                                            class="text-sm font-bold text-gray-600 peer-checked:text-[#a41c1c]">{{ __('frontend.consultation_checkout.payment_method.pay_now') }}</span>
+                                    </div>
+                                    <div
+                                        class="absolute top-1/2 -translate-y-1/2 right-4 rtl:left-4 opacity-0 peer-checked:opacity-100 transition-opacity text-[#a41c1c]">
+                                        <span class="material-symbols-outlined text-lg">check_circle</span>
+                                    </div>
+                                </label>
+
+                                {{-- Pay Later --}}
+                                <label class="cursor-pointer relative group">
+                                    <input type="radio" name="payment_method" value="pay_later" class="peer sr-only">
+                                    <div
+                                        class="p-4 rounded-xl border-2 border-gray-100 bg-white hover:border-gray-200 peer-checked:border-[#a41c1c] peer-checked:bg-[#a41c1c]/5 transition-all flex items-center gap-3 h-full">
+                                        <div
+                                            class="flex-shrink-0 w-10 h-10 rounded-full bg-gray-100 peer-checked:bg-[#a41c1c] peer-checked:text-white flex items-center justify-center text-gray-400 transition-colors">
+                                            <span class="material-symbols-outlined text-xl">schedule</span>
+                                        </div>
+                                        <span
+                                            class="text-sm font-bold text-gray-600 peer-checked:text-[#a41c1c]">{{ __('frontend.consultation_checkout.payment_method.pay_later') }}</span>
+                                    </div>
+                                    <div
+                                        class="absolute top-1/2 -translate-y-1/2 right-4 rtl:left-4 opacity-0 peer-checked:opacity-100 transition-opacity text-[#a41c1c]">
+                                        <span class="material-symbols-outlined text-lg">check_circle</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
                         <!-- Mobile Pay Button (Visible only on small screens) -->
                         <div class="lg:hidden pt-4">
                             <button type="button" id="payBtnMobile"
