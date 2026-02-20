@@ -1,4 +1,4 @@
-<div id="request" class="h-screen w-full flex flex-col md:flex-row bg-white relative overflow-hidden font-cairo">
+<div id="request" class="min-h-screen w-full flex flex-col md:flex-row bg-white relative overflow-x-hidden font-cairo">
 
     <!-- Left Panel: Branding & Info (40%) -->
     <div class="hidden md:flex w-full md:w-[40%] relative overflow-hidden flex-col justify-between p-8 text-white">
@@ -68,17 +68,17 @@
     </div>
 
     <!-- Right Panel: Form (60%) -->
-    <div class="w-full md:w-[60%] flex flex-col relative bg-[#f8f9fa] h-screen overflow-hidden">
+    <div class="w-full md:w-[60%] flex flex-col relative bg-[#f8f9fa] min-h-screen md:h-screen md:overflow-y-auto">
         <!-- Back Button -->
         <a href="{{ route('home') }}"
-            class="absolute top-4 right-6 z-20 flex items-center gap-1 text-gray-400 hover:text-[#a41c1c] transition-colors text-[10px] font-bold rtl:flex-row-reverse uppercase tracking-wider">
+            class="absolute top-6 right-6 md:top-4 md:right-6 z-20 flex items-center gap-1 text-gray-400 hover:text-[#a41c1c] transition-colors text-[10px] font-bold rtl:flex-row-reverse uppercase tracking-wider pb-4 md:pb-0">
             <span>{{ __('frontend.nav.home') }}</span>
             <span class="material-symbols-outlined text-sm rtl:rotate-180">arrow_right_alt</span>
         </a>
 
-        <div class="flex-1 flex flex-col justify-center px-6 md:px-12 h-full overflow-hidden relative z-10">
+        <div class="flex-1 flex flex-col justify-center px-4 py-16 md:py-8 md:px-12 relative z-10 min-h-full">
             <div
-                class="w-full max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100">
+                class="w-full max-w-3xl mx-auto bg-white p-5 md:p-8 rounded-2xl shadow-xl shadow-gray-200/50 border border-gray-100 my-auto">
 
                 <div class="mb-4 text-center">
                     <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-1 font-cairo text-center">
