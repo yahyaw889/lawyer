@@ -413,8 +413,28 @@ return [
             'email' => 'Envoyez-nous un email',
         ],
         'form' => [
-            'title' => 'Demande de Service',
+            'title' => 'Demander un service', // Reusing from buttons.request.title but good to have dedicated
             'phone_label' => 'Téléphone',
+            'details_placeholder' => 'Entrez les détails de la consultation',
+            'business_info' => 'Informations sur l\'entreprise',
+            'company_name' => 'Nom de l\'entreprise',
+            'company_website' => 'Site Web',
+            'company_capital' => 'Capital de l\'entreprise',
+            'capital_ranges' => [
+                'tier1' => 'De 50 000 à 500 000',
+                'tier2' => 'De 500 000 à 10 000 000',
+                'tier3' => 'Plus de 10 000 000',
+            ],
+            'political_activity' => 'Avez-vous une activité politique ou êtes-vous membre d\'un parti politique ?',
+            'premium_residency' => 'Résidence premium pour le propriétaire ?',
+            'yes' => 'Oui',
+            'no' => 'Non',
+            'commercial_record' => 'Registre du commerce',
+            'incorporation_contract' => 'Contrat de constitution',
+            'general_attachment' => 'Téléchargez les documents liés à votre consultation ici (vous pouvez en sélectionner plusieurs)',
+            'choose_file' => 'Choisir un fichier ou une image',
+            'terms_agree' => 'En cliquant sur envoyer, vous acceptez les',
+            'terms_link' => 'Conditions générales',
         ]
     ],
 ];

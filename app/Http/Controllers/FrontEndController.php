@@ -133,12 +133,38 @@ class FrontEndController extends Controller
             'phone' => 'required|string|max:20',
             'service_type' => ['required', 'string', new Enum(ServiceType::class)],
             'message' => 'nullable|string',
+            'has_political_activity' => 'nullable|boolean',
+            'company_name' => 'nullable|string|max:255',
+            'company_website' => 'nullable|url|max:255',
+            'commercial_record' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'incorporation_contract' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:10240',
+            'company_capital' => 'nullable|in:50000_to_500000,500000_to_10000000,more_than_10000000',
+            'premium_residency' => 'nullable|boolean',
+            'attachments' => 'nullable|array|max:5',
+            'attachments.*' => 'file|max:10240',
         ]);
 
         // Convert enum value to Arabic label for storage
         $serviceEnum = ServiceType::from($validated['service_type']);
         $validated['service_type'] = $serviceEnum->labelAr();
         $validated['status'] = 'جديد';
+
+        // Handle File Uploads
+        if ($request->hasFile('commercial_record')) {
+            $validated['commercial_record'] = $request->file('commercial_record')->store('service_requests/commercial_records', 'public');
+        }
+
+        if ($request->hasFile('incorporation_contract')) {
+            $validated['incorporation_contract'] = $request->file('incorporation_contract')->store('service_requests/incorporation_contracts', 'public');
+        }
+
+        if ($request->hasFile('attachments')) {
+            $attachmentPaths = [];
+            foreach ($request->file('attachments') as $file) {
+                $attachmentPaths[] = $file->store('service_requests/attachments', 'public');
+            }
+            $validated['attachments'] = $attachmentPaths;
+        }
 
         $serviceRequest = ServiceRequest::create($validated);
 
@@ -277,7 +303,39 @@ class FrontEndController extends Controller
         $message .= "⚖️ *الخدمة:* " . $order->service_type . "\n";
         
         if ($order->message) {
-            $message .= "📝 *الرسالة:* " . $order->message . "\n";
+            $message .= "📝 *الرسالة:* \n" . $order->message . "\n";
+        }
+
+        // Add extra business fields to Telegram notification if they exist
+        if ($order->has_political_activity !== null) {
+            $message .= "🏛 *نشاط سياسي:* " . ($order->has_political_activity ? 'نعم' : 'لا') . "\n";
+        }
+        if ($order->company_name) {
+            $message .= "🏢 *اسم الشركة:* " . $order->company_name . "\n";
+        }
+        if ($order->company_website) {
+            $message .= "🌐 *موقع الشركة:* " . $order->company_website . "\n";
+        }
+        if ($order->company_capital) {
+            $capitals = [
+                '50000_to_500000' => 'من 50,000 إلى 500,000',
+                '500000_to_10000000' => 'من 500,000 إلى 10,000,000',
+                'more_than_10000000' => 'أكثر من 10,000,000',
+            ];
+            $message .= "💰 *رأس المال:* " . ($capitals[$order->company_capital] ?? $order->company_capital) . "\n";
+        }
+        if ($order->premium_residency !== null) {
+            $message .= "🌟 *إقامة مميزة:* " . ($order->premium_residency ? 'نعم' : 'لا') . "\n";
+        }
+        if ($order->commercial_record) {
+            $message .= "📎 *السجل التجاري:* مرفق\n";
+        }
+        if ($order->incorporation_contract) {
+            $message .= "📎 *عقد التأسيس:* مرفق\n";
+        }
+        if (!empty($order->attachments)) {
+            $count = count($order->attachments);
+            $message .= "📎 *مرفقات إضافية:* مرفق ({$count} ملفات)\n";
         }
 
         $message .= "\n📅 *التاريخ:* " . $order->created_at->format('Y-m-d H:i');

@@ -53,7 +53,7 @@ class ConsultationController extends Controller
                 'phone' => $request->phone,
                 'type' => $request->type,
                 'topic' => $request->topic,
-                'payment_status' => $request->payment_method === 'pay_later' ? 'PAY_LATER' : 'PENDING'
+                'payment_status' => $request->payment_method === 'pay_later' ? 'UNPAID' : 'PENDING'
             ]);
 
             // Handle Pay Later
@@ -204,7 +204,7 @@ class ConsultationController extends Controller
         $topic = $transaction ? $transaction->consultation_topic : $consultation->topic;
         $amount = $transaction ? $transaction->amount : SystemSetting::getValue('consultation_price', 575);
         $date = ($transaction ? $transaction->created_at : $consultation->created_at)->format('Y-m-d H:i A');
-        $isPayLater = $consultation && $consultation->payment_status === 'PAY_LATER';
+        $isPayLater = $consultation && $consultation->payment_status === 'UNPAID';
 
         $message = "🚨 *طلب استشارة فورية جديد* 🚨\n\n";
 

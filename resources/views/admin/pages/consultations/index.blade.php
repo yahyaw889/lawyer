@@ -61,7 +61,7 @@
                                         @elseif($consultation->payment_status == 'PENDING')
                                             <span class="badge bg-warning-transparent">انتظار</span>
                                         @else
-                                            <span class="badge bg-danger-transparent">فشل</span>
+                                            <span class="badge bg-danger-transparent">غير مدفوعة</span>
                                         @endif
                                     </td>
                                     <td>
@@ -184,16 +184,23 @@
                     consultationModal.querySelector('#modalDate').textContent = date;
                     consultationModal.querySelector('#modalType').textContent = type;
                     consultationModal.querySelector('#modalTopic').textContent = topic;
-                    consultationModal.querySelector('#modalPaymentStatus').textContent = paymentStatus;
+                    // Payment status translation is handled below
                     consultationModal.querySelector('#modalAmount').textContent = amount !== '-' ?
                         `(${amount})` : '';
 
                     // Style Payment Badge
                     const badge = consultationModal.querySelector('#modalPaymentStatus');
                     badge.className = 'badge fs-12';
-                    if (paymentStatus === 'PAID') badge.classList.add('bg-success-transparent');
-                    else if (paymentStatus === 'PENDING') badge.classList.add('bg-warning-transparent');
-                    else badge.classList.add('bg-danger-transparent');
+                    if (paymentStatus === 'PAID') {
+                        badge.classList.add('bg-success-transparent');
+                        badge.textContent = 'مدفوع';
+                    } else if (paymentStatus === 'PENDING') {
+                        badge.classList.add('bg-warning-transparent');
+                        badge.textContent = 'انتظار';
+                    } else {
+                        badge.classList.add('bg-danger-transparent');
+                        badge.textContent = 'غير مدفوعة';
+                    }
 
                     // Update Links
                     const emailLink = consultationModal.querySelector('#modalEmail');

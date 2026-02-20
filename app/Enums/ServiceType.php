@@ -21,6 +21,14 @@ enum ServiceType: string
     case ATTESTATION_MOFA = 'attestation_mofa';
     case ATTESTATION_MOJ = 'attestation_moj';
 
+    // Business Sub-services
+    case GOVERNMENT_PLATFORMS = 'government_platforms';
+    case COMMERCIAL_LICENSE = 'commercial_license';
+    case PREMIUM_RESIDENCY = 'premium_residency';
+    case INTELLECTUAL_PROPERTY = 'intellectual_property';
+    case COMPANY_FORMATION = 'company_formation';
+    case COMPANY_LIQUIDATION = 'company_liquidation';
+
     /**
      * Get the Arabic label for this service type.
      */
@@ -42,6 +50,13 @@ enum ServiceType: string
             self::ATTESTATION_DEBT_ACK => 'اصدار إقرار بالدين',
             self::ATTESTATION_MOFA => 'تصديق الوكالات لدى وزارة الخارجية',
             self::ATTESTATION_MOJ => 'تصديق الوكالات لدى وزارة العدل',
+            // Business Sub-services
+            self::GOVERNMENT_PLATFORMS => 'إدارة المنصات الحكومية',
+            self::COMMERCIAL_LICENSE => 'الرخص التجارية',
+            self::PREMIUM_RESIDENCY => 'الإقامة المميزة',
+            self::INTELLECTUAL_PROPERTY => 'الملكية الفكرية',
+            self::COMPANY_FORMATION => 'تأسيس الشركات',
+            self::COMPANY_LIQUIDATION => 'تصفية الشركات',
         };
     }
 

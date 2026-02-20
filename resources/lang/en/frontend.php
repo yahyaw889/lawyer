@@ -419,6 +419,26 @@ return [
         'form' => [
             'title' => 'Service Request',
             'phone_label' => 'Phone',
+            'details_placeholder' => 'Enter consultation details',
+            'business_info' => 'Company & Business Information',
+            'company_name' => 'Company Name',
+            'company_website' => 'Website',
+            'company_capital' => 'Company Capital',
+            'capital_ranges' => [
+                'tier1' => 'From 50,000 to 500,000',
+                'tier2' => 'From 500,000 to 10,000,000',
+                'tier3' => 'More than 10,000,000',
+            ],
+            'political_activity' => 'Do you have any political activity or member of a political party?',
+            'premium_residency' => 'Premium Residency for Owner?',
+            'yes' => 'Yes',
+            'no' => 'No',
+            'commercial_record' => 'Commercial Record',
+            'incorporation_contract' => 'Incorporation Contract',
+            'general_attachment' => 'Upload files related to your consultation here (you can select multiple)',
+            'choose_file' => 'Choose file or image',
+            'terms_agree' => 'By clicking send, you agree to the',
+            'terms_link' => 'Terms and Conditions',
         ]
     ],
 ];

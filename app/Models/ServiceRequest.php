@@ -13,5 +13,18 @@ class ServiceRequest extends Model
         'service_type',
         'message',
         'status',
+        'has_political_activity',
+        'company_name',
+        'company_website',
+        'commercial_record',
+        'incorporation_contract',
+        'company_capital',
+        'premium_residency',
+        'attachments'
+    ];
+    protected $casts = [
+        'has_political_activity' => 'boolean',
+        'premium_residency' => 'boolean',
+        'attachments' => 'array',
     ];
 }

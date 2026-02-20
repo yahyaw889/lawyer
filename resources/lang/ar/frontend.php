@@ -238,7 +238,13 @@ return [
             'attestation_debt_ack' => 'اصدار إقرار بالدين',
             'attestation_mofa' => 'تصديق الوكالات لدى وزارة الخارجية',
             'attestation_moj' => 'تصديق الوكالات لدى وزارة العدل',
-
+            // Business Sub-services
+            'government_platforms' => 'إدارة المنصات الحكومية',
+            'commercial_license' => 'الرخص التجارية',
+            'premium_residency' => 'الإقامة المميزة',
+            'intellectual_property' => 'الملكية الفكرية',
+            'company_formation' => 'تأسيس الشركات',
+            'company_liquidation' => 'تصفية الشركات',
         ],
     ],
     'why_us' => [
@@ -420,6 +426,26 @@ return [
         'form' => [
             'title' => 'طلب خدمة', // Reusing from buttons.request.title but good to have dedicated
             'phone_label' => 'الهاتف',
+            'details_placeholder' => 'اذكر الاستشارة بالتفاصيل',
+            'business_info' => 'معلومات الشركة والأعمال',
+            'company_name' => 'اسم الشركة',
+            'company_website' => 'الموقع الإلكتروني',
+            'company_capital' => 'رأس مال الشركة',
+            'capital_ranges' => [
+                'tier1' => 'من 50,000 إلى 500,000',
+                'tier2' => 'من 500,000 إلى 10,000,000',
+                'tier3' => 'أكثر من 10,000,000',
+            ],
+            'political_activity' => 'هل لديك أي نشاط سياسي أو عضو في حزب سياسي؟',
+            'premium_residency' => 'الإقامة المميزة للمالك؟',
+            'yes' => 'نعم',
+            'no' => 'لا',
+            'commercial_record' => 'السجل التجاري',
+            'incorporation_contract' => 'عقد التأسيس',
+            'general_attachment' => 'حمل ملفات التي تتعلق باستشارتك هنا (يمكنك تحديد أكثر من ملف)',
+            'choose_file' => 'اختر ملف أو صورة',
+            'terms_agree' => 'بالضغط على زر الإرسال، فإنك توافق على',
+            'terms_link' => 'الشروط والأحكام',
         ]
     ],
 ];

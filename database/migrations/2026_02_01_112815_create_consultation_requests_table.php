@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('type'); // call, video, office
             $table->text('topic')->nullable();
-            $table->string('payment_status')->default('PENDING'); // PENDING, PAID, FAILED
+            $table->enum('payment_status', ['PENDING', 'PAID', 'FAILED', 'UNPAID'])->default('PENDING');
             $table->json('attachments')->nullable();
             $table->timestamps();
         });

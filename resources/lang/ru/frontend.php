@@ -405,8 +405,28 @@ return [
             'email' => 'Напишите нам',
         ],
         'form' => [
-            'title' => 'Запрос услуги',
+            'title' => 'Запросить услугу', // Reusing from buttons.request.title but good to have dedicated
             'phone_label' => 'Телефон',
+            'details_placeholder' => 'Реквизиты консультации',
+            'business_info' => 'Информация о компании',
+            'company_name' => 'Название компании',
+            'company_website' => 'Веб-сайт',
+            'company_capital' => 'Капитал компании',
+            'capital_ranges' => [
+                'tier1' => 'От 50 000 до 500 000',
+                'tier2' => 'От 500 000 до 10 000 000',
+                'tier3' => 'Более 10 000 000',
+            ],
+            'political_activity' => 'Занимаетесь ли вы политической деятельностью или являетесь членом политической партии?',
+            'premium_residency' => 'Премиум вид на жительство для владельца?',
+            'yes' => 'Да',
+            'no' => 'Нет',
+            'commercial_record' => 'Свидетельство о регистрации',
+            'incorporation_contract' => 'Учредительный договор',
+            'general_attachment' => 'Загрузите файлы для консультации (можно выбрать несколько)',
+            'choose_file' => 'Выберите файл или изображение',
+            'terms_agree' => 'Нажимая отправить, вы соглашаетесь с',
+            'terms_link' => 'Условиями',
         ]
     ],
 ];
