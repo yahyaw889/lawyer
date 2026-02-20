@@ -280,94 +280,99 @@
     </div>
 
     <script>
-        function handlePayment(btnId, paymentMethod) {
-            const btn = document.getElementById(btnId);
-            const form = document.getElementById('consultationForm');
+        document.addEventListener('DOMContentLoaded', function() {
+            function handlePayment(btnId, paymentMethod) {
+                const btn = document.getElementById(btnId);
+                const form = document.getElementById('consultationForm');
 
-            // Set payment method
-            document.getElementById('paymentMethodInput').value = paymentMethod;
+                // Set payment method
+                const paymentMethodInput = document.getElementById('paymentMethodInput');
+                if (paymentMethodInput) paymentMethodInput.value = paymentMethod;
 
-            // Check HTML5 validity
-            if (!form.checkValidity()) {
-                // Find first invalid element
-                const firstInvalid = form.querySelector(':invalid');
-                if (firstInvalid) {
-                    firstInvalid.focus();
+                // Check HTML5 validity
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
                 }
-                form.reportValidity();
-                return;
-            }
 
-            // UI Feedback
-            const isMobile = window.innerWidth < 1024;
-            const originalContentItems = btn.querySelectorAll('span:not(.spinner), div');
+                // UI Feedback
+                const originalContentItems = btn.querySelectorAll('span:not(.spinner), div');
 
-            // Disable all buttons to prevent double submission
-            const allBtns = document.querySelectorAll('button[id^="payBtn"]');
-            allBtns.forEach(b => {
-                b.disabled = true;
-                b.classList.add('opacity-80', 'cursor-wait');
-            });
-
-            // Toggle spinner visibility
-            const spinner = btn.querySelector('.spinner');
-
-            if (spinner) {
-                spinner.classList.remove('hidden');
-                originalContentItems.forEach(el => el.classList.add('opacity-0'));
-            }
-
-            const errorContainer = document.getElementById('errorMessage');
-            const errorText = document.getElementById('errorText');
-            errorContainer.classList.add('hidden');
-
-            const formData = new FormData(form);
-
-            fetch('{{ route('consultation.submit') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.redirect_url) {
-                        window.location.href = data.redirect_url;
-                    } else if (data.success) {
-                        window.location.href = "{{ route('consultation.success.later') }}";
-                    } else {
-                        throw new Error(data.message ||
-                            '{{ __('frontend.consultation_checkout.errors.unexpected') }}');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    errorText.textContent = error.message ||
-                        '{{ __('frontend.consultation_checkout.errors.connection') }}';
-                    errorContainer.classList.remove('hidden');
-
-                    // Restore Buttons
-                    allBtns.forEach(b => {
-                        b.disabled = false;
-                        b.classList.remove('opacity-80', 'cursor-wait');
-                    });
-
-                    if (spinner) {
-                        spinner.classList.add('hidden');
-                        originalContentItems.forEach(el => el.classList.remove('opacity-0'));
-                    }
+                // Disable all buttons to prevent double submission
+                const allBtns = document.querySelectorAll('button[id^="payBtn"]');
+                allBtns.forEach(b => {
+                    b.disabled = true;
+                    b.classList.add('opacity-80', 'cursor-wait');
                 });
-        }
 
-        document.getElementById('payBtnDesktopNow')?.addEventListener('click', () => handlePayment('payBtnDesktopNow',
-            'pay_now'));
-        document.getElementById('payBtnDesktopLater')?.addEventListener('click', () => handlePayment('payBtnDesktopLater',
-            'pay_later'));
-        document.getElementById('payBtnMobileNow')?.addEventListener('click', () => handlePayment('payBtnMobileNow',
-            'pay_now'));
-        document.getElementById('payBtnMobileLater')?.addEventListener('click', () => handlePayment('payBtnMobileLater',
-            'pay_later'));
+                // Toggle spinner visibility
+                const spinner = btn.querySelector('.spinner');
+
+                if (spinner) {
+                    spinner.classList.remove('hidden');
+                    originalContentItems.forEach(el => el.classList.add('opacity-0'));
+                }
+
+                const errorContainer = document.getElementById('errorMessage');
+                const errorText = document.getElementById('errorText');
+                if (errorContainer) errorContainer.classList.add('hidden');
+
+                const formData = new FormData(form);
+
+                fetch('{{ route('consultation.submit') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.redirect_url) {
+                            window.location.href = data.redirect_url;
+                        } else if (data.success) {
+                            window.location.href = "{{ route('consultation.success.later') }}";
+                        } else {
+                            throw new Error(data.message ||
+                                '{{ __('frontend.consultation_checkout.errors.unexpected') }}');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        if (errorText) errorText.textContent = error.message ||
+                            '{{ __('frontend.consultation_checkout.errors.connection') }}';
+                        if (errorContainer) errorContainer.classList.remove('hidden');
+
+                        // Restore Buttons
+                        allBtns.forEach(b => {
+                            b.disabled = false;
+                            b.classList.remove('opacity-80', 'cursor-wait');
+                        });
+
+                        if (spinner) {
+                            spinner.classList.add('hidden');
+                            originalContentItems.forEach(el => el.classList.remove('opacity-0'));
+                        }
+                    });
+            }
+
+            const buttons = {
+                'payBtnDesktopNow': 'pay_now',
+                'payBtnDesktopLater': 'pay_later',
+                'payBtnMobileNow': 'pay_now',
+                'payBtnMobileLater': 'pay_later'
+            };
+
+            for (const [btnId, method] of Object.entries(buttons)) {
+                const btn = document.getElementById(btnId);
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        handlePayment(btnId, method);
+                    });
+                }
+            }
+        });
     </script>
 @endsection
