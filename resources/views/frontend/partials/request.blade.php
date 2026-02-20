@@ -146,7 +146,7 @@
                         <div class="md:col-span-2">
                             <textarea id="message" name="message" rows="2" required
                                 class="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 focus:bg-white focus:border-[#a41c1c] outline-none transition-all rounded-xl text-sm resize-none"
-                                placeholder="اذكر الاستشارة بالتفاصيل"></textarea>
+                                placeholder="{{ __('frontend.request_page.form.details_placeholder') }}"></textarea>
                         </div>
                     </div>
 

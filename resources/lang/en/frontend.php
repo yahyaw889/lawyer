@@ -429,6 +429,7 @@ return [
                 'tier2' => 'From 500,000 to 10,000,000',
                 'tier3' => 'More than 10,000,000',
             ],
+            'details_placeholder' => 'Mention the consultation details',
             'political_activity' => 'Do you have any political activity or member of a political party?',
             'premium_residency' => 'Premium Residency for Owner?',
             'yes' => 'Yes',
