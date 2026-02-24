@@ -431,7 +431,7 @@ return [
             ],
             'details_placeholder' => 'Mention the consultation details',
             'political_activity' => 'Do you have any political activity or member of a political party?',
-            'premium_residency' => 'Premium Residency for Owner?',
+            'premium_residency' => 'Request Premium Residency',
             'yes' => 'Yes',
             'no' => 'No',
             'commercial_record' => 'Commercial Record',

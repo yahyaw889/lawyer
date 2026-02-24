@@ -438,7 +438,7 @@ return [
             ],
             'details_placeholder' => 'اذكر الاستشارة بالتفاصيل',
             'political_activity' => 'هل لديك أي نشاط سياسي أو عضو في حزب سياسي؟',
-            'premium_residency' => 'الإقامة المميزة للمالك؟',
+            'premium_residency' => 'طلب الإقامة المميزة',
             'yes' => 'نعم',
             'no' => 'لا',
             'commercial_record' => 'السجل التجاري',

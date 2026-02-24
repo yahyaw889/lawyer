@@ -427,7 +427,7 @@ return [
             ],
             'details_placeholder' => 'Mentionnez les détails de la consultation',
             'political_activity' => 'Avez-vous une activité politique ou êtes-vous membre d\'un parti politique ?',
-            'premium_residency' => 'Résidence premium pour le propriétaire ?',
+            'premium_residency' => 'Demande de résidence premium',
             'yes' => 'Oui',
             'no' => 'Non',
             'commercial_record' => 'Registre du commerce',
