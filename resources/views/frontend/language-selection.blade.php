@@ -59,8 +59,10 @@
                     <div
                         class="relative h-full bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#a41c1c]/40 transition-all duration-300 transform group-hover:-translate-y-2 flex flex-col items-center group-hover:bg-[#FAFAFA]">
                         <div
-                            class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
-                            🇸🇦</div>
+                            class="mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/sa.svg"
+                                alt="SA Flag" class="w-16 h-12 object-cover rounded-sm shadow-sm">
+                        </div>
                         <h2
                             class="text-3xl font-bold text-[#1C1C1C] mb-2 font-cairo group-hover:text-[#a41c1c] transition-colors">
                             عربي</h2>
@@ -78,8 +80,10 @@
                     <div
                         class="relative h-full bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 transform group-hover:-translate-y-2 flex flex-col items-center group-hover:bg-[#FAFAFA]">
                         <div
-                            class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
-                            🇬🇧</div>
+                            class="mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/gb.svg"
+                                alt="GB Flag" class="w-16 h-12 object-cover rounded-sm shadow-sm">
+                        </div>
                         <h2
                             class="text-3xl font-bold text-[#1C1C1C] mb-2 font-cairo group-hover:text-blue-600 transition-colors">
                             English</h2>
@@ -97,8 +101,10 @@
                     <div
                         class="relative h-full bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-500/40 transition-all duration-300 transform group-hover:-translate-y-2 flex flex-col items-center group-hover:bg-[#FAFAFA]">
                         <div
-                            class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
-                            🇫🇷</div>
+                            class="mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/fr.svg"
+                                alt="FR Flag" class="w-16 h-12 object-cover rounded-sm shadow-sm">
+                        </div>
                         <h2
                             class="text-3xl font-bold text-[#1C1C1C] mb-2 font-cairo group-hover:text-purple-600 transition-colors">
                             Français</h2>
@@ -116,8 +122,10 @@
                     <div
                         class="relative h-full bg-white rounded-xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-red-500/40 transition-all duration-300 transform group-hover:-translate-y-2 flex flex-col items-center group-hover:bg-[#FAFAFA]">
                         <div
-                            class="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
-                            🇷🇺</div>
+                            class="mb-6 transform group-hover:scale-110 transition-transform duration-500 drop-shadow-sm group-hover:grayscale-0">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/ru.svg"
+                                alt="RU Flag" class="w-16 h-12 object-cover rounded-sm shadow-sm">
+                        </div>
                         <h2
                             class="text-3xl font-bold text-[#1C1C1C] mb-2 font-cairo group-hover:text-red-600 transition-colors">
                             Русский</h2>

@@ -31,7 +31,7 @@
                 </h1>
                 <div class="h-0.5 w-full bg-[#1C1C1C] mt-1 mb-1"></div>
                 <div
-                    class="text-xs md:text-sm font-bold text-[#1C1C1C] uppercase tracking-[0.4em] flex justify-between w-full font-cairo">
+                    class="text-xs md:text-sm font-bold text-[#1C1C1C] uppercase flex justify-center w-full font-cairo ltr:tracking-widest rtl:tracking-normal mt-1">
                     {{ __('frontend.hero.brand_subtitle') }}
                 </div>
             </div>
