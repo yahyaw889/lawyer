@@ -12,14 +12,9 @@
         <!-- Text Column -->
         <div class="w-full md:w-1/2 flex items-center justify-center p-8 md:p-12 lg:p-20 relative z-20">
             <div class="max-w-xl">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="h-px w-8 bg-[#a41c1c]"></span>
-                    <span class="text-[#a41c1c] font-bold tracking-widest text-xs lg:text-sm font-cairo uppercase">
-                        {{ __('frontend.about_page_custom.team.title') }}
-                    </span>
-                </div>
 
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1C1C1C] mb-6 font-cairo leading-tight">
+
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#a41c1c] mb-6 font-cairo leading-tight">
                     {{ __('frontend.about_page_custom.team.title') }}
                 </h2>
 
@@ -62,9 +57,8 @@
         <div class="container mx-auto px-6 relative z-10">
             <!-- Achievements Header -->
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <span
-                    class="text-[#a41c1c] font-bold tracking-widest text-xs lg:text-sm font-cairo block mb-2 uppercase">{{ __('frontend.about_page_custom.achievements.title') }}</span>
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1C1C1C] font-cairo mb-4">
+
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#a41c1c] font-cairo mb-4">
                     {{ __('frontend.about_page_custom.achievements.title') }}</h2>
                 <p class="text-[#606060] text-base lg:text-lg font-cairo leading-relaxed">
                     {{ __('frontend.about_page_custom.achievements.desc') }}
@@ -99,9 +93,8 @@
 
             <!-- Clients Header -->
             <div class="text-center max-w-3xl mx-auto mb-10">
-                <span
-                    class="text-[#a41c1c] font-bold tracking-widest text-xs lg:text-sm font-cairo block mb-2 uppercase">{{ __('frontend.about_page_custom.clients.title') }}</span>
-                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1C1C1C] font-cairo mb-4">
+
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[#a41c1c] font-cairo mb-4">
                     {{ __('frontend.about_page_custom.clients.title') }}</h2>
                 <p class="text-[#606060] text-base lg:text-lg font-cairo leading-relaxed">
                     {{ __('frontend.about_page_custom.clients.desc') }}
