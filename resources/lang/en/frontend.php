@@ -442,4 +442,30 @@ return [
             'terms_link' => 'Terms and Conditions',
         ]
     ],
+    'about_page_custom' => [
+        'team' => [
+            'title' => 'Our Team',
+            'desc' => 'At AMN, we pride ourselves on having a professional and specialized legal team that has taken upon itself to change the concept of providing legal services and raise the level of quality. Our team works passionately to support business and commercial relations through legal services specially designed for entrepreneurs and companies, and we always strive to create a safe and more reliable business environment.',
+        ],
+        'achievements' => [
+            'title' => 'Our Achievements',
+            'desc' => 'Our numbers reflect the extent of our commitment and our clients\' trust in the quality of our services. Our achievements are summarized in:',
+            'stats' => [
+                ['number' => '+ 11', 'label' => 'Years of experience.'],
+                ['number' => '+ 690', 'label' => 'Cases handled.'],
+                ['number' => '+ 135', 'label' => 'Clients who trust us.'],
+                ['number' => '+ 30', 'label' => 'Companies established.'],
+            ],
+        ],
+        'clients' => [
+            'title' => 'Our Distinguished Clients',
+            'desc' => 'We cherish our partnerships and are happy to provide our services to a group of distinguished entities and companies:',
+            'list' => [
+                'Ai GROUP',
+                'METAVISIO THOMSON Computing',
+                'SAFIA Water',
+                'UNITED CONTINENTS',
+            ],
+        ],
+    ],
 ];

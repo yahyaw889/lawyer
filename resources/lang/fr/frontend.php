@@ -438,4 +438,30 @@ return [
             'terms_link' => 'Conditions générales',
         ]
     ],
+    'about_page_custom' => [
+        'team' => [
+            'title' => 'Notre Équipe',
+            'desc' => 'Chez AMN, nous sommes fiers de disposer d\'une équipe juridique professionnelle et spécialisée qui a pris l\'initiative de changer le concept de la prestation de services juridiques et d\'élever le niveau de qualité. Notre équipe travaille avec passion pour soutenir les affaires et les relations commerciales travers des services juridiques spécialement conçus pour les entrepreneurs et les entreprises.',
+        ],
+        'achievements' => [
+            'title' => 'Nos Réalisations',
+            'desc' => 'Nos chiffres reflètent l\'étendue de notre engagement et la confiance de nos clients dans la qualité de nos services juridiques et commerciaux. Nos réalisations se résument ainsi :',
+            'stats' => [
+                ['number' => '+ 11', 'label' => 'Années d\'expérience et de professionnalisme.'],
+                ['number' => '+ 690', 'label' => 'Affaires traitées.'],
+                ['number' => '+ 135', 'label' => 'Clients faisant confiance à nos services.'],
+                ['number' => '+ 30', 'label' => 'Entreprises créées avec succès.'],
+            ],
+        ],
+        'clients' => [
+            'title' => 'Nos Clients Distingués',
+            'desc' => 'Nous chérissons nos partenariats et sommes heureux de fournir nos services à un groupe d\'entités et d\'entreprises distinguées. Parmi nos clients les plus importants :',
+            'list' => [
+                'Groupe Ai (Ai GROUP)',
+                'METAVISIO THOMSON Computing',
+                'Eau SAFIA (SAFIA)',
+                'CONTINENTS UNIS (UNITED CONTINENTS)',
+            ],
+        ],
+    ],
 ];
