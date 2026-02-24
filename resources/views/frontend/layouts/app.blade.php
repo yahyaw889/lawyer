@@ -242,6 +242,44 @@
             cache: false,
             animationSelector: '[class*="transition-"]',
         });
+
+        // Global Counter Animation Logic
+        const initCounters = () => {
+            const counters = document.querySelectorAll('.counter');
+            if (counters.length === 0) return;
+
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const startTime = performance.now();
+
+                // Reset first
+                counter.innerText = '0';
+
+                const updateCount = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    counter.innerText = Math.floor(easeProgress * target);
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+
+                requestAnimationFrame(updateCount);
+            });
+        };
+
+        // Run on initial load
+        initCounters();
+
+        // Run after every Swup page transition (Swup v4 correct API)
+        swup.hooks.on('page:view', () => {
+            // Delay slightly to ensure new DOM is rendered
+            setTimeout(initCounters, 50);
+        });
     </script>
 </body>
 
